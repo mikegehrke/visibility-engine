@@ -71,6 +71,12 @@ export default function Sidebar() {
         { href: '/dashboard/flow', label: t.nav.flow },
       ],
     },
+    {
+      title: t.sections.logic,
+      items: [
+        { href: '/dashboard/rules', label: t.nav.rules },
+      ],
+    },
   ];
 
   return (
