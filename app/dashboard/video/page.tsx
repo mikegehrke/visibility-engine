@@ -1,18 +1,18 @@
 'use client';
 
-import { useDashboard } from '@/lib/context/DashboardContext';
-import { H2, Body } from '@/components/shared/Typography';
-import Card from '@/components/shared/Card';
+import RoadmapPlaceholder from '@/components/shared/RoadmapPlaceholder';
 
 export default function VideoModulePage() {
-  const { t } = useDashboard();
-
   return (
-    <div className="space-y-6">
-      <H2>{t.nav.videoModule}</H2>
-      <Card variant="outlined">
-        <Body className="text-slate">{t.common.placeholder}</Body>
-      </Card>
-    </div>
+    <RoadmapPlaceholder 
+      titleKey="videoModule"
+      description="Professional video creation and editing tools for your content strategy."
+      features={[
+        "AI-powered video generation from text",
+        "Automated video editing and optimization",
+        "Platform-specific video formatting",
+        "Video analytics and performance tracking"
+      ]}
+    />
   );
 }

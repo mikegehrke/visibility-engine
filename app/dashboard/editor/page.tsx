@@ -1,18 +1,18 @@
 'use client';
 
-import { useDashboard } from '@/lib/context/DashboardContext';
-import { H2, Body } from '@/components/shared/Typography';
-import Card from '@/components/shared/Card';
+import RoadmapPlaceholder from '@/components/shared/RoadmapPlaceholder';
 
 export default function EditorPage() {
-  const { t } = useDashboard();
-
   return (
-    <div className="space-y-6">
-      <H2>{t.nav.editor}</H2>
-      <Card variant="outlined">
-        <Body className="text-slate">{t.common.placeholder}</Body>
-      </Card>
-    </div>
+    <RoadmapPlaceholder 
+      titleKey="editor"
+      description="Professional content editor with AI-powered assistance."
+      features={[
+        "Rich text editing with formatting",
+        "AI writing assistance and suggestions",
+        "Real-time collaboration",
+        "Version history and drafts"
+      ]}
+    />
   );
 }

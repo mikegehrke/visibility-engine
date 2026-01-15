@@ -1,18 +1,18 @@
 'use client';
 
-import { useDashboard } from '@/lib/context/DashboardContext';
-import { H2, Body } from '@/components/shared/Typography';
-import Card from '@/components/shared/Card';
+import RoadmapPlaceholder from '@/components/shared/RoadmapPlaceholder';
 
 export default function SchedulesPage() {
-  const { t } = useDashboard();
-
   return (
-    <div className="space-y-6">
-      <H2>{t.nav.schedules}</H2>
-      <Card variant="outlined">
-        <Body className="text-slate">{t.common.placeholder}</Body>
-      </Card>
-    </div>
+    <RoadmapPlaceholder 
+      titleKey="schedules"
+      description="Intelligent scheduling for optimal content timing."
+      features={[
+        "AI-optimized publishing times",
+        "Cross-platform schedule sync",
+        "Bulk scheduling capabilities",
+        "Timezone-aware scheduling"
+      ]}
+    />
   );
 }

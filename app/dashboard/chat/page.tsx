@@ -1,18 +1,18 @@
 'use client';
 
-import { useDashboard } from '@/lib/context/DashboardContext';
-import { H2, Body } from '@/components/shared/Typography';
-import Card from '@/components/shared/Card';
+import RoadmapPlaceholder from '@/components/shared/RoadmapPlaceholder';
 
 export default function ChatPage() {
-  const { t } = useDashboard();
-
   return (
-    <div className="space-y-6">
-      <H2>{t.nav.chat}</H2>
-      <Card variant="outlined">
-        <Body className="text-slate">{t.common.placeholder}</Body>
-      </Card>
-    </div>
+    <RoadmapPlaceholder 
+      titleKey="chat"
+      description="Real-time communication hub for team collaboration."
+      features={[
+        "Team messaging and channels",
+        "AI-assisted content discussions",
+        "Integrated workflow notifications",
+        "Cross-platform synchronization"
+      ]}
+    />
   );
 }

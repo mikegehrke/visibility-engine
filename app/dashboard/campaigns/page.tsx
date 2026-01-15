@@ -1,18 +1,18 @@
 'use client';
 
-import { useDashboard } from '@/lib/context/DashboardContext';
-import { H2, Body } from '@/components/shared/Typography';
-import Card from '@/components/shared/Card';
+import RoadmapPlaceholder from '@/components/shared/RoadmapPlaceholder';
 
 export default function CampaignsPage() {
-  const { t } = useDashboard();
-
   return (
-    <div className="space-y-6">
-      <H2>{t.nav.campaigns}</H2>
-      <Card variant="outlined">
-        <Body className="text-slate">{t.common.placeholder}</Body>
-      </Card>
-    </div>
+    <RoadmapPlaceholder 
+      titleKey="campaigns"
+      description="Strategic campaign management for coordinated content launches."
+      features={[
+        "Multi-platform campaign orchestration",
+        "Campaign timeline and milestones",
+        "Budget and resource tracking",
+        "Campaign performance analytics"
+      ]}
+    />
   );
 }
