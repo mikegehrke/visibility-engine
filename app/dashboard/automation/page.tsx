@@ -4,6 +4,8 @@ import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockAutomationConfigs } from '@/lib/models/automation';
 import { mockActions } from '@/lib/models/actions';
+import AutomationCounter from '@/components/dashboard/AutomationCounter';
+import AutomationAlert from '@/components/dashboard/AutomationAlert';
 import Link from 'next/link';
 
 export default function AutomationPage() {
@@ -39,6 +41,12 @@ export default function AutomationPage() {
         <h1 className="text-2xl font-semibold text-ink">{t.automation.title}</h1>
         <p className="text-slate mt-1">{t.automation.subtitle}</p>
       </div>
+
+      {/* Phase 16B: Alert Banner */}
+      <AutomationAlert />
+
+      {/* Phase 16B: Live Counter */}
+      <AutomationCounter />
 
       {/* Warning Notice */}
       <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">

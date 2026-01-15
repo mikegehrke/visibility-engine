@@ -626,6 +626,7 @@ export const translations = {
         confirmed: 'Confirmed',
         completed: 'Completed',
         cancelled: 'Cancelled',
+        rolled_back: 'Rolled Back', // Phase 16B
       },
       
       // Notices
@@ -799,6 +800,55 @@ export const translations = {
       confidenceBreakdown: 'Confidence Breakdown',
       totalConfidence: 'Total Confidence',
       dataBasedExplanation: 'All values are based on actual system metrics at execution time.',
+    },
+    
+    // Phase 16B: Rollback/Undo
+    rollback: {
+      undoAction: 'Undo Action',
+      undoAvailable: 'Undo available',
+      confirmUndo: 'Confirm Undo',
+      confirmMessage: 'This will revert the previous automation step. The action will be reversed and logged.',
+      cancel: 'Cancel',
+      confirm: 'Undo',
+      success: 'Action successfully rolled back',
+      rollbackReasons: {
+        scheduleChangesReversible: 'Schedule changes can be reverted',
+        campaignControlReversible: 'Campaign controls can be reversed',
+        queueStatusReversible: 'Queue priority can be restored',
+        contentPriorityReversible: 'Content priority can be reset',
+        externalPublicationIrreversible: 'External publication cannot be undone',
+        analyticsDisplayIrreversible: 'Analytics display is irreversible',
+        urgentAlertIrreversible: 'External alerts cannot be recalled',
+      },
+      windowExpired: 'Rollback window expired ({hours}h limit)',
+    },
+    
+    // Phase 16B: Live Counter
+    counter: {
+      automationUsage: 'Automation Usage',
+      currentCycle: 'Current billing cycle',
+      unlimited: 'Unlimited',
+      used: 'Used',
+      today: 'Today',
+      thisMonth: 'This Month',
+      included: 'Included',
+      remaining: 'Remaining',
+      estimatedCost: 'Estimated Cost',
+      actions: 'actions',
+      ownerUnlimited: 'Owner account: Unlimited automation at no cost.',
+    },
+    
+    // Phase 16B: Alerts & Auto-Pause
+    alerts: {
+      warning80Percent: 'Approaching automation limit',
+      considerUpgrade: 'Consider upgrading your plan.',
+      automationPaused: 'Automation Paused',
+      limitReached: 'Limit reached',
+      upgradeOrWait: 'Upgrade your plan or wait for next billing cycle.',
+      outsideWindow: 'Outside automation window',
+      windowResumesNext: 'Automation will resume during next allowed time window.',
+      killSwitchActive: 'Kill Switch Active',
+      deactivateToResume: 'Deactivate kill switch in settings to resume automation.',
     },
   },
   
@@ -1425,6 +1475,7 @@ export const translations = {
         confirmed: 'Bestätigt',
         completed: 'Abgeschlossen',
         cancelled: 'Abgebrochen',
+        rolled_back: 'Rückgängig gemacht', // Phase 16B
       },
       
       // Notices
@@ -1598,6 +1649,55 @@ export const translations = {
       confidenceBreakdown: 'Konfidenz-Aufschlüsselung',
       totalConfidence: 'Gesamt-Konfidenz',
       dataBasedExplanation: 'Alle Werte basieren auf tatsächlichen System-Metriken zum Ausführungszeitpunkt.',
+    },
+    
+    // Phase 16B: Rollback/Undo
+    rollback: {
+      undoAction: 'Aktion rückgängig machen',
+      undoAvailable: 'Rückgängig verfügbar',
+      confirmUndo: 'Rückgängig bestätigen',
+      confirmMessage: 'Dies macht den vorherigen Automatisierungs-Schritt rückgängig. Die Aktion wird umgekehrt und protokolliert.',
+      cancel: 'Abbrechen',
+      confirm: 'Rückgängig',
+      success: 'Aktion erfolgreich rückgängig gemacht',
+      rollbackReasons: {
+        scheduleChangesReversible: 'Zeitplan-Änderungen können rückgängig gemacht werden',
+        campaignControlReversible: 'Kampagnen-Steuerung kann umgekehrt werden',
+        queueStatusReversible: 'Warteschlangen-Priorität kann wiederhergestellt werden',
+        contentPriorityReversible: 'Content-Priorität kann zurückgesetzt werden',
+        externalPublicationIrreversible: 'Externe Publikation kann nicht rückgängig gemacht werden',
+        analyticsDisplayIrreversible: 'Analytics-Anzeige ist irreversibel',
+        urgentAlertIrreversible: 'Externe Warnungen können nicht zurückgerufen werden',
+      },
+      windowExpired: 'Rückgängig-Zeitfenster abgelaufen ({hours}h Limit)',
+    },
+    
+    // Phase 16B: Live Counter
+    counter: {
+      automationUsage: 'Automatisierungs-Nutzung',
+      currentCycle: 'Aktueller Abrechnungszyklus',
+      unlimited: 'Unbegrenzt',
+      used: 'Genutzt',
+      today: 'Heute',
+      thisMonth: 'Diesen Monat',
+      included: 'Inkludiert',
+      remaining: 'Verbleibend',
+      estimatedCost: 'Geschätzte Kosten',
+      actions: 'Aktionen',
+      ownerUnlimited: 'Owner-Account: Unbegrenzte Automatisierung kostenlos.',
+    },
+    
+    // Phase 16B: Alerts & Auto-Pause
+    alerts: {
+      warning80Percent: 'Automatisierungs-Limit bald erreicht',
+      considerUpgrade: 'Erwägen Sie ein Upgrade Ihres Plans.',
+      automationPaused: 'Automatisierung pausiert',
+      limitReached: 'Limit erreicht',
+      upgradeOrWait: 'Upgraden Sie Ihren Plan oder warten Sie auf nächsten Abrechnungszyklus.',
+      outsideWindow: 'Außerhalb Automatisierungs-Fenster',
+      windowResumesNext: 'Automatisierung wird während nächstem erlaubten Zeitfenster fortgesetzt.',
+      killSwitchActive: 'Not-Aus aktiv',
+      deactivateToResume: 'Deaktivieren Sie den Not-Aus in den Einstellungen um Automatisierung fortzusetzen.',
     },
   },
 } as const;

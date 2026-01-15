@@ -1,5 +1,5 @@
-// Execution Status Types
-export type ExecutionStatus = 'pending' | 'confirmed' | 'completed' | 'cancelled';
+// Execution Status Types (Phase 16B: added rolled_back)
+export type ExecutionStatus = 'pending' | 'confirmed' | 'completed' | 'cancelled' | 'rolled_back';
 
 // Phase 16A: Execution Type
 export type ExecutionType = 'manual' | 'auto';

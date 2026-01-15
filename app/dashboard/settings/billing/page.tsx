@@ -7,6 +7,7 @@ import Card, { CardHeader, CardContent, CardFooter } from '@/components/shared/C
 import Button from '@/components/shared/Button';
 import { getAllPlans, getPlanById, formatLimit, isUnlimited, type PlanId } from '@/lib/config/plans';
 import { currentAccount } from '@/lib/models/account';
+import AutomationCounter from '@/components/dashboard/AutomationCounter';
 
 // Force dynamic rendering to prevent build-time prerendering
 export const dynamic = 'force-dynamic';
@@ -174,18 +175,9 @@ export default function BillingPage() {
             </div>
           </div>
 
-          {/* Usage Tracker (nur sichtbar wenn Add-on aktiv) */}
+          {/* Phase 16B: Live Counter */}
           <div className="border-t border-border pt-4">
-            <div className="flex justify-between text-sm mb-2">
-              <span className="text-ink">Automation Usage (Current Cycle)</span>
-              <span className="text-slate">Owner: Unlimited</span>
-            </div>
-            <div className="w-full bg-green-100 rounded-full h-2">
-              <div className="bg-green-500 h-2 rounded-full" style={{ width: '0%' }} />
-            </div>
-            <p className="text-xs text-slate mt-2">
-              No billing applies to Owner accounts. All automation is free.
-            </p>
+            <AutomationCounter />
           </div>
         </CardContent>
         <CardFooter>

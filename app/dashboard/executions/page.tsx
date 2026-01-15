@@ -1,21 +1,40 @@
 'use client';
 
+import { useState } from 'react';
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockExecutionLogs } from '@/lib/models/executions';
 import { mockActions } from '@/lib/models/actions';
+import { canRollback, performRollback } from '@/lib/models/rollback';
 import Link from 'next/link';
 
 export default function ExecutionsPage() {
   const { language } = useLanguage();
   const t = translations[language];
 
+  // Phase 16B: Rollback state
+  const [confirmRollbackId, setConfirmRollbackId] = useState<string | null>(null);
+  const [rolledBackIds, setRolledBackIds] = useState<Set<string>>(new Set());
+
   // Sort execution logs by triggeredAt (newest first)
   const sortedLogs = [...mockExecutionLogs].sort(
     (a, b) => new Date(b.triggeredAt).getTime() - new Date(a.triggeredAt).getTime()
   );
 
-  const getStatusStyles = (status: 'pending' | 'confirmed' | 'completed' | 'cancelled') => {
+  const handleRollback = (logId: string, actionId: string) => {
+    const log = mockExecutionLogs.find((l) => l.id === logId);
+    if (!log) return;
+
+    const result = performRollback(actionId, log.triggeredAt);
+    if (result.success) {
+      setRolledBackIds(new Set([...rolledBackIds, logId]));
+      setConfirmRollbackId(null);
+      // In production: API call to reverse action & create rollback log
+      console.log('Rollback successful:', result);
+    }
+  };
+
+  const getStatusStyles = (status: 'pending' | 'confirmed' | 'completed' | 'cancelled' | 'rolled_back') => {
     switch (status) {
       case 'completed':
         return 'bg-green-100 text-green-700';
@@ -25,6 +44,8 @@ export default function ExecutionsPage() {
         return 'bg-yellow-100 text-yellow-700';
       case 'cancelled':
         return 'bg-gray-100 text-gray-700';
+      case 'rolled_back':
+        return 'bg-red-100 text-red-700';
     }
   };
 
@@ -95,11 +116,19 @@ export default function ExecutionsPage() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-slate uppercase tracking-wider">
                   {t.execution.result}
                 </th>
+                {/* Phase 16B: Rollback column */}
+                <th className="px-6 py-3 text-left text-xs font-medium text-slate uppercase tracking-wider">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-mist">
               {sortedLogs.map((log) => {
                 const action = mockActions.find((a) => a.id === log.actionId);
+                const isRollbackable = canRollback(log.actionId, log.triggeredAt);
+                const isRolledBack = rolledBackIds.has(log.id) || log.status === 'rolled_back';
+                const showConfirmDialog = confirmRollbackId === log.id;
+                
                 return (
                   <tr key={log.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
@@ -163,6 +192,46 @@ export default function ExecutionsPage() {
                       <span className="text-sm text-slate">
                         {t.execution.results[log.resultSummaryKey as keyof typeof t.execution.results]}
                       </span>
+                    </td>
+                    {/* Phase 16B: Rollback Button */}
+                    <td className="px-6 py-4">
+                      {isRolledBack ? (
+                        <span className="px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
+                          {t.rollback.success}
+                        </span>
+                      ) : isRollbackable ? (
+                        <div className="relative">
+                          <button
+                            onClick={() => setConfirmRollbackId(log.id)}
+                            className="px-3 py-1 rounded text-xs font-medium bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 transition-colors"
+                          >
+                            {t.rollback.undoAction}
+                          </button>
+                          {/* Confirm Dialog */}
+                          {showConfirmDialog && (
+                            <div className="absolute z-20 right-0 top-8 w-64 bg-white border border-mist rounded-lg shadow-lg p-4">
+                              <p className="text-sm font-medium text-ink mb-2">{t.rollback.confirmUndo}</p>
+                              <p className="text-xs text-slate mb-3">{t.rollback.confirmMessage}</p>
+                              <div className="flex gap-2">
+                                <button
+                                  onClick={() => setConfirmRollbackId(null)}
+                                  className="flex-1 px-3 py-1.5 text-xs font-medium text-slate border border-mist rounded hover:bg-gray-50"
+                                >
+                                  {t.rollback.cancel}
+                                </button>
+                                <button
+                                  onClick={() => handleRollback(log.id, log.actionId)}
+                                  className="flex-1 px-3 py-1.5 text-xs font-medium text-white bg-red-600 rounded hover:bg-red-700"
+                                >
+                                  {t.rollback.confirm}
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <span className="text-xs text-slate">—</span>
+                      )}
                     </td>
                   </tr>
                 );

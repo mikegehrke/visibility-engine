@@ -10,6 +10,8 @@ import { getSimulationByAutomationId } from '@/lib/models/simulation';
 import { mockExecutionLogs } from '@/lib/models/executions';
 import SimulationCard from '@/components/dashboard/SimulationCard';
 import ExplainabilitySection from '@/components/dashboard/ExplainabilitySection';
+import AutomationCounter from '@/components/dashboard/AutomationCounter';
+import AutomationAlert from '@/components/dashboard/AutomationAlert';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -109,6 +111,12 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
           {relatedAction && t.actions.descriptions[relatedAction.descriptionKey as keyof typeof t.actions.descriptions]}
         </p>
       </div>
+
+      {/* Phase 16B: Alert Banner */}
+      <AutomationAlert />
+
+      {/* Phase 16B: Live Counter */}
+      <AutomationCounter />
 
       {/* Warning Notice */}
       <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
