@@ -65,6 +65,7 @@ export const translations = {
       
       // Automation
       automation: 'Automation Readiness',
+      autoModeSettings: 'Auto Mode Settings',
       
       // Reports
       reports: 'Reports & Exports',
@@ -644,6 +645,93 @@ export const translations = {
         flowHealthAlertSent: 'Simulated: Urgent alert email sent regarding critical flow health.',
       },
     },
+
+    // Auto Mode Engine (Phase 16A)
+    autoMode: {
+      title: 'Auto Mode Settings',
+      subtitle: 'Configure automation levels, caps, and safety guards',
+      enabled: 'Auto Mode Enabled',
+      disabled: 'Auto Mode Disabled',
+      
+      // Account Status
+      ownerAccount: 'Owner Account - Unlimited Auto Mode',
+      requiresAddon: 'Requires Automation Add-on',
+      addonActive: 'Automation Add-on Active',
+      
+      // Levels
+      level: 'Automation Level',
+      levels: {
+        assisted: 'Assisted',
+        guarded: 'Guarded',
+        'full-auto': 'Full Auto',
+      },
+      levelDescriptions: {
+        assisted: 'System suggests actions, you approve each one',
+        guarded: 'Auto execution with caps and guards',
+        'full-auto': 'Fully automated within your settings',
+      },
+      
+      // Confidence
+      confidence: 'Confidence Score',
+      confidenceLevels: {
+        high: 'High',
+        medium: 'Medium',
+        low: 'Low',
+      },
+      confidenceThreshold: 'Minimum Confidence',
+      
+      // Caps & Limits
+      actionCaps: 'Action Caps',
+      dailyLimit: 'Daily Limit',
+      ruleCooldown: 'Rule Cooldown',
+      channelLimit: 'Per Channel Limit',
+      unlimited: 'Unlimited',
+      hours: 'hours',
+      actionsPerDay: 'actions/day',
+      
+      // Windows
+      automationWindows: 'Automation Windows',
+      allowedHours: 'Allowed Hours',
+      blackoutDates: 'Blackout Dates',
+      alwaysOn: 'Always On (24/7)',
+      
+      // Safety
+      killSwitch: 'Kill Switch',
+      killSwitchActive: 'All automation paused',
+      killSwitchInactive: 'Automation running',
+      activateKillSwitch: 'Activate Kill Switch',
+      deactivateKillSwitch: 'Deactivate Kill Switch',
+      
+      // Execution Type
+      executionTypes: {
+        manual: 'Manual',
+        auto: 'Auto',
+      },
+      
+      // Usage & Billing
+      usage: 'Automation Usage',
+      includedActions: 'Included Actions',
+      usedActions: 'Used Actions',
+      remainingActions: 'Remaining',
+      overageActions: 'Overage Actions',
+      overageCost: 'Overage Cost',
+      perAction: 'per action',
+      
+      // Notices
+      ownerPrivileges: 'Owner account: Auto Mode is free and unlimited. No billing caps apply.',
+      addonRequired: 'Automation Add-on required for Auto Mode. Available for Company accounts only.',
+      limitReached: 'Action limit reached. Automation paused until next billing cycle or upgrade.',
+      confidenceBelowThreshold: 'Confidence score below threshold. Action downgraded to manual approval.',
+      outsideWindow: 'Outside automation window. Action will execute during next allowed time.',
+      
+      // Explainability
+      whyExecuted: 'Why was this executed?',
+      triggeredByRule: 'Triggered by Rule',
+      confidenceScore: 'Confidence Score',
+      withinWindow: 'Within automation window',
+      belowCap: 'Below action cap',
+      approvedBy: 'Approved by',
+    },
   },
   
   de: {
@@ -708,6 +796,7 @@ export const translations = {
       
       // Automation
       automation: 'Automatisierungs-Bereitschaft',
+      autoModeSettings: 'Auto-Mode-Einstellungen',
       
       // Reports
       reports: 'Reports & Exporte',
@@ -1286,6 +1375,93 @@ export const translations = {
         bottleneckAnalysisPrepared: 'Simuliert: Detaillierter Bottleneck-Analysebericht zur Überprüfung generiert.',
         flowHealthAlertSent: 'Simuliert: Dringende Alarm-E-Mail bzgl. kritischer Flow-Gesundheit gesendet.',
       },
+    },
+
+    // Auto Mode Engine (Phase 16A)
+    autoMode: {
+      title: 'Auto-Mode-Einstellungen',
+      subtitle: 'Automatisierungsstufen, Caps und Sicherheits-Guards konfigurieren',
+      enabled: 'Auto Mode aktiviert',
+      disabled: 'Auto Mode deaktiviert',
+      
+      // Account Status
+      ownerAccount: 'Owner-Account - Unbegrenzter Auto Mode',
+      requiresAddon: 'Erfordert Automation Add-on',
+      addonActive: 'Automation Add-on aktiv',
+      
+      // Levels
+      level: 'Automatisierungsstufe',
+      levels: {
+        assisted: 'Assistiert',
+        guarded: 'Bewacht',
+        'full-auto': 'Voll automatisch',
+      },
+      levelDescriptions: {
+        assisted: 'System schlägt Aktionen vor, Sie genehmigen jede einzelne',
+        guarded: 'Auto-Ausführung mit Caps und Guards',
+        'full-auto': 'Vollautomatisch innerhalb Ihrer Einstellungen',
+      },
+      
+      // Confidence
+      confidence: 'Konfidenz-Score',
+      confidenceLevels: {
+        high: 'Hoch',
+        medium: 'Mittel',
+        low: 'Niedrig',
+      },
+      confidenceThreshold: 'Minimale Konfidenz',
+      
+      // Caps & Limits
+      actionCaps: 'Aktions-Caps',
+      dailyLimit: 'Tageslimit',
+      ruleCooldown: 'Regel-Cooldown',
+      channelLimit: 'Limit pro Kanal',
+      unlimited: 'Unbegrenzt',
+      hours: 'Stunden',
+      actionsPerDay: 'Aktionen/Tag',
+      
+      // Windows
+      automationWindows: 'Automatisierungs-Fenster',
+      allowedHours: 'Erlaubte Zeiten',
+      blackoutDates: 'Blackout-Termine',
+      alwaysOn: 'Immer aktiv (24/7)',
+      
+      // Safety
+      killSwitch: 'Not-Aus',
+      killSwitchActive: 'Alle Automatisierung pausiert',
+      killSwitchInactive: 'Automatisierung läuft',
+      activateKillSwitch: 'Not-Aus aktivieren',
+      deactivateKillSwitch: 'Not-Aus deaktivieren',
+      
+      // Execution Type
+      executionTypes: {
+        manual: 'Manuell',
+        auto: 'Automatisch',
+      },
+      
+      // Usage & Billing
+      usage: 'Automatisierungs-Nutzung',
+      includedActions: 'Inkl. Aktionen',
+      usedActions: 'Genutzte Aktionen',
+      remainingActions: 'Verbleibend',
+      overageActions: 'Überzählige Aktionen',
+      overageCost: 'Mehrkosten',
+      perAction: 'pro Aktion',
+      
+      // Notices
+      ownerPrivileges: 'Owner-Account: Auto Mode ist kostenlos und unbegrenzt. Keine Abrechnungs-Caps.',
+      addonRequired: 'Automation Add-on erforderlich für Auto Mode. Nur für Company-Accounts verfügbar.',
+      limitReached: 'Aktionslimit erreicht. Automatisierung pausiert bis zum nächsten Abrechnungszyklus oder Upgrade.',
+      confidenceBelowThreshold: 'Konfidenz-Score unter Schwellwert. Aktion herabgestuft auf manuelle Genehmigung.',
+      outsideWindow: 'Außerhalb Automatisierungs-Fenster. Aktion wird während nächster erlaubter Zeit ausgeführt.',
+      
+      // Explainability
+      whyExecuted: 'Warum wurde dies ausgeführt?',
+      triggeredByRule: 'Ausgelöst durch Regel',
+      confidenceScore: 'Konfidenz-Score',
+      withinWindow: 'Innerhalb Automatisierungs-Fenster',
+      belowCap: 'Unter Aktions-Cap',
+      approvedBy: 'Genehmigt von',
     },
   },
 } as const;
