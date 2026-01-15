@@ -11,6 +11,7 @@ import {
   reachData,
   type TimeSeriesDataPoint 
 } from '@/lib/config/visibility';
+import { currentInsights } from '@/lib/config/insights';
 
 // Dynamic import for recharts to avoid SSR issues
 const LineChart = dynamic(() => import('recharts').then(mod => mod.LineChart), { ssr: false });
@@ -188,6 +189,71 @@ export default function SignalsPage() {
               <Bar dataKey="value" fill="#10B981" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* Insights Section - What changed? */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold text-ink">{t.signals.insights.title}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {currentInsights.map((insight) => {
+            // Icon and color based on severity
+            const severityConfig = {
+              positive: {
+                bgColor: 'bg-green-50',
+                borderColor: 'border-green-200',
+                iconColor: 'text-green-600',
+                icon: (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+              },
+              warning: {
+                bgColor: 'bg-amber-50',
+                borderColor: 'border-amber-200',
+                iconColor: 'text-amber-600',
+                icon: (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                ),
+              },
+              info: {
+                bgColor: 'bg-blue-50',
+                borderColor: 'border-blue-200',
+                iconColor: 'text-blue-600',
+                icon: (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+              },
+            };
+
+            const config = severityConfig[insight.severity];
+
+            return (
+              <div
+                key={insight.id}
+                className={`border rounded-lg p-4 ${config.bgColor} ${config.borderColor}`}
+              >
+                <div className="flex items-start gap-3">
+                  <div className={`${config.iconColor} mt-0.5`}>
+                    {config.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-medium text-ink">
+                      {t.signals.insights[insight.titleKey as keyof typeof t.signals.insights]}
+                    </h3>
+                    <p className="text-sm text-slate mt-1">
+                      {t.signals.insights[insight.descriptionKey as keyof typeof t.signals.insights]}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { flowSteps } from '@/lib/config/visibility';
+import { flowBottlenecks } from '@/lib/config/insights';
 
 export default function FlowPage() {
   const { language } = useLanguage();
@@ -97,8 +98,29 @@ export default function FlowPage() {
         </div>
       </div>
 
+      {/* Bottleneck Analysis */}
+      <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
+        <div className="flex items-start gap-3">
+          <div className="text-amber-600 mt-0.5">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <h3 className="font-medium text-amber-900 mb-3">{t.flow.bottlenecks.title}</h3>
+            <div className="space-y-2">
+              {flowBottlenecks.map((bottleneck) => (
+                <p key={`${bottleneck.fromStep}-${bottleneck.toStep}`} className="text-sm text-amber-800">
+                  • {t.flow.bottlenecks[bottleneck.messageKey as keyof typeof t.flow.bottlenecks]}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Info Notice */}
-      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mt-8">
+      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
         <p className="text-sm text-purple-900">
           This flow shows how content moves through the Visibility Engine. Item counts are examples and will reflect real data once integrated.
         </p>

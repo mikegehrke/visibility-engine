@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { channels } from '@/lib/config/visibility';
+import { channelRecommendations } from '@/lib/config/insights';
 
 export default function DistributionPage() {
   const { language } = useLanguage();
@@ -20,6 +21,14 @@ export default function DistributionPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {channels.map((channel) => {
           const coverage = channel.coverage || 0;
+          const recommendation = channelRecommendations.find(r => r.channelId === channel.id);
+          
+          // Recommendation styling
+          const recommendationConfig = recommendation ? {
+            activate: { bgColor: 'bg-blue-50', textColor: 'text-blue-700', borderColor: 'border-blue-200' },
+            optimize: { bgColor: 'bg-amber-50', textColor: 'text-amber-700', borderColor: 'border-amber-200' },
+            performing: { bgColor: 'bg-green-50', textColor: 'text-green-700', borderColor: 'border-green-200' },
+          }[recommendation.type] : null;
           
           return (
             <div
@@ -62,6 +71,13 @@ export default function DistributionPage() {
                   />
                 </div>
               </div>
+
+              {/* Recommendation Badge */}
+              {recommendation && recommendationConfig && (
+                <div className={`text-xs px-3 py-2 rounded-lg border ${recommendationConfig.bgColor} ${recommendationConfig.borderColor} ${recommendationConfig.textColor}`}>
+                  💡 {t.distribution.recommendations[recommendation.messageKey as keyof typeof t.distribution.recommendations]}
+                </div>
+              )}
 
               {/* Configure Button */}
               <button

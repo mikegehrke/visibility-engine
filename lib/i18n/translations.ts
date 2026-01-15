@@ -224,6 +224,12 @@ export const translations = {
       configure: 'Configure',
       comingSoon: 'Configuration coming soon',
       coverage: 'Coverage',
+      recommendations: {
+        websiteOptimize: 'Medium coverage - optimize content distribution',
+        socialPerforming: 'Strong performer this week',
+        videoActivate: 'Low coverage - consider activating',
+        aiSearchActivate: 'Emerging channel - early adoption opportunity',
+      },
     },
     
     // Signals
@@ -262,12 +268,28 @@ export const translations = {
         down: 'Trending down',
         neutral: 'Stable',
       },
+      insights: {
+        title: 'What changed?',
+        visibilityScoreIncrease: 'Visibility Score Improved',
+        visibilityScoreIncreaseDesc: 'Your overall visibility increased by 12% this period, driven by stronger social media presence.',
+        reachDecline: 'Reach Declined',
+        reachDeclineDesc: 'Your reach dropped by 5% compared to last period. Consider increasing posting frequency.',
+        clickPerformance: 'Strong Click Performance',
+        clickPerformanceDesc: 'Click-through rate improved by 8%. Your content is resonating with your audience.',
+        socialOpportunity: 'Social Media Opportunity',
+        socialOpportunityDesc: 'Your social channels show 68% coverage. Increase activity to maximize reach potential.',
+      },
     },
     
     // Content Flow
     flow: {
       title: 'Content Flow',
       subtitle: 'Understand how your content creates visibility',
+      bottlenecks: {
+        title: 'Flow Analysis',
+        distributionToSignalsDrop: 'Most content drops between Distribution and Signals. Consider improving tracking setup.',
+        signalsToInsightsDrop: 'Large drop from Signals to Insights suggests missed opportunities for optimization.',
+      },
       itemsLabel: 'Items',
       steps: {
         content: {
@@ -511,6 +533,12 @@ export const translations = {
       configure: 'Konfigurieren',
       comingSoon: 'Konfiguration demnächst verfügbar',
       coverage: 'Abdeckung',
+      recommendations: {
+        websiteOptimize: 'Mittlere Abdeckung - Content-Distribution optimieren',
+        socialPerforming: 'Starke Performance diese Woche',
+        videoActivate: 'Geringe Abdeckung - Aktivierung erwägen',
+        aiSearchActivate: 'Aufstrebender Kanal - Early-Adoption-Chance',
+      },
     },
     
     // Signals
@@ -549,12 +577,28 @@ export const translations = {
         down: 'Fallend',
         neutral: 'Stabil',
       },
+      insights: {
+        title: 'Was hat sich geändert?',
+        visibilityScoreIncrease: 'Sichtbarkeits-Score verbessert',
+        visibilityScoreIncreaseDesc: 'Deine Gesamtsichtbarkeit ist in dieser Periode um 12% gestiegen, getrieben durch stärkere Social-Media-Präsenz.',
+        reachDecline: 'Reichweite gesunken',
+        reachDeclineDesc: 'Deine Reichweite ist im Vergleich zur letzten Periode um 5% gesunken. Erwäge, die Posting-Frequenz zu erhöhen.',
+        clickPerformance: 'Starke Click-Performance',
+        clickPerformanceDesc: 'Click-Through-Rate um 8% verbessert. Dein Content kommt bei deinem Publikum an.',
+        socialOpportunity: 'Social-Media-Chance',
+        socialOpportunityDesc: 'Deine Social-Kanäle zeigen 68% Abdeckung. Erhöhe die Aktivität, um Reichweiten-Potenzial zu maximieren.',
+      },
     },
     
     // Content Flow
     flow: {
       title: 'Content Flow',
       subtitle: 'Verstehe, wie dein Content Sichtbarkeit erzeugt',
+      bottlenecks: {
+        title: 'Flow-Analyse',
+        distributionToSignalsDrop: 'Die meisten Inhalte gehen zwischen Distribution und Signalen verloren. Erwäge, das Tracking-Setup zu verbessern.',
+        signalsToInsightsDrop: 'Großer Verlust von Signalen zu Insights deutet auf verpasste Optimierungs-Chancen hin.',
+      },
       itemsLabel: 'Elemente',
       steps: {
         content: {
