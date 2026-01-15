@@ -223,6 +223,7 @@ export const translations = {
       },
       configure: 'Configure',
       comingSoon: 'Configuration coming soon',
+      coverage: 'Coverage',
     },
     
     // Signals
@@ -256,12 +257,18 @@ export const translations = {
       },
       chartPlaceholder: 'Chart visualization coming soon',
       noData: 'No data available yet',
+      trend: {
+        up: 'Trending up',
+        down: 'Trending down',
+        neutral: 'Stable',
+      },
     },
     
     // Content Flow
     flow: {
       title: 'Content Flow',
       subtitle: 'Understand how your content creates visibility',
+      itemsLabel: 'Items',
       steps: {
         content: {
           name: 'Content',
@@ -503,6 +510,7 @@ export const translations = {
       },
       configure: 'Konfigurieren',
       comingSoon: 'Konfiguration demnächst verfügbar',
+      coverage: 'Abdeckung',
     },
     
     // Signals
@@ -536,12 +544,18 @@ export const translations = {
       },
       chartPlaceholder: 'Chart-Visualisierung demnächst verfügbar',
       noData: 'Noch keine Daten verfügbar',
+      trend: {
+        up: 'Steigend',
+        down: 'Fallend',
+        neutral: 'Stabil',
+      },
     },
     
     // Content Flow
     flow: {
       title: 'Content Flow',
       subtitle: 'Verstehe, wie dein Content Sichtbarkeit erzeugt',
+      itemsLabel: 'Elemente',
       steps: {
         content: {
           name: 'Content',

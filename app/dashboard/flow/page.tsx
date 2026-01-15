@@ -8,6 +8,21 @@ export default function FlowPage() {
   const { language } = useLanguage();
   const t = translations[language];
 
+  // Color scheme for each step
+  const stepColors = [
+    'bg-purple-100 border-purple-300', // Content
+    'bg-blue-100 border-blue-300',     // Distribution
+    'bg-green-100 border-green-300',   // Signals
+    'bg-amber-100 border-amber-300',   // Insights
+  ];
+
+  const circleColors = [
+    'bg-purple-500',
+    'bg-blue-500',
+    'bg-green-500',
+    'bg-amber-500',
+  ];
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -26,23 +41,35 @@ export default function FlowPage() {
           {flowSteps.map((step, index) => (
             <div key={step.id} className="relative">
               {/* Step Card */}
-              <div className="bg-white border border-mist rounded-lg p-6 md:ml-20">
+              <div className={`border rounded-lg p-6 md:ml-20 ${stepColors[index]}`}>
                 <div className="flex items-start gap-4">
                   {/* Step Number Circle (Mobile/Desktop) */}
                   <div className="md:absolute md:-left-20 md:top-1/2 md:-translate-y-1/2">
-                    <div className="w-16 h-16 bg-signal text-white rounded-full flex items-center justify-center text-xl font-semibold">
+                    <div className={`w-16 h-16 ${circleColors[index]} text-white rounded-full flex items-center justify-center text-xl font-semibold shadow-md`}>
                       {step.order}
                     </div>
                   </div>
 
                   {/* Step Content */}
                   <div className="flex-1">
-                    <h3 className="text-xl font-medium text-ink">
-                      {t.flow.steps[step.id as keyof typeof t.flow.steps]?.name || step.name}
-                    </h3>
-                    <p className="text-slate mt-2">
-                      {t.flow.steps[step.id as keyof typeof t.flow.steps]?.description || step.description}
-                    </p>
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h3 className="text-xl font-medium text-ink">
+                          {t.flow.steps[step.id as keyof typeof t.flow.steps]?.name || step.name}
+                        </h3>
+                        <p className="text-slate mt-2">
+                          {t.flow.steps[step.id as keyof typeof t.flow.steps]?.description || step.description}
+                        </p>
+                      </div>
+                      
+                      {/* Item Count Badge */}
+                      {step.itemCount !== undefined && (
+                        <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-gray-300">
+                          <span className="text-xs text-slate">{t.flow.itemsLabel}:</span>
+                          <span className="text-sm font-semibold text-ink">{step.itemCount}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -73,8 +100,7 @@ export default function FlowPage() {
       {/* Info Notice */}
       <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mt-8">
         <p className="text-sm text-purple-900">
-          This is a conceptual visualization of how the Visibility Engine processes your content.
-          Each step will be fully implemented in future phases.
+          This flow shows how content moves through the Visibility Engine. Item counts are examples and will reflect real data once integrated.
         </p>
       </div>
     </div>
