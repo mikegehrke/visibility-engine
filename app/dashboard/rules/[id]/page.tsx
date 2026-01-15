@@ -3,6 +3,7 @@
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockRules } from '@/lib/models/rules';
+import { mockActions } from '@/lib/models/actions';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -156,6 +157,46 @@ export default function RuleDetailPage({ params }: { params: { id: string } }) {
           {t.rules.preview.then.toLowerCase()} <span className="font-medium text-ink">{actionText}</span>.
         </p>
       </div>
+
+      {/* Related Actions (Simulation) */}
+      {(() => {
+        const relatedActions = mockActions.filter((a) => a.relatedRuleId === rule.id);
+        if (relatedActions.length === 0) return null;
+
+        return (
+          <div className="bg-white border border-mist rounded-lg p-5">
+            <h3 className="text-sm font-semibold text-ink mb-3">
+              Related Actions ({t.actions.simulation})
+            </h3>
+            <div className="space-y-2">
+              {relatedActions.map((action) => (
+                <Link
+                  key={action.id}
+                  href={`/dashboard/actions/${action.id}`}
+                  className="flex items-center justify-between p-3 border border-mist rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-ink">
+                      {t.actions.titles[action.titleKey as keyof typeof t.actions.titles]}
+                    </p>
+                    <p className="text-xs text-slate mt-0.5">
+                      {t.actions.types[action.type]} → {t.actions.targets[action.target]}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-1 rounded text-xs font-medium bg-amber-100 text-amber-700 border border-amber-200">
+                      {t.actions.simulation}
+                    </span>
+                    <svg className="w-4 h-4 text-slate" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Info Notice */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">

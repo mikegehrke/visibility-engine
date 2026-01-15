@@ -61,6 +61,7 @@ export const translations = {
       
       // Logic
       rules: 'Rules & Triggers',
+      actions: 'Actions (Preview)',
     },
     
     // Section Headers
@@ -396,6 +397,66 @@ export const translations = {
       noRules: 'No rules configured yet',
       comingSoon: 'Rule editing coming soon',
     },
+    
+    // Actions
+    actions: {
+      title: 'Actions Preview',
+      subtitle: 'Simulated automation responses (no execution)',
+      overview: 'Actions Overview',
+      allActions: 'All Actions',
+      actionDetails: 'Action Details',
+      enabled: 'Enabled',
+      disabled: 'Disabled',
+      viewDetails: 'View Details',
+      type: 'Type',
+      target: 'Target',
+      relatedRule: 'Related Rule',
+      simulatedResult: 'Simulated Outcome',
+      simulation: 'Simulation',
+      simulationNotice: 'This action is a simulation. No automation is active.',
+      noActions: 'No actions configured yet',
+      triggeredBy: 'Triggered by Rule',
+      types: {
+        notify: 'Notify',
+        recommend: 'Recommend',
+        prepare: 'Prepare',
+      },
+      targets: {
+        dashboard: 'Dashboard',
+        user: 'User',
+        system: 'System',
+      },
+      titles: {
+        showLowVisibilityWarning: 'Show Low Visibility Warning',
+        sendReachDeclineAlert: 'Send Reach Decline Alert',
+        displayClickRateInsight: 'Display Click Rate Insight',
+        recommendChannelActivation: 'Recommend Channel Activation',
+        highlightInactiveChannel: 'Highlight Inactive Channel',
+        showCoveragePositiveFeedback: 'Show Coverage Positive Feedback',
+        prepareBottleneckAnalysis: 'Prepare Bottleneck Analysis',
+        sendFlowHealthUrgentAlert: 'Send Flow Health Urgent Alert',
+      },
+      descriptions: {
+        showLowVisibilityWarningDesc: 'Display a warning banner on the dashboard when visibility score is low',
+        sendReachDeclineAlertDesc: 'Send email notification to user about significant reach decline',
+        displayClickRateInsightDesc: 'Show positive insight card highlighting good click performance',
+        recommendChannelActivationDesc: 'Display recommendation to activate low-coverage channel',
+        highlightInactiveChannelDesc: 'Visually highlight inactive channel in distribution overview',
+        showCoveragePositiveFeedbackDesc: 'Show positive notification about good channel coverage',
+        prepareBottleneckAnalysisDesc: 'Generate detailed bottleneck analysis data for flow review',
+        sendFlowHealthUrgentAlertDesc: 'Send urgent alert about critical flow health issues',
+      },
+      simulations: {
+        lowVisibilityWarningSimulation: 'Would display: "⚠️ Visibility Score is below 40. Consider increasing content activity."',
+        reachDeclineAlertSimulation: 'Would send email: "Your reach has declined by 20% in the last 30 days. Review your distribution strategy."',
+        clickRateInsightSimulation: 'Would show insight card: "✓ Click rate above 5% - your content is performing well!"',
+        channelActivationSimulation: 'Would display recommendation badge: "Low coverage detected. Activate this channel to improve visibility."',
+        inactiveChannelSimulation: 'Would add red highlight border and "Inactive" badge to channel card in distribution page.',
+        coveragePositiveSimulation: 'Would show notification: "✓ Excellent! Your channel coverage is above 70%."',
+        bottleneckAnalysisSimulation: 'Would generate analysis report: "50% drop detected between Distribution and Signals. Check tracking setup."',
+        flowHealthUrgentSimulation: 'Would send urgent email: "🚨 Critical: Flow conversion below 30%. Immediate attention required."',
+      },
+    },
   },
   
   de: {
@@ -456,6 +517,7 @@ export const translations = {
       
       // Logic
       rules: 'Regeln & Trigger',
+      actions: 'Aktionen (Vorschau)',
     },
     
     // Section Headers
@@ -790,6 +852,66 @@ export const translations = {
       conditionPreview: '{metric} {operator} {value} innerhalb von {timeframe}',
       noRules: 'Noch keine Regeln konfiguriert',
       comingSoon: 'Regelbearbeitung demnächst verfügbar',
+    },
+    
+    // Actions
+    actions: {
+      title: 'Aktionen-Vorschau',
+      subtitle: 'Simulierte Automatisierungs-Antworten (keine Ausführung)',
+      overview: 'Aktionen-Übersicht',
+      allActions: 'Alle Aktionen',
+      actionDetails: 'Aktionsdetails',
+      enabled: 'Aktiviert',
+      disabled: 'Deaktiviert',
+      viewDetails: 'Details anzeigen',
+      type: 'Typ',
+      target: 'Ziel',
+      relatedRule: 'Zugehörige Regel',
+      simulatedResult: 'Simuliertes Ergebnis',
+      simulation: 'Simulation',
+      simulationNotice: 'Diese Aktion ist eine Simulation. Keine Automatisierung ist aktiv.',
+      noActions: 'Noch keine Aktionen konfiguriert',
+      triggeredBy: 'Ausgelöst durch Regel',
+      types: {
+        notify: 'Benachrichtigen',
+        recommend: 'Empfehlen',
+        prepare: 'Vorbereiten',
+      },
+      targets: {
+        dashboard: 'Dashboard',
+        user: 'Benutzer',
+        system: 'System',
+      },
+      titles: {
+        showLowVisibilityWarning: 'Niedrige Sichtbarkeitswarnung anzeigen',
+        sendReachDeclineAlert: 'Reichweitenrückgang-Alarm senden',
+        displayClickRateInsight: 'Klickrate-Einsicht anzeigen',
+        recommendChannelActivation: 'Kanalaktivierung empfehlen',
+        highlightInactiveChannel: 'Inaktiven Kanal hervorheben',
+        showCoveragePositiveFeedback: 'Positive Abdeckungs-Rückmeldung zeigen',
+        prepareBottleneckAnalysis: 'Bottleneck-Analyse vorbereiten',
+        sendFlowHealthUrgentAlert: 'Dringenden Flow-Gesundheits-Alarm senden',
+      },
+      descriptions: {
+        showLowVisibilityWarningDesc: 'Ein Warnbanner im Dashboard anzeigen, wenn Sichtbarkeits-Score niedrig ist',
+        sendReachDeclineAlertDesc: 'E-Mail-Benachrichtigung über signifikanten Reichweitenrückgang senden',
+        displayClickRateInsightDesc: 'Positive Insight-Karte mit guter Klick-Performance anzeigen',
+        recommendChannelActivationDesc: 'Empfehlung zur Aktivierung von Kanälen mit niedriger Abdeckung anzeigen',
+        highlightInactiveChannelDesc: 'Inaktiven Kanal in Distribution-Übersicht visuell hervorheben',
+        showCoveragePositiveFeedbackDesc: 'Positive Benachrichtigung über gute Kanalabdeckung anzeigen',
+        prepareBottleneckAnalysisDesc: 'Detaillierte Bottleneck-Analysedaten für Flow-Review generieren',
+        sendFlowHealthUrgentAlertDesc: 'Dringenden Alarm über kritische Flow-Gesundheitsprobleme senden',
+      },
+      simulations: {
+        lowVisibilityWarningSimulation: 'Würde anzeigen: "⚠️ Sichtbarkeits-Score ist unter 40. Erwäge mehr Content-Aktivität."',
+        reachDeclineAlertSimulation: 'Würde E-Mail senden: "Deine Reichweite ist in den letzten 30 Tagen um 20% gesunken. Überprüfe deine Distributions-Strategie."',
+        clickRateInsightSimulation: 'Würde Insight-Karte zeigen: "✓ Klickrate über 5% - dein Content performt gut!"',
+        channelActivationSimulation: 'Würde Empfehlungs-Badge anzeigen: "Niedrige Abdeckung erkannt. Aktiviere diesen Kanal für bessere Sichtbarkeit."',
+        inactiveChannelSimulation: 'Würde roten Rahmen und "Inaktiv"-Badge zur Kanal-Karte auf Distribution-Seite hinzufügen.',
+        coveragePositiveSimulation: 'Würde Benachrichtigung zeigen: "✓ Exzellent! Deine Kanalabdeckung liegt über 70%."',
+        bottleneckAnalysisSimulation: 'Würde Analysebericht generieren: "50% Rückgang zwischen Distribution und Signalen erkannt. Prüfe Tracking-Setup."',
+        flowHealthUrgentSimulation: 'Würde dringende E-Mail senden: "🚨 Kritisch: Flow-Konversion unter 30%. Sofortige Aufmerksamkeit erforderlich."',
+      },
     },
   },
 } as const;

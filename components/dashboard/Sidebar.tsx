@@ -75,6 +75,7 @@ export default function Sidebar() {
       title: t.sections.logic,
       items: [
         { href: '/dashboard/rules', label: t.nav.rules },
+        { href: '/dashboard/actions', label: t.nav.actions },
       ],
     },
   ];
