@@ -85,6 +85,12 @@ export default function Sidebar() {
         { href: '/dashboard/reports', label: t.nav.reports },
       ],
     },
+    {
+      title: t.sections.execution,
+      items: [
+        { href: '/dashboard/executions', label: t.nav.executions },
+      ],
+    },
   ];
 
   return (

@@ -5,12 +5,16 @@ import { translations } from '@/lib/i18n/translations';
 import { mockActions } from '@/lib/models/actions';
 import { mockRules } from '@/lib/models/rules';
 import { mockAutomationConfigs } from '@/lib/models/automation';
+import { mockExecutionLogs } from '@/lib/models/executions';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { useState } from 'react';
 
 export default function ActionDetailPage({ params }: { params: { id: string } }) {
   const { language } = useLanguage();
   const t = translations[language];
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [executionSuccess, setExecutionSuccess] = useState(false);
 
   // Find the action
   const action = mockActions.find((a) => a.id === params.id);
@@ -24,6 +28,28 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
 
   // Find automation config for this action
   const automationConfig = mockAutomationConfigs.find((c) => c.relatedActionId === action.id);
+
+  // Find execution logs for this action
+  const executionLogs = mockExecutionLogs.filter((log) => log.actionId === action.id);
+
+  const handleRunAction = () => {
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirm = () => {
+    // Simulate execution
+    setExecutionSuccess(true);
+    setShowConfirmDialog(false);
+    
+    // Reset success message after 5 seconds
+    setTimeout(() => {
+      setExecutionSuccess(false);
+    }, 5000);
+  };
+
+  const handleCancel = () => {
+    setShowConfirmDialog(false);
+  };
 
   const getTypeStyles = (type: 'notify' | 'recommend' | 'prepare') => {
     switch (type) {
@@ -178,6 +204,76 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
             >
               {t.automation.viewDetails}
             </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Manual Execution Section */}
+      <div className="bg-white border border-mist rounded-lg p-6">
+        <h3 className="text-lg font-medium text-ink mb-4">{t.execution.manualExecution}</h3>
+        
+        {/* Success Message */}
+        {executionSuccess && (
+          <div className="mb-4 bg-green-50 border border-green-200 rounded-lg p-4">
+            <div className="flex items-start gap-3">
+              <svg className="w-5 h-5 text-green-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-sm font-medium text-green-800">{t.execution.executionSuccess}</p>
+            </div>
+          </div>
+        )}
+
+        <div className="flex items-center gap-3 mb-4">
+          <button
+            onClick={handleRunAction}
+            className="px-6 py-3 bg-ink text-white rounded-lg text-sm font-medium hover:bg-slate transition-colors"
+          >
+            {t.execution.runAction}
+          </button>
+          
+          {executionLogs.length > 0 && (
+            <Link
+              href="/dashboard/executions"
+              className="px-6 py-3 bg-gray-100 text-ink rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors"
+            >
+              {t.execution.viewExecutionLog}
+            </Link>
+          )}
+        </div>
+
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+          <p className="text-sm text-amber-800">{t.execution.simulationNotice}</p>
+        </div>
+      </div>
+
+      {/* Confirm Dialog */}
+      {showConfirmDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
+            <div className="p-6">
+              <h3 className="text-lg font-medium text-ink mb-4">{t.execution.confirmTitle}</h3>
+              <p className="text-slate mb-4">{t.execution.confirmMessage}</p>
+              
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <p className="text-sm text-blue-800">{t.execution.confirmNotice}</p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleConfirm}
+                  className="flex-1 px-4 py-3 bg-ink text-white rounded-lg text-sm font-medium hover:bg-slate transition-colors"
+                >
+                  {t.execution.confirmButton}
+                </button>
+                <button
+                  onClick={handleCancel}
+                  className="flex-1 px-4 py-3 bg-gray-100 text-ink rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors"
+                >
+                  {t.execution.cancelButton}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

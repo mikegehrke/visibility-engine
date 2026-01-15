@@ -68,6 +68,9 @@ export const translations = {
       
       // Reports
       reports: 'Reports & Exports',
+      
+      // Execution
+      executions: 'Execution Log',
     },
     
     // Section Headers
@@ -77,6 +80,7 @@ export const translations = {
       logic: 'Logic',
       automation: 'Automation',
       reports: 'Reports',
+      execution: 'Execution',
       contentMedia: 'Content & Media',
       communication: 'Communication',
       ai: 'AI & Agents',
@@ -587,6 +591,59 @@ export const translations = {
         customHighlight3: '2 new automation rules configured',
       },
     },
+
+    // Execution & Manual Triggers
+    execution: {
+      title: 'Execution Log',
+      subtitle: 'Manual action execution history (simulated)',
+      overview: 'Execution Overview',
+      allExecutions: 'All Executions',
+      executionDetails: 'Execution Details',
+      
+      // Properties
+      action: 'Action',
+      triggeredBy: 'Triggered By',
+      triggeredAt: 'Triggered At',
+      status: 'Status',
+      result: 'Result',
+      
+      // Manual Execution
+      manualExecution: 'Manual Execution',
+      runAction: 'Run Action',
+      viewExecutionLog: 'View Execution Log',
+      
+      // Confirm Dialog
+      confirmTitle: 'Confirm Action Execution',
+      confirmMessage: 'Are you sure you want to run this action?',
+      confirmNotice: 'This is a simulated execution. No real changes will be made.',
+      confirmButton: 'Confirm & Run',
+      cancelButton: 'Cancel',
+      
+      // Status
+      statuses: {
+        pending: 'Pending',
+        confirmed: 'Confirmed',
+        completed: 'Completed',
+        cancelled: 'Cancelled',
+      },
+      
+      // Notices
+      simulationNotice: 'All executions are simulated. No real actions are performed.',
+      noAutoMode: 'Manual execution only. No automatic background processing.',
+      executionSuccess: 'Action executed successfully (simulation)',
+      
+      // Result Summaries
+      results: {
+        lowVisibilityWarningExecuted: 'Simulated: Warning banner displayed in dashboard with visibility score alert.',
+        reachDeclineAlertExecuted: 'Simulated: Email notification sent about reach decline with recommended actions.',
+        clickRateInsightDisplayed: 'Simulated: Positive insight card displayed highlighting good click performance.',
+        channelActivationRecommended: 'Simulated: Recommendation badge added to low-coverage channel card.',
+        inactiveChannelHighlighted: 'Simulated: Inactive channel highlighted with red border and warning badge.',
+        coveragePositiveFeedbackShown: 'Simulated: Positive feedback notification displayed for good coverage.',
+        bottleneckAnalysisPrepared: 'Simulated: Detailed bottleneck analysis report generated for review.',
+        flowHealthAlertSent: 'Simulated: Urgent alert email sent regarding critical flow health.',
+      },
+    },
   },
   
   de: {
@@ -654,6 +711,9 @@ export const translations = {
       
       // Reports
       reports: 'Reports & Exporte',
+      
+      // Execution
+      executions: 'Ausführungsprotokoll',
     },
     
     // Section Headers
@@ -663,6 +723,7 @@ export const translations = {
       logic: 'Logik',
       automation: 'Automatisierung',
       reports: 'Reports',
+      execution: 'Ausführung',
       contentMedia: 'Content & Medien',
       communication: 'Kommunikation',
       ai: 'KI & Agenten',
@@ -1171,6 +1232,59 @@ export const translations = {
         customHighlight1: '2 Flow-Optimierungs-Möglichkeiten identifiziert',
         customHighlight2: 'Stabile Reichweite während Test-Periode gehalten',
         customHighlight3: '2 neue Automatisierungs-Regeln konfiguriert',
+      },
+    },
+
+    // Execution & Manual Triggers
+    execution: {
+      title: 'Ausführungsprotokoll',
+      subtitle: 'Manuelle Aktionsausführungs-Historie (simuliert)',
+      overview: 'Ausführungs-Übersicht',
+      allExecutions: 'Alle Ausführungen',
+      executionDetails: 'Ausführungs-Details',
+      
+      // Properties
+      action: 'Aktion',
+      triggeredBy: 'Ausgelöst von',
+      triggeredAt: 'Ausgelöst am',
+      status: 'Status',
+      result: 'Ergebnis',
+      
+      // Manual Execution
+      manualExecution: 'Manuelle Ausführung',
+      runAction: 'Aktion ausführen',
+      viewExecutionLog: 'Ausführungsprotokoll anzeigen',
+      
+      // Confirm Dialog
+      confirmTitle: 'Aktionsausführung bestätigen',
+      confirmMessage: 'Möchten Sie diese Aktion wirklich ausführen?',
+      confirmNotice: 'Dies ist eine simulierte Ausführung. Es werden keine echten Änderungen vorgenommen.',
+      confirmButton: 'Bestätigen & Ausführen',
+      cancelButton: 'Abbrechen',
+      
+      // Status
+      statuses: {
+        pending: 'Ausstehend',
+        confirmed: 'Bestätigt',
+        completed: 'Abgeschlossen',
+        cancelled: 'Abgebrochen',
+      },
+      
+      // Notices
+      simulationNotice: 'Alle Ausführungen sind simuliert. Es werden keine echten Aktionen durchgeführt.',
+      noAutoMode: 'Nur manuelle Ausführung. Keine automatische Hintergrundverarbeitung.',
+      executionSuccess: 'Aktion erfolgreich ausgeführt (Simulation)',
+      
+      // Result Summaries
+      results: {
+        lowVisibilityWarningExecuted: 'Simuliert: Warnbanner im Dashboard mit Sichtbarkeits-Score-Alarm angezeigt.',
+        reachDeclineAlertExecuted: 'Simuliert: E-Mail-Benachrichtigung über Reichweitenrückgang mit empfohlenen Maßnahmen gesendet.',
+        clickRateInsightDisplayed: 'Simuliert: Positive Insight-Karte mit guter Klick-Performance angezeigt.',
+        channelActivationRecommended: 'Simuliert: Empfehlungs-Badge zur Kanal-Karte mit niedriger Abdeckung hinzugefügt.',
+        inactiveChannelHighlighted: 'Simuliert: Inaktiver Kanal mit rotem Rahmen und Warnungs-Badge hervorgehoben.',
+        coveragePositiveFeedbackShown: 'Simuliert: Positive Feedback-Benachrichtigung für gute Abdeckung angezeigt.',
+        bottleneckAnalysisPrepared: 'Simuliert: Detaillierter Bottleneck-Analysebericht zur Überprüfung generiert.',
+        flowHealthAlertSent: 'Simuliert: Dringende Alarm-E-Mail bzgl. kritischer Flow-Gesundheit gesendet.',
       },
     },
   },
