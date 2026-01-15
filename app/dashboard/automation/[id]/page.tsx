@@ -7,7 +7,9 @@ import { mockAutomationConfigs } from '@/lib/models/automation';
 import { mockActions } from '@/lib/models/actions';
 import { mockRules } from '@/lib/models/rules';
 import { getSimulationByAutomationId } from '@/lib/models/simulation';
+import { mockExecutionLogs } from '@/lib/models/executions';
 import SimulationCard from '@/components/dashboard/SimulationCard';
+import ExplainabilitySection from '@/components/dashboard/ExplainabilitySection';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -25,6 +27,11 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
   // Phase 16B: Get simulation results
   const simulation = getSimulationByAutomationId(config.id);
   const [simulationApproved, setSimulationApproved] = useState(simulation?.approved || false);
+
+  // Phase 16B: Get latest auto execution for explainability
+  const latestAutoExecution = mockExecutionLogs
+    .filter((log) => log.actionId === config.relatedActionId && log.executionType === 'auto')
+    .sort((a, b) => new Date(b.triggeredAt).getTime() - new Date(a.triggeredAt).getTime())[0];
 
   // Find related action and rule
   const relatedAction = mockActions.find((a) => a.id === config.relatedActionId);
@@ -210,6 +217,11 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
             console.log('Simulation skipped for', config.id);
           }}
         />
+      )}
+
+      {/* Phase 16B: Explainability - Latest Auto Execution */}
+      {latestAutoExecution && (
+        <ExplainabilitySection execution={latestAutoExecution} />
       )}
 
       {/* Safety Notice */}

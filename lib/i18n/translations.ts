@@ -778,6 +778,28 @@ export const translations = {
       // Disclaimer
       disclaimer: 'Estimated impact based on recent system data. Actual results may vary.',
     },
+    
+    // Phase 16B: Deep Explainability
+    explainability: {
+      whyThisActionRan: 'Why This Action Ran',
+      triggeredBy: 'Triggered By Rule',
+      metricCrossedThreshold: 'Metric crossed threshold',
+      threshold: 'Threshold',
+      before: 'Before',
+      after: 'After',
+      thresholdValue: 'Threshold',
+      evaluationWindow: 'Evaluation Window',
+      evaluatedAt: 'Evaluated At',
+      cooldownStatus: 'Cooldown Status',
+      cooldownStatuses: {
+        active: 'Active (Within Cooldown)',
+        expired: 'Expired (Ready)',
+        none: 'None',
+      },
+      confidenceBreakdown: 'Confidence Breakdown',
+      totalConfidence: 'Total Confidence',
+      dataBasedExplanation: 'All values are based on actual system metrics at execution time.',
+    },
   },
   
   de: {
@@ -1554,6 +1576,28 @@ export const translations = {
       
       // Disclaimer
       disclaimer: 'Geschätzte Wirkung basierend auf aktuellen Systemdaten. Tatsächliche Ergebnisse können variieren.',
+    },
+    
+    // Phase 16B: Deep Explainability
+    explainability: {
+      whyThisActionRan: 'Warum diese Aktion ausgeführt wurde',
+      triggeredBy: 'Ausgelöst durch Regel',
+      metricCrossedThreshold: 'Metrik überschritt Schwellwert',
+      threshold: 'Schwellwert',
+      before: 'Vorher',
+      after: 'Nachher',
+      thresholdValue: 'Schwellwert',
+      evaluationWindow: 'Auswertungs-Zeitfenster',
+      evaluatedAt: 'Ausgewertet am',
+      cooldownStatus: 'Cooldown-Status',
+      cooldownStatuses: {
+        active: 'Aktiv (Innerhalb Cooldown)',
+        expired: 'Abgelaufen (Bereit)',
+        none: 'Keiner',
+      },
+      confidenceBreakdown: 'Konfidenz-Aufschlüsselung',
+      totalConfidence: 'Gesamt-Konfidenz',
+      dataBasedExplanation: 'Alle Werte basieren auf tatsächlichen System-Metriken zum Ausführungszeitpunkt.',
     },
   },
 } as const;
