@@ -1,10 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockAutomationConfigs } from '@/lib/models/automation';
 import { mockActions } from '@/lib/models/actions';
 import { mockRules } from '@/lib/models/rules';
+import { getSimulationByAutomationId } from '@/lib/models/simulation';
+import SimulationCard from '@/components/dashboard/SimulationCard';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -18,6 +21,10 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
   if (!config) {
     notFound();
   }
+  
+  // Phase 16B: Get simulation results
+  const simulation = getSimulationByAutomationId(config.id);
+  const [simulationApproved, setSimulationApproved] = useState(simulation?.approved || false);
 
   // Find related action and rule
   const relatedAction = mockActions.find((a) => a.id === config.relatedActionId);
@@ -187,6 +194,23 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
           </div>
         </div>
       </div>
+
+      {/* Phase 16B: Simulation Results */}
+      {simulation && (
+        <SimulationCard
+          simulation={simulation}
+          onApprove={() => {
+            setSimulationApproved(true);
+            // In production: API call to approve simulation
+            console.log('Simulation approved for', config.id);
+          }}
+          onSkip={() => {
+            setSimulationApproved(true);
+            // Owner can skip simulation
+            console.log('Simulation skipped for', config.id);
+          }}
+        />
+      )}
 
       {/* Safety Notice */}
       <div className="bg-white border border-mist rounded-lg p-6">

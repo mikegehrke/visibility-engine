@@ -739,6 +739,45 @@ export const translations = {
         autoExplainLowConfidence: 'Low confidence score (below 70%) - would require manual approval but executed in assisted mode',
       },
     },
+    
+    // Phase 16B: Simulation Layer
+    simulation: {
+      title: 'Simulation Results',
+      evaluatedAt: 'Evaluated',
+      justNow: 'just now',
+      hoursAgo: 'h ago',
+      daysAgo: 'd ago',
+      
+      // Risk Levels
+      riskLevels: {
+        low: 'Low Risk',
+        medium: 'Medium Risk',
+        high: 'High Risk',
+      },
+      
+      // Metrics
+      expectedImpact: 'Expected Impact',
+      estimatedActions: 'Estimated Actions',
+      estimatedCost: 'Estimated Cost',
+      confidence: 'Prediction Confidence',
+      basedOnData: 'Based on',
+      dataPoints: 'data points',
+      action: 'action',
+      actions: 'actions',
+      free: 'Free (Owner)',
+      
+      // Approval
+      approved: 'Approved for Auto Execution',
+      approvedBy: 'Approved by',
+      approvalRequired: 'Company account: Approval required before Auto Mode can execute this automation.',
+      ownerOptional: 'Owner account: You can approve or skip simulation.',
+      approveForAutoExecution: 'Approve for Auto Execution',
+      approve: 'Approve',
+      skipSimulation: 'Skip Simulation',
+      
+      // Disclaimer
+      disclaimer: 'Estimated impact based on recent system data. Actual results may vary.',
+    },
   },
   
   de: {
@@ -1476,6 +1515,45 @@ export const translations = {
         autoExplainMediumConfidence: 'Mittlerer Konfidenz-Score (70-84%) - ausgeführt mit Guarded-Mode-Sicherheitschecks',
         autoExplainLowConfidence: 'Niedriger Konfidenz-Score (unter 70%) - würde manuelle Genehmigung erfordern, aber im Assisted-Mode ausgeführt',
       },
+    },
+    
+    // Phase 16B: Simulation Layer
+    simulation: {
+      title: 'Simulations-Ergebnisse',
+      evaluatedAt: 'Berechnet',
+      justNow: 'gerade eben',
+      hoursAgo: 'h her',
+      daysAgo: 'd her',
+      
+      // Risk Levels
+      riskLevels: {
+        low: 'Niedriges Risiko',
+        medium: 'Mittleres Risiko',
+        high: 'Hohes Risiko',
+      },
+      
+      // Metrics
+      expectedImpact: 'Erwartete Wirkung',
+      estimatedActions: 'Geschätzte Aktionen',
+      estimatedCost: 'Geschätzte Kosten',
+      confidence: 'Vorhersage-Konfidenz',
+      basedOnData: 'Basierend auf',
+      dataPoints: 'Datenpunkten',
+      action: 'Aktion',
+      actions: 'Aktionen',
+      free: 'Kostenlos (Owner)',
+      
+      // Approval
+      approved: 'Freigegeben für Auto-Ausführung',
+      approvedBy: 'Freigegeben von',
+      approvalRequired: 'Company-Account: Freigabe erforderlich bevor Auto Mode diese Automatisierung ausführen kann.',
+      ownerOptional: 'Owner-Account: Sie können freigeben oder Simulation überspringen.',
+      approveForAutoExecution: 'Für Auto-Ausführung freigeben',
+      approve: 'Freigeben',
+      skipSimulation: 'Simulation überspringen',
+      
+      // Disclaimer
+      disclaimer: 'Geschätzte Wirkung basierend auf aktuellen Systemdaten. Tatsächliche Ergebnisse können variieren.',
     },
   },
 } as const;

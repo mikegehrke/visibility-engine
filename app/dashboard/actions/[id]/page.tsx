@@ -6,6 +6,8 @@ import { mockActions } from '@/lib/models/actions';
 import { mockRules } from '@/lib/models/rules';
 import { mockAutomationConfigs } from '@/lib/models/automation';
 import { mockExecutionLogs } from '@/lib/models/executions';
+import { mockSimulationResults } from '@/lib/models/simulation';
+import SimulationCard from '@/components/dashboard/SimulationCard';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { useState } from 'react';
@@ -28,6 +30,12 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
 
   // Find automation config for this action
   const automationConfig = mockAutomationConfigs.find((c) => c.relatedActionId === action.id);
+
+  // Phase 16B: Find simulation for this action's automation
+  const simulation = automationConfig 
+    ? mockSimulationResults.find((s) => s.automationId === automationConfig.id)
+    : undefined;
+  const [simulationApproved, setSimulationApproved] = useState(simulation?.approved || false);
 
   // Find execution logs for this action
   const executionLogs = mockExecutionLogs.filter((log) => log.actionId === action.id);
@@ -160,6 +168,21 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
           )}
         </div>
       </div>
+
+      {/* Phase 16B: Simulation Results */}
+      {simulation && (
+        <SimulationCard
+          simulation={simulation}
+          onApprove={() => {
+            setSimulationApproved(true);
+            console.log('Simulation approved for action', action.id);
+          }}
+          onSkip={() => {
+            setSimulationApproved(true);
+            console.log('Simulation skipped for action', action.id);
+          }}
+        />
+      )}
 
       {/* Simulated Outcome */}
       <div className="bg-white border border-mist rounded-lg p-6">
