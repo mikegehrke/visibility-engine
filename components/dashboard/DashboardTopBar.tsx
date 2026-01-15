@@ -8,19 +8,21 @@ export default function DashboardTopBar() {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="h-16 border-b border-border bg-canvas px-6 flex items-center justify-between">
-      {/* Left: Logo/Brand */}
-      <div className="flex items-center gap-4">
-        <h1 className="text-lg font-semibold">Visibility Engine</h1>
+    <header className="h-14 border-b border-border bg-canvas px-6 flex items-center justify-between">
+      {/* Left: Logo/Brand - clean, minimal */}
+      <div className="flex items-center">
+        <span className="text-base font-semibold tracking-tight text-ink">
+          Visibility Engine
+        </span>
       </div>
 
-      {/* Right: Switchers + Future Icons */}
-      <div className="flex items-center gap-4">
-        {/* Context Switcher */}
-        <div className="flex items-center gap-2 bg-mist rounded-sm p-1">
+      {/* Right: Controls - grouped, compact */}
+      <div className="flex items-center gap-3">
+        {/* Context Switcher - subtle segmented control */}
+        <div className="flex items-center bg-mist rounded-md p-0.5">
           <button
             onClick={() => setContext('creator')}
-            className={`px-3 py-1.5 text-sm font-medium rounded-sm transition-all ${
+            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-150 ${
               currentContext === 'creator'
                 ? 'bg-canvas text-ink shadow-sm'
                 : 'text-slate hover:text-ink'
@@ -30,7 +32,7 @@ export default function DashboardTopBar() {
           </button>
           <button
             onClick={() => setContext('company')}
-            className={`px-3 py-1.5 text-sm font-medium rounded-sm transition-all ${
+            className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-150 ${
               currentContext === 'company'
                 ? 'bg-canvas text-ink shadow-sm'
                 : 'text-slate hover:text-ink'
@@ -40,11 +42,14 @@ export default function DashboardTopBar() {
           </button>
         </div>
 
-        {/* Language Switcher */}
-        <div className="flex items-center gap-2 bg-mist rounded-sm p-1">
+        {/* Divider */}
+        <div className="h-5 w-px bg-border" />
+
+        {/* Language Switcher - minimal */}
+        <div className="flex items-center bg-mist rounded-md p-0.5">
           <button
             onClick={() => setLanguage('en')}
-            className={`px-3 py-1.5 text-sm font-medium rounded-sm transition-all ${
+            className={`px-2.5 py-1.5 text-sm font-medium rounded-md transition-all duration-150 ${
               language === 'en'
                 ? 'bg-canvas text-ink shadow-sm'
                 : 'text-slate hover:text-ink'
@@ -54,7 +59,7 @@ export default function DashboardTopBar() {
           </button>
           <button
             onClick={() => setLanguage('de')}
-            className={`px-3 py-1.5 text-sm font-medium rounded-sm transition-all ${
+            className={`px-2.5 py-1.5 text-sm font-medium rounded-md transition-all duration-150 ${
               language === 'de'
                 ? 'bg-canvas text-ink shadow-sm'
                 : 'text-slate hover:text-ink'
@@ -63,21 +68,7 @@ export default function DashboardTopBar() {
             DE
           </button>
         </div>
-
-        {/* Future: Notifications Icon Placeholder */}
-        <div className="w-10 h-10 rounded-sm bg-mist flex items-center justify-center text-slate opacity-50">
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
-        </div>
-
-        {/* Future: Chat Icon Placeholder */}
-        <div className="w-10 h-10 rounded-sm bg-mist flex items-center justify-center text-slate opacity-50">
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-        </div>
       </div>
-    </div>
+    </header>
   );
 }
