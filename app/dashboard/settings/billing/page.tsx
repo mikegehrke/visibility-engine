@@ -46,12 +46,12 @@ export default function BillingPage() {
           <div className="flex items-start justify-between mb-6">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <H3>{currentPlan.name}</H3>
+                <H3>{t.billing.plans[currentPlanId as keyof typeof t.billing.plans].name}</H3>
                 <span className="px-3 py-1 bg-signal text-white text-xs font-semibold rounded-full">
                   {t.common.currentPlan}
                 </span>
               </div>
-              <Small className="text-slate">{currentPlan.description}</Small>
+              <Small className="text-slate">{t.billing.plans[currentPlanId as keyof typeof t.billing.plans].description}</Small>
             </div>
             <div className="text-right">
               <div className="text-2xl font-bold text-ink mb-1">
@@ -150,6 +150,8 @@ export default function BillingPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {allPlans.map((plan) => {
             const isCurrent = plan.id === currentPlanId;
+            const planKey = plan.id === 'pro-plus' ? 'proPlus' : plan.id === 'ultimate-plus' ? 'ultimatePlus' : plan.id;
+            const planTranslations = t.billing.plans[planKey as keyof typeof t.billing.plans];
             
             return (
               <Card 
@@ -159,15 +161,15 @@ export default function BillingPage() {
               >
                 <CardHeader>
                   <div className="flex items-start justify-between mb-2">
-                    <H3>{plan.name}</H3>
-                    {plan.badge && (
+                    <H3>{planTranslations.name}</H3>
+                    {plan.badgeKey && (
                       <span className="px-2 py-1 bg-signal text-white text-xs font-semibold rounded">
-                        {plan.badge}
+                        {t.billing.badges[plan.badgeKey.split('.').pop() as keyof typeof t.billing.badges]}
                       </span>
                     )}
                   </div>
                   <Small className="text-slate block mb-3">
-                    {plan.description}
+                    {planTranslations.description}
                   </Small>
                   <div className="text-xl font-bold text-ink mb-1">
                     €{plan.pricing.monthly}/mo
@@ -179,7 +181,7 @@ export default function BillingPage() {
                       <li key={feature.key} className="flex items-start text-sm">
                         <span className="text-signal mr-2">✓</span>
                         <span className="text-ink">
-                          {feature.label}
+                          {planTranslations.features[feature.key as keyof typeof planTranslations.features]}
                         </span>
                       </li>
                     ))}
