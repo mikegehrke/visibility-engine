@@ -65,6 +65,9 @@ export const translations = {
       
       // Automation
       automation: 'Automation Readiness',
+      
+      // Reports
+      reports: 'Reports & Exports',
     },
     
     // Section Headers
@@ -73,6 +76,7 @@ export const translations = {
       visibilityEngine: 'Visibility Engine',
       logic: 'Logic',
       automation: 'Automation',
+      reports: 'Reports',
       contentMedia: 'Content & Media',
       communication: 'Communication',
       ai: 'AI & Agents',
@@ -512,6 +516,77 @@ export const translations = {
         flowHealthUrgentPreview: 'Preview: Urgent alert email would be sent regarding critical flow health.',
       },
     },
+
+    // Reports & Exports
+    reports: {
+      title: 'Reports & Exports',
+      subtitle: 'Executive summaries and export previews',
+      overview: 'Report Overview',
+      allReports: 'All Reports',
+      reportDetails: 'Report Details',
+      
+      // Report Properties
+      type: 'Type',
+      period: 'Period',
+      summary: 'Executive Summary',
+      highlightsLabel: 'Key Highlights',
+      metrics: 'Metrics Overview',
+      relatedRules: 'Related Rules',
+      relatedActions: 'Related Actions',
+      
+      // Actions
+      viewReport: 'View Report',
+      exportPDF: 'Export PDF',
+      exportCSV: 'Export CSV',
+      
+      // Types
+      types: {
+        weekly: 'Weekly',
+        monthly: 'Monthly',
+        custom: 'Custom',
+      },
+      
+      // Notices
+      exportNotice: 'Exports are previews. No files are generated.',
+      previewOnly: 'Preview Only - No actual export functionality',
+      
+      // Export Previews
+      exportPreview: 'Export Preview',
+      pdfExportDescription: 'PDF format with charts, tables, and executive summary. Ideal for presentations and sharing.',
+      csvExportDescription: 'CSV format with raw data and metrics. Ideal for further analysis in spreadsheet tools.',
+      
+      // Report Titles
+      titles: {
+        weeklyVisibilityReport: 'Weekly Visibility Report',
+        monthlyPerformanceReport: 'Monthly Performance Report',
+        customSnapshot: 'Custom Performance Snapshot',
+      },
+      
+      // Summaries
+      summaries: {
+        weeklyVisibilitySummary: 'Overall visibility performance remains strong with an 87/100 score. Reach increased by 12% compared to previous week. Minor attention needed in social media engagement.',
+        monthlyPerformanceSummary: 'Monthly performance shows steady growth with 82/100 visibility score. Total reach exceeded 560K, representing 18% growth. Three new distribution channels activated successfully.',
+        customSnapshotSummary: 'Custom period analysis reveals moderate performance at 79/100. Reach metrics stable at 98K. Two optimization opportunities identified in content flow.',
+      },
+      
+      // Highlights
+      highlights: {
+        weeklyHighlight1: 'Visibility score improved by 5 points',
+        weeklyHighlight2: 'Reach increased by 12% (17,400 new impressions)',
+        weeklyHighlight3: 'Click-through rate stable at 6.1%',
+        weeklyHighlight4: '3 automated rules triggered successfully',
+        
+        monthlyHighlight1: 'Activated 3 new distribution channels',
+        monthlyHighlight2: 'Reach grew by 18% month-over-month',
+        monthlyHighlight3: 'Engagement rate improved to 7.2%',
+        monthlyHighlight4: '5 content bottlenecks resolved',
+        monthlyHighlight5: '8 automated actions executed',
+        
+        customHighlight1: 'Identified 2 flow optimization opportunities',
+        customHighlight2: 'Maintained stable reach during test period',
+        customHighlight3: '2 new automation rules configured',
+      },
+    },
   },
   
   de: {
@@ -576,6 +651,9 @@ export const translations = {
       
       // Automation
       automation: 'Automatisierungs-Bereitschaft',
+      
+      // Reports
+      reports: 'Reports & Exporte',
     },
     
     // Section Headers
@@ -584,6 +662,7 @@ export const translations = {
       visibilityEngine: 'Visibility Engine',
       logic: 'Logik',
       automation: 'Automatisierung',
+      reports: 'Reports',
       contentMedia: 'Content & Medien',
       communication: 'Kommunikation',
       ai: 'KI & Agenten',
@@ -1021,6 +1100,77 @@ export const translations = {
         coveragePositivePreview: 'Vorschau: Positive Feedback-Benachrichtigung würde für gute Abdeckung angezeigt.',
         bottleneckAnalysisPreview: 'Vorschau: Detaillierter Bottleneck-Analysebericht würde zur Überprüfung generiert.',
         flowHealthUrgentPreview: 'Vorschau: Dringende Alarm-E-Mail würde bezüglich kritischer Flow-Gesundheit gesendet.',
+      },
+    },
+
+    // Reports & Exports
+    reports: {
+      title: 'Reports & Exporte',
+      subtitle: 'Executive Summaries und Export-Vorschauen',
+      overview: 'Report-Übersicht',
+      allReports: 'Alle Reports',
+      reportDetails: 'Report-Details',
+      
+      // Report Properties
+      type: 'Typ',
+      period: 'Zeitraum',
+      summary: 'Executive Summary',
+      highlightsLabel: 'Wichtigste Erkenntnisse',
+      metrics: 'Metriken-Übersicht',
+      relatedRules: 'Verknüpfte Regeln',
+      relatedActions: 'Verknüpfte Aktionen',
+      
+      // Actions
+      viewReport: 'Report anzeigen',
+      exportPDF: 'PDF exportieren',
+      exportCSV: 'CSV exportieren',
+      
+      // Types
+      types: {
+        weekly: 'Wöchentlich',
+        monthly: 'Monatlich',
+        custom: 'Benutzerdefiniert',
+      },
+      
+      // Notices
+      exportNotice: 'Exporte sind Vorschauen. Es werden keine Dateien erzeugt.',
+      previewOnly: 'Nur Vorschau - Keine echte Export-Funktion',
+      
+      // Export Previews
+      exportPreview: 'Export-Vorschau',
+      pdfExportDescription: 'PDF-Format mit Diagrammen, Tabellen und Executive Summary. Ideal für Präsentationen und Austausch.',
+      csvExportDescription: 'CSV-Format mit Rohdaten und Metriken. Ideal für weitere Analysen in Tabellenkalkulations-Tools.',
+      
+      // Report Titles
+      titles: {
+        weeklyVisibilityReport: 'Wöchentlicher Visibility-Report',
+        monthlyPerformanceReport: 'Monatlicher Performance-Report',
+        customSnapshot: 'Benutzerdefinierte Performance-Übersicht',
+      },
+      
+      // Summaries
+      summaries: {
+        weeklyVisibilitySummary: 'Die Gesamt-Visibility-Performance bleibt stark mit einem Score von 87/100. Reichweite um 12% gegenüber Vorwoche gestiegen. Geringfügige Aufmerksamkeit bei Social-Media-Engagement erforderlich.',
+        monthlyPerformanceSummary: 'Monatliche Performance zeigt stetiges Wachstum mit 82/100 Visibility-Score. Gesamtreichweite überschritt 560K, was 18% Wachstum entspricht. Drei neue Distributions-Kanäle erfolgreich aktiviert.',
+        customSnapshotSummary: 'Benutzerdefinierte Perioden-Analyse zeigt moderate Performance mit 79/100. Reichweiten-Metriken stabil bei 98K. Zwei Optimierungs-Möglichkeiten im Content-Flow identifiziert.',
+      },
+      
+      // Highlights
+      highlights: {
+        weeklyHighlight1: 'Visibility-Score um 5 Punkte verbessert',
+        weeklyHighlight2: 'Reichweite um 12% gestiegen (17.400 neue Impressionen)',
+        weeklyHighlight3: 'Click-Through-Rate stabil bei 6,1%',
+        weeklyHighlight4: '3 automatisierte Regeln erfolgreich ausgelöst',
+        
+        monthlyHighlight1: '3 neue Distributions-Kanäle aktiviert',
+        monthlyHighlight2: 'Reichweite um 18% Monat-über-Monat gewachsen',
+        monthlyHighlight3: 'Engagement-Rate auf 7,2% verbessert',
+        monthlyHighlight4: '5 Content-Bottlenecks aufgelöst',
+        monthlyHighlight5: '8 automatisierte Aktionen ausgeführt',
+        
+        customHighlight1: '2 Flow-Optimierungs-Möglichkeiten identifiziert',
+        customHighlight2: 'Stabile Reichweite während Test-Periode gehalten',
+        customHighlight3: '2 neue Automatisierungs-Regeln konfiguriert',
       },
     },
   },
