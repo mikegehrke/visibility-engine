@@ -1,14 +1,11 @@
-'use client';
-
 import Link from 'next/link';
 import { H1, H2, Body, Lead, Small } from '@/components/shared/Typography';
 import Card, { CardHeader, CardContent } from '@/components/shared/Card';
-import { useLanguage } from '@/lib/context/LanguageContext';
-import { translations } from '@/lib/i18n/translations';
+import { publicTranslations } from '@/lib/i18n/public-translations';
+
+const t = publicTranslations.en;
 
 export default function BlogPage() {
-  const { language } = useLanguage();
-  const t = translations[language];
   const posts = [
     {
       ...t.blog.posts.post1,

@@ -1,15 +1,12 @@
-'use client';
-
 import Link from 'next/link';
 import { H1, H2, H3, Body, Lead, Small } from '@/components/shared/Typography';
 import Card, { CardHeader, CardContent, CardFooter } from '@/components/shared/Card';
 import Button from '@/components/shared/Button';
-import { useLanguage } from '@/lib/context/LanguageContext';
-import { translations } from '@/lib/i18n/translations';
+import { publicTranslations } from '@/lib/i18n/public-translations';
+
+const t = publicTranslations.en;
 
 export default function PricingPage() {
-  const { language } = useLanguage();
-  const t = translations[language];
   const plans = [
     {
       name: t.pricing.free.name,

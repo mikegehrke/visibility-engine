@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { LanguageProvider } from '@/lib/context/LanguageContext';
 
 export const metadata: Metadata = {
   title: 'Visibility Engine',
@@ -18,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        {children}
       </body>
     </html>
   );
