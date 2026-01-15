@@ -16,6 +16,13 @@ const config: Config = {
         'signal-hover': 'var(--color-signal-hover)',
         border: 'var(--color-border)',
         smoke: 'var(--color-smoke)',
+        // Status colors
+        success: 'var(--color-success)',
+        'success-muted': 'var(--color-success-muted)',
+        warning: 'var(--color-warning)',
+        'warning-muted': 'var(--color-warning-muted)',
+        danger: 'var(--color-danger)',
+        'danger-muted': 'var(--color-danger-muted)',
       },
       spacing: {
         '1': 'var(--space-1)',
@@ -29,6 +36,7 @@ const config: Config = {
         '12': 'var(--space-12)',
         '16': 'var(--space-16)',
         '20': 'var(--space-20)',
+        '24': 'var(--space-24)',
       },
       fontFamily: {
         sans: 'var(--font-sans)',
@@ -37,12 +45,24 @@ const config: Config = {
       boxShadow: {
         sm: 'var(--shadow-sm)',
         DEFAULT: 'var(--shadow-base)',
+        md: 'var(--shadow-base)',
         lg: 'var(--shadow-lg)',
+        xl: 'var(--shadow-xl)',
       },
       borderRadius: {
         sm: 'var(--radius-sm)',
         DEFAULT: 'var(--radius-base)',
+        md: 'var(--radius-base)',
         lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)',
+      },
+      transitionDuration: {
+        fast: '100ms',
+        DEFAULT: '150ms',
+        slow: '200ms',
+      },
+      transitionTimingFunction: {
+        DEFAULT: 'ease',
       },
     },
   },

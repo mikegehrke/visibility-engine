@@ -4,12 +4,14 @@ import { cn } from '@/lib/utils/cn';
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: 'elevated' | 'outlined' | 'flat';
   padding?: 'default' | 'compact' | 'none';
+  hover?: boolean;
   children: React.ReactNode;
 }
 
 export default function Card({
   variant = 'elevated',
   padding = 'default',
+  hover = false,
   className,
   children,
   ...props
@@ -17,18 +19,19 @@ export default function Card({
   return (
     <div
       className={cn(
-        // Base styles
-        'rounded',
+        // Base styles - refined radius
+        'rounded-lg',
         
-        // Padding variants
-        padding === 'default' && 'p-5',
+        // Padding variants - more generous spacing
+        padding === 'default' && 'p-6',
         padding === 'compact' && 'p-4',
         padding === 'none' && 'p-0',
         
-        // Variant styles
+        // Variant styles - subtle, premium
         variant === 'elevated' && [
           'bg-canvas',
-          'shadow',
+          'shadow-sm',
+          'border border-border/50',
         ],
         variant === 'outlined' && [
           'bg-canvas',
@@ -37,6 +40,9 @@ export default function Card({
         variant === 'flat' && [
           'bg-smoke',
         ],
+        
+        // Hover effect - subtle lift (opt-in)
+        hover && 'transition-smooth hover:shadow-md hover:border-border',
         
         className
       )}
@@ -54,7 +60,7 @@ interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 export function CardHeader({ className, children, ...props }: CardHeaderProps) {
   return (
     <div
-      className={cn('flex flex-col space-y-1.5', className)}
+      className={cn('flex flex-col space-y-2 pb-4', className)}
       {...props}
     >
       {children}
@@ -69,7 +75,7 @@ interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 export function CardTitle({ className, children, ...props }: CardTitleProps) {
   return (
     <h3
-      className={cn('text-lg font-semibold leading-none tracking-tight', className)}
+      className={cn('text-lg font-medium leading-tight tracking-tight text-ink', className)}
       {...props}
     >
       {children}
@@ -84,7 +90,7 @@ interface CardDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
 export function CardDescription({ className, children, ...props }: CardDescriptionProps) {
   return (
     <p
-      className={cn('text-sm text-slate', className)}
+      className={cn('text-sm text-slate leading-relaxed', className)}
       {...props}
     >
       {children}
@@ -98,7 +104,7 @@ interface CardContentProps extends HTMLAttributes<HTMLDivElement> {
 
 export function CardContent({ className, children, ...props }: CardContentProps) {
   return (
-    <div className={cn('pt-0', className)} {...props}>
+    <div className={cn('', className)} {...props}>
       {children}
     </div>
   );
@@ -111,7 +117,7 @@ interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
 export function CardFooter({ className, children, ...props }: CardFooterProps) {
   return (
     <div
-      className={cn('flex items-center pt-4', className)}
+      className={cn('flex items-center pt-4 mt-4 border-t border-border/50', className)}
       {...props}
     >
       {children}

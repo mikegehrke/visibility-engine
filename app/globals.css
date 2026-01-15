@@ -3,17 +3,25 @@
 @tailwind utilities;
 
 :root {
-  /* Colors */
-  --color-ink: #0A0A0B;
-  --color-slate: #52525B;
+  /* Colors - Light Mode (refined for premium feel) */
+  --color-ink: #09090B;
+  --color-slate: #71717A;
   --color-mist: #F4F4F5;
   --color-canvas: #FFFFFF;
   --color-signal: #2563EB;
-  --color-signal-hover: #1d4ed8;
+  --color-signal-hover: #1D4ED8;
   --color-border: #E4E4E7;
-  --color-smoke: #F9FAFB;
+  --color-smoke: #FAFAFA;
   
-  /* Spacing (4px base) */
+  /* Subtle accent colors */
+  --color-success: #22C55E;
+  --color-success-muted: #DCFCE7;
+  --color-warning: #F59E0B;
+  --color-warning-muted: #FEF3C7;
+  --color-danger: #EF4444;
+  --color-danger-muted: #FEE2E2;
+  
+  /* Spacing (4px base) - more generous */
   --space-1: 0.25rem;  /* 4px */
   --space-2: 0.5rem;   /* 8px */
   --space-3: 0.75rem;  /* 12px */
@@ -25,53 +33,142 @@
   --space-12: 3rem;    /* 48px */
   --space-16: 4rem;    /* 64px */
   --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
   
-  /* Typography */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  /* Typography - System fonts only */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
   
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-base: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+  /* Refined shadows - subtle, premium */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-base: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-lg: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.03);
+  --shadow-xl: 0 10px 15px rgba(0,0,0,0.04), 0 4px 6px rgba(0,0,0,0.02);
   
-  /* Radius */
+  /* Radius - slightly softer */
   --radius-sm: 6px;
   --radius-base: 8px;
   --radius-lg: 12px;
+  --radius-xl: 16px;
+  
+  /* Transitions - fast, smooth */
+  --transition-fast: 100ms ease;
+  --transition-base: 150ms ease;
+  --transition-slow: 200ms ease;
 }
 
+/* Dark Mode - truly dark, not gray */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-canvas: #0A0A0B;
+    --color-canvas: #09090B;
     --color-mist: #18181B;
     --color-ink: #FAFAFA;
     --color-slate: #A1A1AA;
     --color-signal: #3B82F6;
-    --color-signal-hover: #2563EB;
+    --color-signal-hover: #60A5FA;
     --color-border: #27272A;
-    --color-smoke: #18181B;
+    --color-smoke: #0F0F11;
+    
+    /* Dark mode status colors */
+    --color-success: #4ADE80;
+    --color-success-muted: rgba(34, 197, 94, 0.15);
+    --color-warning: #FBBF24;
+    --color-warning-muted: rgba(245, 158, 11, 0.15);
+    --color-danger: #F87171;
+    --color-danger-muted: rgba(239, 68, 68, 0.15);
+    
+    /* Refined dark shadows */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-base: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-lg: 0 4px 6px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
+    --shadow-xl: 0 10px 15px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
   }
 }
 
 [data-theme="dark"] {
-  --color-canvas: #0A0A0B;
+  --color-canvas: #09090B;
   --color-mist: #18181B;
   --color-ink: #FAFAFA;
   --color-slate: #A1A1AA;
   --color-signal: #3B82F6;
-  --color-signal-hover: #2563EB;
+  --color-signal-hover: #60A5FA;
   --color-border: #27272A;
-  --color-smoke: #18181B;
+  --color-smoke: #0F0F11;
+  
+  --color-success: #4ADE80;
+  --color-success-muted: rgba(34, 197, 94, 0.15);
+  --color-warning: #FBBF24;
+  --color-warning-muted: rgba(245, 158, 11, 0.15);
+  --color-danger: #F87171;
+  --color-danger-muted: rgba(239, 68, 68, 0.15);
+  
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-base: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-lg: 0 4px 6px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
+  --shadow-xl: 0 10px 15px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
 }
 
 @layer base {
   * {
-    @apply border-[var(--color-mist)];
+    @apply border-border;
+  }
+  
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   
   body {
-    @apply bg-[var(--color-canvas)] text-[var(--color-ink)];
-    @apply font-sans antialiased;
+    @apply bg-canvas text-ink;
+    font-family: var(--font-sans);
+    font-feature-settings: "kern" 1, "liga" 1;
   }
+  
+  /* Selection styling */
+  ::selection {
+    background-color: rgba(37, 99, 235, 0.2);
+    color: var(--color-ink);
+  }
+  
+  /* Focus visible - accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-signal ring-offset-2 ring-offset-canvas;
+  }
+  
+  /* Smooth scrolling - respects user preference */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* Utility classes for premium micro-interactions */
+@layer utilities {
+  .transition-micro {
+    transition: all var(--transition-fast);
+  }
+  
+  .transition-smooth {
+    transition: all var(--transition-base);
+  }
+  
+  /* Card hover - subtle lift */
+  .hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Status colors as utilities */
+  .text-success { color: var(--color-success); }
+  .text-warning { color: var(--color-warning); }
+  .text-danger { color: var(--color-danger); }
+  .bg-success-muted { background-color: var(--color-success-muted); }
+  .bg-warning-muted { background-color: var(--color-warning-muted); }
+  .bg-danger-muted { background-color: var(--color-danger-muted); }
 }
