@@ -76,6 +76,7 @@ export default function Sidebar() {
       items: [
         { href: '/dashboard/rules', label: t.nav.rules },
         { href: '/dashboard/actions', label: t.nav.actions },
+        { href: '/dashboard/automation', label: t.nav.automation },
       ],
     },
   ];

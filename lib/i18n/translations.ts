@@ -62,6 +62,9 @@ export const translations = {
       // Logic
       rules: 'Rules & Triggers',
       actions: 'Actions (Preview)',
+      
+      // Automation
+      automation: 'Automation Readiness',
     },
     
     // Section Headers
@@ -69,6 +72,7 @@ export const translations = {
       core: 'Core',
       visibilityEngine: 'Visibility Engine',
       logic: 'Logic',
+      automation: 'Automation',
       contentMedia: 'Content & Media',
       automation: 'Automation',
       communication: 'Communication',
@@ -457,6 +461,58 @@ export const translations = {
         flowHealthUrgentSimulation: 'Would send urgent email: "🚨 Critical: Flow conversion below 30%. Immediate attention required."',
       },
     },
+    
+    // Automation
+    automation: {
+      title: 'Automation Readiness',
+      subtitle: 'Preview automation configurations (no execution)',
+      overview: 'Automation Overview',
+      allAutomations: 'All Automations',
+      automationDetails: 'Automation Details',
+      enabled: 'Enabled',
+      disabled: 'Disabled',
+      viewDetails: 'View Details',
+      enableAutomation: 'Enable Automation',
+      mode: 'Execution Mode',
+      status: 'Status',
+      relatedAction: 'Related Action',
+      safetyNotice: 'Safety Notice',
+      lastSimulation: 'Last Simulation',
+      readinessStatus: 'Readiness Status',
+      notActiveNotice: 'Automation is not active. This is a readiness preview.',
+      noAutomations: 'No automations configured yet',
+      automationReady: 'Automation Ready',
+      modes: {
+        preview: 'Preview',
+        manual: 'Manual',
+        auto: 'Auto',
+      },
+      statuses: {
+        ready: 'Ready',
+        blocked: 'Blocked',
+        disabled: 'Disabled',
+      },
+      safetyNotices: {
+        previewOnlyNotice: 'This automation is in preview mode. No actions will be executed automatically.',
+        manualModeNotice: 'This automation requires manual trigger. Automatic execution is disabled.',
+        autoModeNotAvailable: 'Automatic mode is not yet available. This feature is planned for future release.',
+      },
+      blockedReasons: {
+        blockedMissingPermissions: 'Missing required permissions. Upgrade your plan to enable this automation.',
+        blockedRequiresPlan: 'Requires Pro plan or higher. Upgrade to unlock automation features.',
+        blockedAutoNotImplemented: 'Automatic execution is not implemented yet. Feature coming soon.',
+      },
+      simulationResults: {
+        lowVisibilityWarningPreview: 'Preview: Warning banner would be displayed on dashboard with visibility score alert.',
+        reachDeclineAlertPreview: 'Preview: Email notification would be sent about reach decline with recommended actions.',
+        clickRateInsightPreview: 'Preview: Positive insight card would appear highlighting good click performance.',
+        channelActivationPreview: 'Preview: Recommendation badge would be added to low-coverage channel card.',
+        inactiveChannelPreview: 'Preview: Inactive channel would be highlighted with red border and warning badge.',
+        coveragePositivePreview: 'Preview: Positive feedback notification would be displayed for good coverage.',
+        bottleneckAnalysisPreview: 'Preview: Detailed bottleneck analysis report would be generated for review.',
+        flowHealthUrgentPreview: 'Preview: Urgent alert email would be sent regarding critical flow health.',
+      },
+    },
   },
   
   de: {
@@ -518,6 +574,9 @@ export const translations = {
       // Logic
       rules: 'Regeln & Trigger',
       actions: 'Aktionen (Vorschau)',
+      
+      // Automation
+      automation: 'Automatisierungs-Bereitschaft',
     },
     
     // Section Headers
@@ -525,6 +584,7 @@ export const translations = {
       core: 'Kern',
       visibilityEngine: 'Visibility Engine',
       logic: 'Logik',
+      automation: 'Automatisierung',
       contentMedia: 'Content & Medien',
       automation: 'Automatisierung',
       communication: 'Kommunikation',
@@ -911,6 +971,58 @@ export const translations = {
         coveragePositiveSimulation: 'Würde Benachrichtigung zeigen: "✓ Exzellent! Deine Kanalabdeckung liegt über 70%."',
         bottleneckAnalysisSimulation: 'Würde Analysebericht generieren: "50% Rückgang zwischen Distribution und Signalen erkannt. Prüfe Tracking-Setup."',
         flowHealthUrgentSimulation: 'Würde dringende E-Mail senden: "🚨 Kritisch: Flow-Konversion unter 30%. Sofortige Aufmerksamkeit erforderlich."',
+      },
+    },
+    
+    // Automation
+    automation: {
+      title: 'Automatisierungs-Bereitschaft',
+      subtitle: 'Vorschau Automatisierungs-Konfigurationen (keine Ausführung)',
+      overview: 'Automatisierungs-Übersicht',
+      allAutomations: 'Alle Automatisierungen',
+      automationDetails: 'Automatisierungsdetails',
+      enabled: 'Aktiviert',
+      disabled: 'Deaktiviert',
+      viewDetails: 'Details anzeigen',
+      enableAutomation: 'Automatisierung aktivieren',
+      mode: 'Ausführungsmodus',
+      status: 'Status',
+      relatedAction: 'Zugehörige Aktion',
+      safetyNotice: 'Sicherheitshinweis',
+      lastSimulation: 'Letzte Simulation',
+      readinessStatus: 'Bereitschaftsstatus',
+      notActiveNotice: 'Automatisierung ist nicht aktiv. Dies ist eine Bereitschaftsvorschau.',
+      noAutomations: 'Noch keine Automatisierungen konfiguriert',
+      automationReady: 'Automatisierung Bereit',
+      modes: {
+        preview: 'Vorschau',
+        manual: 'Manuell',
+        auto: 'Auto',
+      },
+      statuses: {
+        ready: 'Bereit',
+        blocked: 'Blockiert',
+        disabled: 'Deaktiviert',
+      },
+      safetyNotices: {
+        previewOnlyNotice: 'Diese Automatisierung ist im Vorschaumodus. Keine Aktionen werden automatisch ausgeführt.',
+        manualModeNotice: 'Diese Automatisierung erfordert manuelle Auslösung. Automatische Ausführung ist deaktiviert.',
+        autoModeNotAvailable: 'Automatischer Modus ist noch nicht verfügbar. Dieses Feature ist für zukünftige Releases geplant.',
+      },
+      blockedReasons: {
+        blockedMissingPermissions: 'Fehlende erforderliche Berechtigungen. Upgrade deinen Plan um diese Automatisierung zu aktivieren.',
+        blockedRequiresPlan: 'Erfordert Pro-Plan oder höher. Upgrade um Automatisierungs-Features freizuschalten.',
+        blockedAutoNotImplemented: 'Automatische Ausführung ist noch nicht implementiert. Feature kommt bald.',
+      },
+      simulationResults: {
+        lowVisibilityWarningPreview: 'Vorschau: Warnbanner würde im Dashboard mit Sichtbarkeits-Score-Alarm angezeigt.',
+        reachDeclineAlertPreview: 'Vorschau: E-Mail-Benachrichtigung würde über Reichweitenrückgang mit empfohlenen Maßnahmen gesendet.',
+        clickRateInsightPreview: 'Vorschau: Positive Insight-Karte würde erscheinen und gute Klick-Performance hervorheben.',
+        channelActivationPreview: 'Vorschau: Empfehlungs-Badge würde zur Kanal-Karte mit niedriger Abdeckung hinzugefügt.',
+        inactiveChannelPreview: 'Vorschau: Inaktiver Kanal würde mit rotem Rahmen und Warnungs-Badge hervorgehoben.',
+        coveragePositivePreview: 'Vorschau: Positive Feedback-Benachrichtigung würde für gute Abdeckung angezeigt.',
+        bottleneckAnalysisPreview: 'Vorschau: Detaillierter Bottleneck-Analysebericht würde zur Überprüfung generiert.',
+        flowHealthUrgentPreview: 'Vorschau: Dringende Alarm-E-Mail würde bezüglich kritischer Flow-Gesundheit gesendet.',
       },
     },
   },

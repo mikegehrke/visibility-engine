@@ -4,6 +4,7 @@ import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockActions } from '@/lib/models/actions';
 import { mockRules } from '@/lib/models/rules';
+import { mockAutomationConfigs } from '@/lib/models/automation';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -20,6 +21,9 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
 
   // Find related rule
   const relatedRule = mockRules.find((r) => r.id === action.relatedRuleId);
+
+  // Find automation config for this action
+  const automationConfig = mockAutomationConfigs.find((c) => c.relatedActionId === action.id);
 
   const getTypeStyles = (type: 'notify' | 'recommend' | 'prepare') => {
     switch (type) {
@@ -140,6 +144,43 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
           </p>
         </div>
       </div>
+
+      {/* Automation Readiness (if available) */}
+      {automationConfig && (
+        <div className="bg-white border border-mist rounded-lg p-6">
+          <h3 className="text-lg font-medium text-ink mb-4">{t.automation.automationReady}</h3>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-sm font-medium text-slate">{t.automation.mode}:</span>
+                <span className={`px-2 py-1 rounded text-xs font-medium ${
+                  automationConfig.executionMode === 'preview' ? 'bg-blue-100 text-blue-700' :
+                  automationConfig.executionMode === 'manual' ? 'bg-purple-100 text-purple-700' :
+                  'bg-green-100 text-green-700'
+                }`}>
+                  {t.automation.modes[automationConfig.executionMode]}
+                </span>
+                <span className={`px-2 py-1 rounded text-xs font-medium ${
+                  automationConfig.status === 'ready' ? 'bg-green-100 text-green-700' :
+                  automationConfig.status === 'blocked' ? 'bg-red-100 text-red-700' :
+                  'bg-gray-100 text-gray-700'
+                }`}>
+                  {t.automation.statuses[automationConfig.status]}
+                </span>
+              </div>
+              <p className="text-sm text-slate">
+                {t.automation.safetyNotices[automationConfig.safetyNoticeKey as keyof typeof t.automation.safetyNotices]}
+              </p>
+            </div>
+            <Link
+              href={`/dashboard/automation/${automationConfig.id}`}
+              className="px-4 py-2 bg-ink text-white rounded-lg text-sm hover:bg-slate transition-colors whitespace-nowrap"
+            >
+              {t.automation.viewDetails}
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* Simulation Notice */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
