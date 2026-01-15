@@ -93,6 +93,12 @@ export default function AutomationPage() {
                     {t.automation.automationReady}
                   </span>
                 )}
+                {/* Phase 16A: Auto Mode Level Badge */}
+                {config.autoModeEnabled && (
+                  <span className="px-2 py-1 rounded text-xs font-medium bg-sky-100 text-sky-700 border border-sky-200">
+                    {t.autoMode.levels[config.autoModeLevel]}
+                  </span>
+                )}
               </div>
 
               {/* Enabled Toggle (UI only, disabled for auto mode) */}

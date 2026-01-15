@@ -1,5 +1,7 @@
 // Phase 14: Automation Readiness Layer
-// NO execution, NO background jobs - only readiness preview
+// Phase 16A: Auto Mode Engine Integration
+
+import { AutoModeLevel } from './automation-engine';
 
 export type ExecutionMode = 'preview' | 'manual' | 'auto';
 
@@ -14,12 +16,15 @@ export interface AutomationConfig {
   safetyNoticeKey: string;
   lastSimulationResultKey: string;
   blockedReasonKey?: string; // Why automation is blocked (if status === 'blocked')
+  // Phase 16A: Auto Mode fields
+  autoModeEnabled: boolean; // User-facing toggle for this specific automation
+  autoModeLevel: AutoModeLevel; // Level applied when auto mode is active
 }
 
 // Mock Automation Configs - 8 examples
-// All start in 'preview' or 'disabled', 'auto' exists but is not activatable
+// Phase 16A: Auto Mode levels assigned based on confidence/risk
 export const mockAutomationConfigs: AutomationConfig[] = [
-  // Ready for preview (3)
+  // Ready for preview (3) - Low risk, high confidence
   {
     id: 'auto-001',
     relatedActionId: 'act-001',
@@ -28,6 +33,8 @@ export const mockAutomationConfigs: AutomationConfig[] = [
     enabled: false,
     safetyNoticeKey: 'previewOnlyNotice',
     lastSimulationResultKey: 'lowVisibilityWarningPreview',
+    autoModeEnabled: true,
+    autoModeLevel: 'guarded', // Medium confidence → Guarded
   },
   {
     id: 'auto-002',
@@ -37,6 +44,8 @@ export const mockAutomationConfigs: AutomationConfig[] = [
     enabled: false,
     safetyNoticeKey: 'previewOnlyNotice',
     lastSimulationResultKey: 'reachDeclineAlertPreview',
+    autoModeEnabled: true,
+    autoModeLevel: 'full-auto', // High confidence → Full Auto
   },
   {
     id: 'auto-004',
@@ -46,9 +55,11 @@ export const mockAutomationConfigs: AutomationConfig[] = [
     enabled: false,
     safetyNoticeKey: 'previewOnlyNotice',
     lastSimulationResultKey: 'channelActivationPreview',
+    autoModeEnabled: true,
+    autoModeLevel: 'guarded', // Medium confidence → Guarded
   },
 
-  // Blocked (2)
+  // Blocked (2) - Auto mode disabled due to blocks
   {
     id: 'auto-003',
     relatedActionId: 'act-003',
@@ -58,6 +69,8 @@ export const mockAutomationConfigs: AutomationConfig[] = [
     safetyNoticeKey: 'previewOnlyNotice',
     lastSimulationResultKey: 'clickRateInsightPreview',
     blockedReasonKey: 'blockedMissingPermissions',
+    autoModeEnabled: false, // Blocked → No auto mode
+    autoModeLevel: 'assisted', // Fallback to assisted
   },
   {
     id: 'auto-005',
@@ -68,9 +81,11 @@ export const mockAutomationConfigs: AutomationConfig[] = [
     safetyNoticeKey: 'manualModeNotice',
     lastSimulationResultKey: 'inactiveChannelPreview',
     blockedReasonKey: 'blockedRequiresPlan',
+    autoModeEnabled: false, // Blocked → No auto mode
+    autoModeLevel: 'assisted', // Fallback to assisted
   },
 
-  // Disabled (2)
+  // Disabled (2) - User disabled, but could use auto
   {
     id: 'auto-006',
     relatedActionId: 'act-006',
@@ -79,6 +94,8 @@ export const mockAutomationConfigs: AutomationConfig[] = [
     enabled: false,
     safetyNoticeKey: 'previewOnlyNotice',
     lastSimulationResultKey: 'coveragePositivePreview',
+    autoModeEnabled: false, // User disabled
+    autoModeLevel: 'full-auto', // High confidence if enabled
   },
   {
     id: 'auto-008',
@@ -88,17 +105,20 @@ export const mockAutomationConfigs: AutomationConfig[] = [
     enabled: false,
     safetyNoticeKey: 'previewOnlyNotice',
     lastSimulationResultKey: 'flowHealthUrgentPreview',
+    autoModeEnabled: false, // User disabled
+    autoModeLevel: 'assisted', // Low confidence → Assisted only
   },
 
-  // Auto mode (exists but NOT activatable) (1)
+  // Auto mode example (1) - Full Auto capable
   {
     id: 'auto-007',
     relatedActionId: 'act-007',
     executionMode: 'auto',
-    status: 'blocked',
-    enabled: false,
-    safetyNoticeKey: 'autoModeNotAvailable',
+    status: 'ready', // Changed from blocked to ready
+    enabled: true, // Auto mode active
+    safetyNoticeKey: 'autoModeNotice',
     lastSimulationResultKey: 'bottleneckAnalysisPreview',
-    blockedReasonKey: 'blockedAutoNotImplemented',
+    autoModeEnabled: true,
+    autoModeLevel: 'full-auto', // High confidence → Full Auto
   },
 ];

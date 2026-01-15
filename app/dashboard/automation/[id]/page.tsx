@@ -108,7 +108,16 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
 
       {/* Configuration Card */}
       <div className={`border rounded-lg p-6 ${modeStyles.bg} ${modeStyles.border}`}>
-        <h2 className="text-lg font-medium text-ink mb-4">Automation Configuration</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-medium text-ink">Automation Configuration</h2>
+          {/* Phase 16A: Link to Auto Mode Settings */}
+          <Link
+            href="/dashboard/automation/settings"
+            className="text-sm text-primary hover:underline"
+          >
+            {t.nav.autoModeSettings} →
+          </Link>
+        </div>
         
         <div className="space-y-4">
           {/* Mode & Status */}
@@ -126,6 +135,23 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
               </span>
             </div>
           </div>
+
+          {/* Phase 16A: Auto Mode Info */}
+          {config.autoModeEnabled && (
+            <div className="border-t border-mist pt-4">
+              <span className="text-sm font-medium text-slate block mb-2">
+                {t.autoMode.title}
+              </span>
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 rounded text-sm font-medium bg-sky-100 text-sky-700 border border-sky-200">
+                  {t.autoMode.levels[config.autoModeLevel]}
+                </span>
+                <span className="text-xs text-slate">
+                  {t.autoMode.levelDescriptions[config.autoModeLevel]}
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* Related Action & Rule */}
           <div className="border-t border-mist pt-4 space-y-3">
