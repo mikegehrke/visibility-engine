@@ -133,7 +133,7 @@ export default function SimulationCard({
           </div>
           <button
             onClick={onApprove}
-            className="w-full px-4 py-2 bg-signal text-white rounded-lg text-sm font-medium hover:bg-signal/90 transition-colors"
+            className="w-full px-4 py-2 bg-signal-bg text-white rounded-lg text-sm font-medium hover:bg-signal-bg-hover transition-colors"
           >
             {t.simulation.approveForAutoExecution}
           </button>
@@ -148,7 +148,7 @@ export default function SimulationCard({
           <div className="grid grid-cols-2 gap-2">
             <button
               onClick={onApprove}
-              className="px-4 py-2 bg-signal text-white rounded-lg text-sm font-medium hover:bg-signal/90 transition-colors"
+              className="px-4 py-2 bg-signal-bg text-white rounded-lg text-sm font-medium hover:bg-signal-bg-hover transition-colors"
             >
               {t.simulation.approve}
             </button>

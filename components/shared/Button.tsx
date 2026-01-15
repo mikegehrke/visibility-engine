@@ -27,9 +27,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           
           // Variant styles - subtle, no jarring hover
           variant === 'primary' && [
-            'bg-signal text-white',
-            'hover:bg-signal-hover',
-            'active:bg-signal-hover',
+            'bg-signal-bg text-white',
+            'hover:bg-signal-bg-hover',
+            'active:bg-signal-bg-hover',
           ],
           variant === 'secondary' && [
             'border border-border text-ink bg-canvas',

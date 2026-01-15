@@ -139,7 +139,7 @@ export default function AutomationPage() {
               {/* View Details Button */}
               <Link
                 href={`/dashboard/automation/${config.id}`}
-                className="block w-full px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium text-center hover:bg-primary/90 transition-colors"
+                className="block w-full px-4 py-2 bg-signal-bg text-white rounded-lg text-sm font-medium text-center hover:bg-signal-bg-hover transition-colors"
               >
                 {t.automation.viewDetails}
               </Link>

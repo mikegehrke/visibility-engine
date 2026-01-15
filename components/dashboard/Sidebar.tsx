@@ -104,7 +104,7 @@ export default function Sidebar() {
       className={`
         flex items-center justify-between px-3 py-2 rounded-md text-sm transition-all duration-150
         ${isActive 
-          ? 'bg-signal text-white font-medium' 
+          ? 'bg-signal-bg text-white font-medium' 
           : item.comingSoon 
             ? 'text-slate/60 hover:text-slate hover:bg-mist/50'
             : 'text-ink hover:bg-mist'

@@ -8,8 +8,10 @@
   --color-slate: #71717A;
   --color-mist: #F4F4F5;
   --color-canvas: #FFFFFF;
-  --color-signal: #2563EB;
-  --color-signal-hover: #1D4ED8;
+  --color-signal: #1D4ED8;
+  --color-signal-hover: #1E40AF;
+  --color-signal-bg: #1D4ED8;
+  --color-signal-bg-hover: #1E40AF;
   --color-border: #E4E4E7;
   --color-smoke: #FAFAFA;
   
@@ -64,8 +66,10 @@
     --color-mist: #18181B;
     --color-ink: #FAFAFA;
     --color-slate: #A1A1AA;
-    --color-signal: #3B82F6;
-    --color-signal-hover: #60A5FA;
+    --color-signal: #60A5FA;
+    --color-signal-hover: #93C5FD;
+    --color-signal-bg: #1D4ED8;
+    --color-signal-bg-hover: #1E40AF;
     --color-border: #27272A;
     --color-smoke: #0F0F11;
     
@@ -90,8 +94,10 @@
   --color-mist: #18181B;
   --color-ink: #FAFAFA;
   --color-slate: #A1A1AA;
-  --color-signal: #3B82F6;
-  --color-signal-hover: #60A5FA;
+  --color-signal: #60A5FA;
+  --color-signal-hover: #93C5FD;
+  --color-signal-bg: #1D4ED8;
+  --color-signal-bg-hover: #1E40AF;
   --color-border: #27272A;
   --color-smoke: #0F0F11;
   

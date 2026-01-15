@@ -14,8 +14,12 @@ const config: Config = {
         canvas: 'var(--color-canvas)',
         signal: 'var(--color-signal)',
         'signal-hover': 'var(--color-signal-hover)',
+        'signal-bg': 'var(--color-signal-bg)',
+        'signal-bg-hover': 'var(--color-signal-bg-hover)',
         border: 'var(--color-border)',
         smoke: 'var(--color-smoke)',
+        // Primary alias for signal (accessibility compliant)
+        primary: 'var(--color-signal)',
         // Status colors
         success: 'var(--color-success)',
         'success-muted': 'var(--color-success-muted)',

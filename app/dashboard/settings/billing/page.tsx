@@ -49,7 +49,7 @@ export default function BillingPage() {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <H3>{t.billing.plans[currentPlanId as keyof typeof t.billing.plans].name}</H3>
-                <span className="px-3 py-1 bg-signal text-white text-xs font-semibold rounded-full">
+                <span className="px-3 py-1 bg-signal-bg text-white text-xs font-semibold rounded-full">
                   {t.common.currentPlan}
                 </span>
               </div>
@@ -211,7 +211,7 @@ export default function BillingPage() {
                   <div className="flex items-start justify-between mb-2">
                     <H3>{planTranslations.name}</H3>
                     {plan.badgeKey && (
-                      <span className="px-2 py-1 bg-signal text-white text-xs font-semibold rounded">
+                      <span className="px-2 py-1 bg-signal-bg text-white text-xs font-semibold rounded">
                         {t.billing.badges[plan.badgeKey.split('.').pop() as keyof typeof t.billing.badges]}
                       </span>
                     )}

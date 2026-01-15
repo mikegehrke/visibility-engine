@@ -17,7 +17,7 @@ export default function LanguageSwitcher() {
         onClick={() => handleLanguageChange('en')}
         className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
           language === 'en'
-            ? 'bg-signal text-white'
+            ? 'bg-signal-bg text-white'
             : 'text-slate hover:text-ink hover:bg-smoke'
         }`}
         aria-label="Switch to English"
@@ -28,7 +28,7 @@ export default function LanguageSwitcher() {
         onClick={() => handleLanguageChange('de')}
         className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
           language === 'de'
-            ? 'bg-signal text-white'
+            ? 'bg-signal-bg text-white'
             : 'text-slate hover:text-ink hover:bg-smoke'
         }`}
         aria-label="Switch to Deutsch"

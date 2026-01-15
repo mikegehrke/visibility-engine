@@ -67,6 +67,7 @@ export default function PricingPage() {
 
       {/* Pricing Cards */}
       <section className="max-w-7xl mx-auto px-6 py-16">
+        <H2 className="sr-only">{t.pricing.hero.title} Plans</H2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {plans.map((plan) => (
             <Card key={plan.name} variant={plan.variant} className="flex flex-col">
