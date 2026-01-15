@@ -53,11 +53,17 @@ export const translations = {
       agentSessions: 'Sessions',
       agentResults: 'Results',
       agentHistory: 'History',
+      
+      // Visibility Engine
+      distribution: 'Distribution',
+      signals: 'Signals',
+      flow: 'Content Flow',
     },
     
     // Section Headers
     sections: {
       core: 'Core',
+      visibilityEngine: 'Visibility Engine',
       contentMedia: 'Content & Media',
       automation: 'Automation',
       communication: 'Communication',
@@ -188,6 +194,93 @@ export const translations = {
         company: 'Company Settings',
       },
     },
+    
+    // Distribution
+    distribution: {
+      title: 'Distribution Channels',
+      subtitle: 'Manage where your content is published',
+      channels: {
+        website: {
+          name: 'Website',
+          description: 'Your owned web presence',
+        },
+        social: {
+          name: 'Social Media',
+          description: 'Instagram, LinkedIn, TikTok, X',
+        },
+        video: {
+          name: 'Video Platforms',
+          description: 'YouTube, Vimeo',
+        },
+        aiSearch: {
+          name: 'AI Search',
+          description: 'ChatGPT, Perplexity, SearchGPT',
+        },
+      },
+      status: {
+        inactive: 'Inactive',
+        active: 'Active',
+      },
+      configure: 'Configure',
+      comingSoon: 'Configuration coming soon',
+    },
+    
+    // Signals
+    signals: {
+      title: 'Signals & Tracking',
+      subtitle: 'Monitor your visibility and reach',
+      metrics: {
+        visibilityScore: {
+          name: 'Visibility Score',
+          description: 'Overall visibility rating',
+        },
+        reach: {
+          name: 'Reach',
+          description: 'People who saw your content',
+        },
+        clicks: {
+          name: 'Clicks',
+          description: 'Total link clicks',
+        },
+        mentions: {
+          name: 'Mentions',
+          description: 'Brand mentions across channels',
+        },
+      },
+      timeRange: {
+        label: 'Time Range',
+        last7days: 'Last 7 days',
+        last30days: 'Last 30 days',
+        last90days: 'Last 90 days',
+        allTime: 'All time',
+      },
+      chartPlaceholder: 'Chart visualization coming soon',
+      noData: 'No data available yet',
+    },
+    
+    // Content Flow
+    flow: {
+      title: 'Content Flow',
+      subtitle: 'Understand how your content creates visibility',
+      steps: {
+        content: {
+          name: 'Content',
+          description: 'Create and optimize your content',
+        },
+        distribution: {
+          name: 'Distribution',
+          description: 'Publish across channels',
+        },
+        signals: {
+          name: 'Signals',
+          description: 'Track performance metrics',
+        },
+        insights: {
+          name: 'Insights',
+          description: 'Learn and improve',
+        },
+      },
+    },
   },
   
   de: {
@@ -240,11 +333,17 @@ export const translations = {
       agentSessions: 'Sitzungen',
       agentResults: 'Ergebnisse',
       agentHistory: 'Verlauf',
+      
+      // Visibility Engine
+      distribution: 'Distribution',
+      signals: 'Signale',
+      flow: 'Content Flow',
     },
     
     // Section Headers
     sections: {
       core: 'Kern',
+      visibilityEngine: 'Visibility Engine',
       contentMedia: 'Content & Medien',
       automation: 'Automatisierung',
       communication: 'Kommunikation',
@@ -373,6 +472,93 @@ export const translations = {
       settings: {
         creator: 'Einstellungen',
         company: 'Unternehmens-Einstellungen',
+      },
+    },
+    
+    // Distribution
+    distribution: {
+      title: 'Distributions-Kanäle',
+      subtitle: 'Verwalte, wo dein Content veröffentlicht wird',
+      channels: {
+        website: {
+          name: 'Website',
+          description: 'Deine eigene Web-Präsenz',
+        },
+        social: {
+          name: 'Social Media',
+          description: 'Instagram, LinkedIn, TikTok, X',
+        },
+        video: {
+          name: 'Video-Plattformen',
+          description: 'YouTube, Vimeo',
+        },
+        aiSearch: {
+          name: 'KI-Suche',
+          description: 'ChatGPT, Perplexity, SearchGPT',
+        },
+      },
+      status: {
+        inactive: 'Inaktiv',
+        active: 'Aktiv',
+      },
+      configure: 'Konfigurieren',
+      comingSoon: 'Konfiguration demnächst verfügbar',
+    },
+    
+    // Signals
+    signals: {
+      title: 'Signale & Tracking',
+      subtitle: 'Überwache deine Sichtbarkeit und Reichweite',
+      metrics: {
+        visibilityScore: {
+          name: 'Sichtbarkeits-Score',
+          description: 'Gesamtbewertung deiner Sichtbarkeit',
+        },
+        reach: {
+          name: 'Reichweite',
+          description: 'Personen, die deinen Content gesehen haben',
+        },
+        clicks: {
+          name: 'Klicks',
+          description: 'Gesamt-Link-Klicks',
+        },
+        mentions: {
+          name: 'Erwähnungen',
+          description: 'Marken-Erwähnungen über alle Kanäle',
+        },
+      },
+      timeRange: {
+        label: 'Zeitraum',
+        last7days: 'Letzte 7 Tage',
+        last30days: 'Letzte 30 Tage',
+        last90days: 'Letzte 90 Tage',
+        allTime: 'Gesamt',
+      },
+      chartPlaceholder: 'Chart-Visualisierung demnächst verfügbar',
+      noData: 'Noch keine Daten verfügbar',
+    },
+    
+    // Content Flow
+    flow: {
+      title: 'Content Flow',
+      subtitle: 'Verstehe, wie dein Content Sichtbarkeit erzeugt',
+      steps: {
+        content: {
+          name: 'Content',
+          description: 'Erstelle und optimiere deinen Content',
+        },
+        distribution: {
+          name: 'Distribution',
+          description: 'Veröffentliche über Kanäle',
+        },
+        signals: {
+          name: 'Signale',
+          description: 'Verfolge Performance-Metriken',
+        },
+        insights: {
+          name: 'Insights',
+          description: 'Lerne und verbessere',
+        },
       },
     },
   },

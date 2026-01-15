@@ -63,6 +63,14 @@ export default function Sidebar() {
         { href: '/dashboard/agents/history', label: t.nav.agentHistory, comingSoon: true },
       ],
     },
+    {
+      title: t.sections.visibilityEngine,
+      items: [
+        { href: '/dashboard/distribution', label: t.nav.distribution },
+        { href: '/dashboard/signals', label: t.nav.signals },
+        { href: '/dashboard/flow', label: t.nav.flow },
+      ],
+    },
   ];
 
   return (
