@@ -1,21 +1,15 @@
+'use client';
+
 import Link from 'next/link';
 import { H1, H2, H3, Body, Lead, Small } from '@/components/shared/Typography';
 import Card, { CardHeader, CardContent, CardFooter } from '@/components/shared/Card';
 import Button from '@/components/shared/Button';
-import { publicTranslations } from '@/lib/i18n/public-translations';
-
-// Static export
-export const dynamic = 'force-static';
-export const revalidate = false;
-
-const t = publicTranslations.en;
-
-export const metadata = {
-  title: t.pricing.meta.title,
-  description: t.pricing.meta.description,
-};
+import { useLanguage } from '@/lib/context/LanguageContext';
+import { translations } from '@/lib/i18n/translations';
 
 export default function PricingPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const plans = [
     {
       name: t.pricing.free.name,

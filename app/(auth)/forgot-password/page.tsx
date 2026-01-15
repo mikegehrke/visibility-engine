@@ -5,8 +5,12 @@ import Link from 'next/link';
 import Button from '@/components/shared/Button';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/shared/Card';
 import { Label, Small } from '@/components/shared/Typography';
+import { useLanguage } from '@/lib/context/LanguageContext';
+import { translations } from '@/lib/i18n/translations';
 
 export default function ForgotPasswordPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);

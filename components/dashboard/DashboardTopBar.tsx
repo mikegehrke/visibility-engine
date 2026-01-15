@@ -1,9 +1,11 @@
 'use client';
 
 import { useDashboard } from '@/lib/context/DashboardContext';
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 export default function DashboardTopBar() {
-  const { currentContext, currentLanguage, setContext, setLanguage, t } = useDashboard();
+  const { currentContext, setContext, t } = useDashboard();
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div className="h-16 border-b border-border bg-canvas px-6 flex items-center justify-between">
@@ -43,7 +45,7 @@ export default function DashboardTopBar() {
           <button
             onClick={() => setLanguage('en')}
             className={`px-3 py-1.5 text-sm font-medium rounded-sm transition-all ${
-              currentLanguage === 'en'
+              language === 'en'
                 ? 'bg-canvas text-ink shadow-sm'
                 : 'text-slate hover:text-ink'
             }`}
@@ -53,7 +55,7 @@ export default function DashboardTopBar() {
           <button
             onClick={() => setLanguage('de')}
             className={`px-3 py-1.5 text-sm font-medium rounded-sm transition-all ${
-              currentLanguage === 'de'
+              language === 'de'
                 ? 'bg-canvas text-ink shadow-sm'
                 : 'text-slate hover:text-ink'
             }`}

@@ -1,36 +1,27 @@
+'use client';
+
 import Link from 'next/link';
 import { H1, H2, Body, Small } from '@/components/shared/Typography';
-import { publicTranslations } from '@/lib/i18n/public-translations';
+import { useLanguage } from '@/lib/context/LanguageContext';
+import { translations } from '@/lib/i18n/translations';
 
-// ISR - Revalidate every 60 seconds
-export const revalidate = 60;
-
-const t = publicTranslations.en;
-
-// Generate static params for all blog posts
-export async function generateStaticParams() {
-  return [
-    { slug: t.blog.posts.post1.slug },
-    { slug: t.blog.posts.post2.slug },
-    { slug: t.blog.posts.post3.slug },
-  ];
-}
-
-// Helper to get post data by slug
-function getPostBySlug(slug: string) {
-  const posts = [
-    t.blog.posts.post1,
-    t.blog.posts.post2,
-    t.blog.posts.post3,
-  ];
-  return posts.find((p) => p.slug === slug);
-}
-
-export default async function BlogPostPage({
+export default function BlogPostPage({
   params,
 }: {
   params: { slug: string };
 }) {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  // Helper to get post data by slug
+  function getPostBySlug(slug: string) {
+    const posts = [
+      t.blog.posts.post1,
+      t.blog.posts.post2,
+      t.blog.posts.post3,
+    ];
+    return posts.find((p) => p.slug === slug);
+  }
   const post = getPostBySlug(params.slug);
 
   if (!post) {

@@ -5,10 +5,14 @@ import Link from 'next/link';
 import Button from '@/components/shared/Button';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/shared/Card';
 import { Label, Small } from '@/components/shared/Typography';
+import { useLanguage } from '@/lib/context/LanguageContext';
+import { translations } from '@/lib/i18n/translations';
 
 type UserRole = 'creator' | 'company' | null;
 
 export default function RegisterPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [role, setRole] = useState<UserRole>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -20,7 +24,7 @@ export default function RegisterPage() {
     e.preventDefault();
     
     if (password !== confirmPassword) {
-      alert('Passwörter stimmen nicht überein');
+      alert(t.auth.register.passwordMismatch);
       return;
     }
     
@@ -32,7 +36,7 @@ export default function RegisterPage() {
     // Simulate loading
     setTimeout(() => {
       setIsLoading(false);
-      alert('Registration UI only - no backend implemented');
+      alert(t.auth.register.uiOnly);
     }, 1000);
   };
 
@@ -42,8 +46,8 @@ export default function RegisterPage() {
       <div className="min-h-screen flex items-center justify-center bg-mist px-4">
         <div className="w-full max-w-2xl">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Willkommen bei Visibility Engine</h1>
-            <p className="text-slate">Wähle deinen Account-Typ</p>
+            <h1 className="text-3xl font-bold mb-2">{t.auth.register.title}</h1>
+            <p className="text-slate">{t.auth.register.subtitle}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">

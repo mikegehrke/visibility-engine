@@ -1,19 +1,14 @@
+'use client';
+
 import Link from 'next/link';
 import { H1, H2, Body, Lead, Small } from '@/components/shared/Typography';
 import Card, { CardHeader, CardContent } from '@/components/shared/Card';
-import { publicTranslations } from '@/lib/i18n/public-translations';
+import { useLanguage } from '@/lib/context/LanguageContext';
+import { translations } from '@/lib/i18n/translations';
 
-// ISR - Revalidate every 60 seconds
-export const revalidate = 60;
-
-const t = publicTranslations.en;
-
-export const metadata = {
-  title: t.blog.meta.title,
-  description: t.blog.meta.description,
-};
-
-export default async function BlogPage() {
+export default function BlogPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const posts = [
     {
       ...t.blog.posts.post1,

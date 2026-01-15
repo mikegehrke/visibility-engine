@@ -1,15 +1,14 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { Language, translations } from '@/lib/i18n/translations';
+import { translations } from '@/lib/i18n/translations';
+import { useLanguage } from './LanguageContext';
 
 type UserContext = 'creator' | 'company';
 
 interface DashboardContextType {
   currentContext: UserContext;
-  currentLanguage: Language;
   setContext: (context: UserContext) => void;
-  setLanguage: (language: Language) => void;
   t: any; // Simplified type to avoid union complexity
 }
 
@@ -17,14 +16,12 @@ const DashboardContext = createContext<DashboardContextType | undefined>(undefin
 
 export function DashboardProvider({ children }: { children: ReactNode }) {
   const [currentContext, setCurrentContext] = useState<UserContext>('creator');
-  const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
+  const { language } = useLanguage(); // Get language from global context
 
   const value: DashboardContextType = {
     currentContext,
-    currentLanguage,
     setContext: setCurrentContext,
-    setLanguage: setCurrentLanguage,
-    t: translations[currentLanguage],
+    t: translations[language], // Use global language
   };
 
   return (

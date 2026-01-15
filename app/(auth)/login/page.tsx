@@ -5,8 +5,12 @@ import Link from 'next/link';
 import Button from '@/components/shared/Button';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/shared/Card';
 import { Label } from '@/components/shared/Typography';
+import { useLanguage } from '@/lib/context/LanguageContext';
+import { translations } from '@/lib/i18n/translations';
 
 export default function LoginPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +25,7 @@ export default function LoginPage() {
     // Simulate loading
     setTimeout(() => {
       setIsLoading(false);
-      alert('Login UI only - no backend implemented');
+      alert(t.auth.login.uiOnly);
     }, 1000);
   };
 
@@ -30,14 +34,14 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <Card variant="elevated">
           <CardHeader>
-            <CardTitle>Willkommen zurück</CardTitle>
-            <CardDescription>Melde dich bei deinem Account an</CardDescription>
+            <CardTitle>{t.auth.login.title}</CardTitle>
+            <CardDescription>{t.auth.login.subtitle}</CardDescription>
           </CardHeader>
           
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">E-Mail</Label>
+                <Label htmlFor="email">{t.auth.login.email}</Label>
                 <input
                   id="email"
                   type="email"
@@ -51,12 +55,12 @@ export default function LoginPage() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Passwort</Label>
+                  <Label htmlFor="password">{t.auth.login.password}</Label>
                   <Link 
                     href="/forgot-password" 
                     className="text-sm text-signal hover:underline"
                   >
-                    Vergessen?
+                    {t.auth.login.forgotPassword}
                   </Link>
                 </div>
                 <input
@@ -77,7 +81,7 @@ export default function LoginPage() {
                 className="w-full"
                 disabled={isLoading}
               >
-                {isLoading ? 'Anmelden...' : 'Anmelden'}
+                {isLoading ? `${t.auth.login.submit}...` : t.auth.login.submit}
               </Button>
             </form>
           </CardContent>
@@ -93,9 +97,9 @@ export default function LoginPage() {
             </div>
 
             <p className="text-sm text-center text-slate">
-              Noch kein Account?{' '}
+              {t.auth.login.noAccount}{' '}
               <Link href="/register" className="text-signal font-medium hover:underline">
-                Jetzt registrieren
+                {t.auth.login.signUp}
               </Link>
             </p>
           </CardFooter>

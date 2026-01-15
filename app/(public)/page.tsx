@@ -1,22 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 import { H1, H2, H3, Body, Lead } from '@/components/shared/Typography';
 import Card, { CardHeader, CardContent } from '@/components/shared/Card';
 import Button from '@/components/shared/Button';
-import { publicTranslations } from '@/lib/i18n/public-translations';
-
-// Static export
-export const dynamic = 'force-static';
-export const revalidate = false;
-
-// Use English by default (can be extended with language detection)
-const t = publicTranslations.en;
-
-export const metadata = {
-  title: 'Visibility Engine – Professional Content Management for Creators & Companies',
-  description: t.landing.hero.subtitle,
-};
+import { useLanguage } from '@/lib/context/LanguageContext';
+import { translations } from '@/lib/i18n/translations';
 
 export default function HomePage() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
