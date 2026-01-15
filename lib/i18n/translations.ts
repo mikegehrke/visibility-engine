@@ -731,6 +731,13 @@ export const translations = {
       withinWindow: 'Within automation window',
       belowCap: 'Below action cap',
       approvedBy: 'Approved by',
+      
+      // Explainability (for execution log tooltips)
+      explainability: {
+        autoExplainHighConfidence: 'High confidence score (85%+) allowed fully automated execution',
+        autoExplainMediumConfidence: 'Medium confidence score (70-84%) - executed with guarded mode safety checks',
+        autoExplainLowConfidence: 'Low confidence score (below 70%) - would require manual approval but executed in assisted mode',
+      },
     },
   },
   
@@ -1462,6 +1469,13 @@ export const translations = {
       withinWindow: 'Innerhalb Automatisierungs-Fenster',
       belowCap: 'Unter Aktions-Cap',
       approvedBy: 'Genehmigt von',
+      
+      // Explainability (for execution log tooltips)
+      explainability: {
+        autoExplainHighConfidence: 'Hoher Konfidenz-Score (85%+) ermöglichte vollautomatische Ausführung',
+        autoExplainMediumConfidence: 'Mittlerer Konfidenz-Score (70-84%) - ausgeführt mit Guarded-Mode-Sicherheitschecks',
+        autoExplainLowConfidence: 'Niedriger Konfidenz-Score (unter 70%) - würde manuelle Genehmigung erfordern, aber im Assisted-Mode ausgeführt',
+      },
     },
   },
 } as const;

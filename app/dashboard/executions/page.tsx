@@ -87,6 +87,9 @@ export default function ExecutionsPage() {
                   {t.execution.triggeredAt}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-slate uppercase tracking-wider">
+                  Type
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-slate uppercase tracking-wider">
                   {t.execution.status}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-slate uppercase tracking-wider">
@@ -112,6 +115,44 @@ export default function ExecutionsPage() {
                     </td>
                     <td className="px-6 py-4">
                       <span className="text-sm text-slate">{formatDate(log.triggeredAt)}</span>
+                    </td>
+                    {/* Phase 16A: Execution Type */}
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-2">
+                        <span className={`px-2 py-1 rounded text-xs font-medium ${
+                          log.executionType === 'auto' 
+                            ? 'bg-purple-100 text-purple-700 border border-purple-200' 
+                            : 'bg-gray-100 text-gray-700 border border-gray-200'
+                        }`}>
+                          {t.autoMode.executionTypes[log.executionType]}
+                        </span>
+                        {log.executionType === 'auto' && log.confidenceScore !== undefined && (
+                          <span className="text-xs text-slate group relative cursor-help" title={t.autoMode.whyExecuted}>
+                            <svg className="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {/* Tooltip */}
+                            <div className="hidden group-hover:block absolute z-10 w-64 p-3 bg-white border border-mist rounded-lg shadow-lg -top-2 left-6">
+                              <div className="text-xs space-y-1">
+                                <p className="font-medium text-ink">{t.autoMode.whyExecuted}</p>
+                                {log.ruleId && (
+                                  <p className="text-slate">
+                                    {t.autoMode.triggeredByRule}: <span className="font-mono">{log.ruleId}</span>
+                                  </p>
+                                )}
+                                <p className="text-slate">
+                                  {t.autoMode.confidenceScore}: <span className="font-medium">{log.confidenceScore}%</span>
+                                </p>
+                                {log.explainabilityKey && (
+                                  <p className="text-slate mt-2 italic">
+                                    {t.autoMode.explainability[log.explainabilityKey as keyof typeof t.autoMode.explainability]}
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+                          </span>
+                        )}
+                      </div>
                     </td>
                     <td className="px-6 py-4">
                       <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusStyles(log.status)}`}>

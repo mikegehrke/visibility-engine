@@ -6,6 +6,7 @@ import { H2, H3, Body, Small } from '@/components/shared/Typography';
 import Card, { CardHeader, CardContent, CardFooter } from '@/components/shared/Card';
 import Button from '@/components/shared/Button';
 import { getAllPlans, getPlanById, formatLimit, isUnlimited, type PlanId } from '@/lib/config/plans';
+import { currentAccount } from '@/lib/models/account';
 
 // Force dynamic rendering to prevent build-time prerendering
 export const dynamic = 'force-dynamic';
@@ -142,6 +143,61 @@ export default function BillingPage() {
             </div>
           </div>
         </CardContent>
+      </Card>
+
+      {/* Phase 16A: Automation Add-on */}
+      <Card variant="elevated">
+        <CardHeader>
+          <H3>Automation Add-on</H3>
+          <Small className="text-slate">Unlock Auto Mode for your Company account</Small>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-start justify-between mb-6">
+            <div className="flex-1">
+              <div className="space-y-2 mb-4">
+                <p className="text-sm text-ink">
+                  <span className="font-semibold">99€/month</span> - Activate intelligent automation
+                </p>
+                <ul className="text-sm text-slate space-y-1 ml-4">
+                  <li>• 10 automated actions included</li>
+                  <li>• 0.50€ per additional action</li>
+                  <li>• Full Auto mode access</li>
+                  <li>• Confidence scoring & safety guards</li>
+                  <li>• Action caps & automation windows</li>
+                </ul>
+              </div>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <p className="text-xs text-blue-800">
+                  <span className="font-medium">Owner account detected:</span> Auto Mode is free and unlimited for you. No add-on required.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Usage Tracker (nur sichtbar wenn Add-on aktiv) */}
+          <div className="border-t border-border pt-4">
+            <div className="flex justify-between text-sm mb-2">
+              <span className="text-ink">Automation Usage (Current Cycle)</span>
+              <span className="text-slate">Owner: Unlimited</span>
+            </div>
+            <div className="w-full bg-green-100 rounded-full h-2">
+              <div className="bg-green-500 h-2 rounded-full" style={{ width: '0%' }} />
+            </div>
+            <p className="text-xs text-slate mt-2">
+              No billing applies to Owner accounts. All automation is free.
+            </p>
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button 
+            variant="secondary" 
+            size="sm" 
+            disabled
+            className="w-full"
+          >
+            Owner Account - No Purchase Needed
+          </Button>
+        </CardFooter>
       </Card>
 
       {/* Plan Comparison */}
