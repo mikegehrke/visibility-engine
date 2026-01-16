@@ -59,25 +59,27 @@ export default function AutomationPage() {
       </div>
 
       {/* Automation Configs */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {mockAutomationConfigs.map((config) => {
-          const relatedAction = mockActions.find((a) => a.id === config.relatedActionId);
+      <div>
+        <h2 className="sr-only">Automation Configurations</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {mockAutomationConfigs.map((config) => {
+            const relatedAction = mockActions.find((a) => a.id === config.relatedActionId);
 
-          return (
-            <div
-              key={config.id}
-              className="bg-canvas border border-border rounded-lg p-5 space-y-4"
-            >
-              {/* Header */}
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <h3 className="text-base font-medium text-ink">
-                    {relatedAction && t.actions.titles[relatedAction.titleKey as keyof typeof t.actions.titles]}
-                  </h3>
-                  <p className="text-sm text-slate mt-1">
-                    {relatedAction && t.actions.descriptions[relatedAction.descriptionKey as keyof typeof t.actions.descriptions]}
-                  </p>
-                </div>
+            return (
+              <div
+                key={config.id}
+                className="bg-canvas border border-border rounded-lg p-5 space-y-4"
+              >
+                {/* Header */}
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h3 className="text-base font-medium text-ink">
+                      {relatedAction && t.actions.titles[relatedAction.titleKey as keyof typeof t.actions.titles]}
+                    </h3>
+                    <p className="text-sm text-slate mt-1">
+                      {relatedAction && t.actions.descriptions[relatedAction.descriptionKey as keyof typeof t.actions.descriptions]}
+                    </p>
+                  </div>
               </div>
 
               {/* Badges */}
@@ -146,6 +148,7 @@ export default function AutomationPage() {
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );

@@ -43,25 +43,25 @@ export default function AutomationCounter({ compact = false }: AutomationCounter
   const isLimit = percentage >= 100;
   
   return (
-    <div className={`bg-white border border-mist rounded-lg ${compact ? 'p-4' : 'p-6'}`}>
+    <div className={`bg-canvas border border-mist rounded-lg ${compact ? 'p-4' : 'p-6'}`}>
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className={`${compact ? 'text-sm' : 'text-base'} font-medium text-ink`}>
+          <h2 className={`${compact ? 'text-sm' : 'text-base'} font-medium text-ink`}>
             {t.counter.automationUsage}
-          </h3>
+          </h2>
           <p className="text-xs text-slate mt-1">{t.counter.currentCycle}</p>
         </div>
         {isOwner ? (
-          <span className="px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-700 border border-green-200">
+          <span className="px-2 py-1 rounded text-xs font-medium bg-emerald-500/10 text-emerald-400 dark:bg-emerald-500/20 dark:text-emerald-300 border border-emerald-500/20">
             {t.counter.unlimited}
           </span>
         ) : (
           <span className={`px-2 py-1 rounded text-xs font-medium ${
             isLimit 
-              ? 'bg-red-100 text-red-700 border border-red-200'
+              ? 'bg-red-500/10 text-red-400 dark:bg-red-500/20 dark:text-red-300 border border-red-500/20'
               : isWarning
-              ? 'bg-amber-100 text-amber-700 border border-amber-200'
-              : 'bg-blue-100 text-blue-700 border border-blue-200'
+              ? 'bg-amber-500/10 text-amber-400 dark:bg-amber-500/20 dark:text-amber-300 border border-amber-500/20'
+              : 'bg-signal/10 text-signal border border-signal/20'
           }`}>
             {percentage.toFixed(0)}% {t.counter.used}
           </span>
@@ -124,8 +124,8 @@ export default function AutomationCounter({ compact = false }: AutomationCounter
       
       {/* Owner Message */}
       {isOwner && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-3 mt-3">
-          <p className="text-xs text-green-800">
+        <div className="bg-emerald-500/10 dark:bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-3 mt-3">
+          <p className="text-xs text-emerald-600 dark:text-emerald-400">
             {t.counter.ownerUnlimited}
           </p>
         </div>
