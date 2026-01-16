@@ -4,7 +4,7 @@ import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import Button from '@/components/shared/Button';
 import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/shared/Card';
-import { Label } from '@/components/shared/Typography';
+import { Label, Overline } from '@/components/shared/Typography';
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 
@@ -30,16 +30,17 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-mist px-4">
+    <div className="flex items-center justify-center px-4 py-12 sm:py-16">
       <div className="w-full max-w-md">
-        <Card variant="elevated">
-          <CardHeader>
-            <CardTitle>{t.auth.login.title}</CardTitle>
-            <CardDescription>{t.auth.login.subtitle}</CardDescription>
-          </CardHeader>
-          
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="text-center mb-8">
+          <Overline className="mb-3">Willkommen zurück</Overline>
+          <h1 className="text-2xl font-semibold text-ink tracking-tight">{t.auth.login.title}</h1>
+          <p className="mt-2 text-sm text-slate">{t.auth.login.subtitle}</p>
+        </div>
+
+        <Card variant="glass" className="shadow-lg">
+          <CardContent className="pt-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
                 <Label htmlFor="email">{t.auth.login.email}</Label>
                 <input
@@ -49,7 +50,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full h-10 px-3 rounded-sm border border-slate bg-canvas text-ink placeholder:text-slate/50 focus:outline-none focus:ring-2 focus:ring-signal focus:border-transparent transition-all"
+                  className="w-full h-11 px-4 rounded-md border border-border bg-surface-1 text-ink placeholder:text-slate/60 focus:outline-none focus:ring-2 focus:ring-signal/50 focus:border-signal transition-all duration-fast"
                 />
               </div>
 
@@ -58,7 +59,7 @@ export default function LoginPage() {
                   <Label htmlFor="password">{t.auth.login.password}</Label>
                   <Link 
                     href="/forgot-password" 
-                    className="text-sm text-signal hover:underline"
+                    className="text-xs text-signal hover:text-signal/80 transition-colors duration-fast"
                   >
                     {t.auth.login.forgotPassword}
                   </Link>
@@ -70,7 +71,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full h-10 px-3 rounded-sm border border-slate bg-canvas text-ink placeholder:text-slate/50 focus:outline-none focus:ring-2 focus:ring-signal focus:border-transparent transition-all"
+                  className="w-full h-11 px-4 rounded-md border border-border bg-surface-1 text-ink placeholder:text-slate/60 focus:outline-none focus:ring-2 focus:ring-signal/50 focus:border-signal transition-all duration-fast"
                 />
               </div>
 
@@ -78,35 +79,48 @@ export default function LoginPage() {
                 type="submit" 
                 variant="primary" 
                 size="md" 
-                className="w-full"
+                className="w-full h-11"
                 disabled={isLoading}
               >
-                {isLoading ? `${t.auth.login.submit}...` : t.auth.login.submit}
+                {isLoading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Anmelden...
+                  </span>
+                ) : t.auth.login.submit}
               </Button>
             </form>
           </CardContent>
 
-          <CardFooter className="flex-col space-y-4">
+          <CardFooter className="flex-col space-y-4 pb-6">
             <div className="relative w-full">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-mist"></div>
+                <div className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-canvas px-2 text-slate">oder</span>
+                <span className="bg-surface-0 px-3 text-slate tracking-wide">oder</span>
               </div>
             </div>
 
             <p className="text-sm text-center text-slate">
               {t.auth.login.noAccount}{' '}
-              <Link href="/register" className="text-signal font-medium hover:underline">
+              <Link href="/register" className="text-signal font-medium hover:text-signal/80 transition-colors duration-fast">
                 {t.auth.login.signUp}
               </Link>
             </p>
           </CardFooter>
         </Card>
 
-        <p className="mt-4 text-center text-xs text-slate">
-          <Link href="/" className="hover:underline">← Zurück zur Startseite</Link>
+        <p className="mt-6 text-center text-xs text-slate">
+          <Link href="/" className="hover:text-ink transition-colors duration-fast inline-flex items-center gap-1">
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Zurück zur Startseite
+          </Link>
         </p>
       </div>
     </div>

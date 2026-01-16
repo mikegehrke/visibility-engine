@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useDashboard } from '@/lib/context/DashboardContext';
-import { H2, H3, Body, Small } from '@/components/shared/Typography';
+import { H2, H3, Body, Small, Overline } from '@/components/shared/Typography';
 import Card, { CardHeader, CardContent, CardFooter } from '@/components/shared/Card';
 import Button from '@/components/shared/Button';
 import { getAllPlans, getPlanById, formatLimit, isUnlimited, type PlanId } from '@/lib/config/plans';
@@ -38,18 +38,19 @@ export default function BillingPage() {
   return (
     <div className="space-y-8">
       <div>
+        <Overline className="mb-2">Abrechnung</Overline>
         <H2>{t.billing.title}</H2>
         <Body className="text-slate mt-2">{t.billing.currentPlan}</Body>
       </div>
 
       {/* Current Plan Overview */}
-      <Card variant="elevated">
+      <Card variant="glass" className="shadow-md">
         <CardContent className="pt-6">
           <div className="flex items-start justify-between mb-6">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <H3>{t.billing.plans[currentPlanId as keyof typeof t.billing.plans].name}</H3>
-                <span className="px-3 py-1 bg-signal-bg text-white text-xs font-semibold rounded-full">
+                <span className="px-3 py-1 bg-signal text-white text-xs font-semibold rounded-full">
                   {t.common.currentPlan}
                 </span>
               </div>
@@ -75,9 +76,9 @@ export default function BillingPage() {
                   </span>
                 </div>
                 {!isUnlimited(currentPlan.limits.workspaces) && (
-                  <div className="w-full bg-smoke rounded-full h-2">
+                  <div className="w-full bg-surface-2 rounded-full h-2">
                     <div
-                      className="bg-signal h-2 rounded-full transition-all"
+                      className="bg-signal h-2 rounded-full transition-all duration-base"
                       style={{ width: `${getUsagePercentage(mockUsage.workspaces, currentPlan.limits.workspaces)}%` }}
                     />
                   </div>
@@ -94,9 +95,9 @@ export default function BillingPage() {
                     </span>
                   </div>
                   {!isUnlimited(currentPlan.limits.scheduledPosts) && (
-                    <div className="w-full bg-smoke rounded-full h-2">
+                    <div className="w-full bg-surface-2 rounded-full h-2">
                       <div
-                        className="bg-signal h-2 rounded-full transition-all"
+                        className="bg-signal h-2 rounded-full transition-all duration-base"
                         style={{ width: `${getUsagePercentage(mockUsage.scheduledPosts, currentPlan.limits.scheduledPosts)}%` }}
                       />
                     </div>
@@ -114,9 +115,9 @@ export default function BillingPage() {
                     </span>
                   </div>
                   {!isUnlimited(currentPlan.limits.aiAgents) && (
-                    <div className="w-full bg-smoke rounded-full h-2">
+                    <div className="w-full bg-surface-2 rounded-full h-2">
                       <div
-                        className="bg-signal h-2 rounded-full transition-all"
+                        className="bg-signal h-2 rounded-full transition-all duration-base"
                         style={{ width: `${getUsagePercentage(mockUsage.aiAgents, currentPlan.limits.aiAgents)}%` }}
                       />
                     </div>
@@ -133,9 +134,9 @@ export default function BillingPage() {
                   </span>
                 </div>
                 {!isUnlimited(currentPlan.limits.storage) && (
-                  <div className="w-full bg-smoke rounded-full h-2">
+                  <div className="w-full bg-surface-2 rounded-full h-2">
                     <div
-                      className="bg-signal h-2 rounded-full transition-all"
+                      className="bg-signal h-2 rounded-full transition-all duration-base"
                       style={{ width: `${getUsagePercentage(mockUsage.storage, currentPlan.limits.storage)}%` }}
                     />
                   </div>
@@ -147,10 +148,19 @@ export default function BillingPage() {
       </Card>
 
       {/* Phase 16A: Automation Add-on */}
-      <Card variant="elevated">
+      <Card variant="glass" className="shadow-md">
         <CardHeader>
-          <H3>Automation Add-on</H3>
-          <Small className="text-slate">Unlock Auto Mode for your Company account</Small>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-signal/10 flex items-center justify-center">
+              <svg className="w-5 h-5 text-signal" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+            </div>
+            <div>
+              <H3>Automation Add-on</H3>
+              <Small className="text-slate">Unlock Auto Mode for your Company account</Small>
+            </div>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="flex items-start justify-between mb-6">
@@ -159,17 +169,42 @@ export default function BillingPage() {
                 <p className="text-sm text-ink">
                   <span className="font-semibold">99€/month</span> - Activate intelligent automation
                 </p>
-                <ul className="text-sm text-slate space-y-1 ml-4">
-                  <li>• 10 automated actions included</li>
-                  <li>• 0.50€ per additional action</li>
-                  <li>• Full Auto mode access</li>
-                  <li>• Confidence scoring & safety guards</li>
-                  <li>• Action caps & automation windows</li>
+                <ul className="text-sm text-slate space-y-1.5 ml-4">
+                  <li className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-signal flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    10 automated actions included
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-signal flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    0.50€ per additional action
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-signal flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    Full Auto mode access
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-signal flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    Confidence scoring & safety guards
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-signal flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    Action caps & automation windows
+                  </li>
                 </ul>
               </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                <p className="text-xs text-blue-800">
-                  <span className="font-medium">Owner account detected:</span> Auto Mode is free and unlimited for you. No add-on required.
+              <div className="bg-signal/5 border border-signal/20 rounded-lg p-3">
+                <p className="text-xs text-ink">
+                  <span className="font-medium text-signal">Owner account detected:</span> Auto Mode is free and unlimited for you. No add-on required.
                 </p>
               </div>
             </div>
@@ -194,8 +229,9 @@ export default function BillingPage() {
 
       {/* Plan Comparison */}
       <div>
+        <Overline className="mb-2">Alle Optionen</Overline>
         <H2 className="mb-6">{t.billing.planComparison}</H2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {allPlans.map((plan) => {
             const isCurrent = plan.id === currentPlanId;
             const planKey = plan.id === 'pro-plus' ? 'proPlus' : plan.id === 'ultimate-plus' ? 'ultimatePlus' : plan.id;
@@ -204,14 +240,14 @@ export default function BillingPage() {
             return (
               <Card 
                 key={plan.id} 
-                variant={plan.isPopular ? 'elevated' : 'outlined'}
-                className={isCurrent ? 'ring-2 ring-signal' : ''}
+                variant="glass"
+                className={`${isCurrent ? 'ring-2 ring-signal shadow-glow' : ''} ${plan.isPopular ? 'shadow-md' : ''}`}
               >
                 <CardHeader>
                   <div className="flex items-start justify-between mb-2">
-                    <H3>{planTranslations.name}</H3>
+                    <H3 className="text-base">{planTranslations.name}</H3>
                     {plan.badgeKey && (
-                      <span className="px-2 py-1 bg-signal-bg text-white text-xs font-semibold rounded">
+                      <span className="px-2 py-0.5 bg-signal text-white text-[10px] font-semibold rounded">
                         {t.billing.badges[plan.badgeKey.split('.').pop() as keyof typeof t.billing.badges]}
                       </span>
                     )}
@@ -220,14 +256,16 @@ export default function BillingPage() {
                     {planTranslations.description}
                   </Small>
                   <div className="text-xl font-bold text-ink mb-1">
-                    €{plan.pricing.monthly}/mo
+                    €{plan.pricing.monthly}<span className="text-sm font-normal text-slate">/mo</span>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     {plan.features.map((feature) => (
-                      <li key={feature.key} className="flex items-start text-sm">
-                        <span className="text-signal mr-2">✓</span>
+                      <li key={feature.key} className="flex items-start text-sm gap-2">
+                        <svg className="w-4 h-4 text-signal flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
                         <span className="text-ink">
                           {planTranslations.features[feature.key as keyof typeof planTranslations.features]}
                         </span>

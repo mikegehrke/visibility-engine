@@ -6,14 +6,36 @@ const t = publicTranslations.en;
 
 export default function Header() {
   return (
-    <header className="border-b border-mist">
-      <nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-semibold">Visibility Engine</Link>
-        <div className="flex items-center gap-6">
-          <Link href="/features" className="text-slate hover:text-ink transition-colors">{t.nav.features}</Link>
-          <Link href="/pricing" className="text-slate hover:text-ink transition-colors">{t.nav.pricing}</Link>
-          <Link href="/about" className="text-slate hover:text-ink transition-colors">{t.nav.about}</Link>
-          <Link href="/blog" className="text-slate hover:text-ink transition-colors">{t.nav.blog}</Link>
+    <header className="sticky top-0 z-50 bg-canvas/80 backdrop-blur-md border-b border-border/50">
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <Link 
+          href="/" 
+          className="text-lg font-semibold tracking-tight text-ink transition-opacity duration-fast hover:opacity-70"
+        >
+          Visibility Engine
+        </Link>
+        
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center gap-1">
+          {[
+            { href: '/features', label: t.nav.features },
+            { href: '/pricing', label: t.nav.pricing },
+            { href: '/about', label: t.nav.about },
+            { href: '/blog', label: t.nav.blog },
+          ].map((link) => (
+            <Link 
+              key={link.href}
+              href={link.href} 
+              className="px-3 py-2 text-sm text-slate rounded-md transition-all duration-fast hover:text-ink hover:bg-mist"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+        
+        {/* CTA */}
+        <div className="flex items-center gap-3">
           <Link href="/login">
             <Button variant="primary" size="sm">{t.nav.login}</Button>
           </Link>

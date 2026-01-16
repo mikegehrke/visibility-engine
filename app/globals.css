@@ -3,8 +3,14 @@
 @tailwind utilities;
 
 :root {
+  /* ═══════════════════════════════════════════════════════════
+     VISIBILITY ENGINE DESIGN SYSTEM v2.0
+     Premium SaaS Visual Language (Dark-first)
+     ═══════════════════════════════════════════════════════════ */
+
   /* Colors - Light Mode (refined for premium feel) */
   --color-ink: #09090B;
+  --color-ink-secondary: #3F3F46;
   --color-slate: #71717A;
   --color-mist: #F4F4F5;
   --color-canvas: #FFFFFF;
@@ -12,80 +18,138 @@
   --color-signal-hover: #1E40AF;
   --color-signal-bg: #1D4ED8;
   --color-signal-bg-hover: #1E40AF;
+  --color-signal-muted: rgba(29, 78, 216, 0.08);
   --color-border: #E4E4E7;
+  --color-border-subtle: #F4F4F5;
   --color-smoke: #FAFAFA;
+  
+  /* Surface Layers (for depth without shadows) */
+  --color-surface-0: #FFFFFF;
+  --color-surface-1: #FAFAFA;
+  --color-surface-2: #F4F4F5;
+  --color-surface-3: #E4E4E7;
+  
+  /* Accent Gradient - subtle brand presence */
+  --gradient-signal: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.02) 100%);
   
   /* Subtle accent colors */
   --color-success: #22C55E;
-  --color-success-muted: #DCFCE7;
+  --color-success-muted: rgba(34, 197, 94, 0.1);
   --color-warning: #F59E0B;
-  --color-warning-muted: #FEF3C7;
+  --color-warning-muted: rgba(245, 158, 11, 0.1);
   --color-danger: #EF4444;
-  --color-danger-muted: #FEE2E2;
+  --color-danger-muted: rgba(239, 68, 68, 0.1);
   
-  /* Spacing (4px base) - more generous */
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-3: 0.75rem;  /* 12px */
-  --space-4: 1rem;     /* 16px */
-  --space-5: 1.25rem;  /* 20px */
-  --space-6: 1.5rem;   /* 24px */
-  --space-8: 2rem;     /* 32px */
-  --space-10: 2.5rem;  /* 40px */
-  --space-12: 3rem;    /* 48px */
-  --space-16: 4rem;    /* 64px */
-  --space-20: 5rem;    /* 80px */
-  --space-24: 6rem;    /* 96px */
+  /* Spacing (4px base) - premium generous spacing */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
   
   /* Typography - System fonts only */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
   
-  /* Refined shadows - subtle, premium */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-base: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-lg: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.03);
-  --shadow-xl: 0 10px 15px rgba(0,0,0,0.04), 0 4px 6px rgba(0,0,0,0.02);
+  /* Premium shadows - layered, sophisticated */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
+  --shadow-base: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02);
+  --shadow-glow: 0 0 0 1px rgba(29, 78, 216, 0.1), 0 4px 16px rgba(29, 78, 216, 0.1);
   
-  /* Radius - slightly softer */
+  /* Focus Ring - accessible but elegant */
+  --ring-signal: 0 0 0 2px var(--color-canvas), 0 0 0 4px rgba(29, 78, 216, 0.5);
+  
+  /* Radius - softer, modern */
+  --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-base: 8px;
+  --radius-md: 10px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
   
-  /* Transitions - fast, smooth */
-  --transition-fast: 100ms ease;
-  --transition-base: 150ms ease;
-  --transition-slow: 200ms ease;
+  /* Animation - premium micro-motion (GPU accelerated) */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-instant: 75ms;
+  --duration-fast: 120ms;
+  --duration-base: 150ms;
+  --duration-slow: 200ms;
+  --duration-slower: 300ms;
+  
+  /* Transition Presets */
+  --transition-colors: color var(--duration-fast) var(--ease-out-quad), 
+                       background-color var(--duration-fast) var(--ease-out-quad), 
+                       border-color var(--duration-fast) var(--ease-out-quad);
+  --transition-transform: transform var(--duration-fast) var(--ease-out-expo);
+  --transition-shadow: box-shadow var(--duration-base) var(--ease-out-quad);
+  --transition-opacity: opacity var(--duration-fast) var(--ease-out-quad);
+  --transition-all: all var(--duration-base) var(--ease-out-expo);
 }
 
-/* Dark Mode - truly dark, not gray */
+/* ═══════════════════════════════════════════════════════════
+   DARK MODE - Deep, sophisticated, not just inverted
+   ═══════════════════════════════════════════════════════════ */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --color-canvas: #09090B;
     --color-mist: #18181B;
     --color-ink: #FAFAFA;
-    --color-slate: #A1A1AA;
+    --color-ink-secondary: #A1A1AA;
+    --color-slate: #71717A;
     --color-signal: #60A5FA;
     --color-signal-hover: #93C5FD;
-    --color-signal-bg: #1D4ED8;
-    --color-signal-bg-hover: #1E40AF;
+    --color-signal-bg: #2563EB;
+    --color-signal-bg-hover: #1D4ED8;
+    --color-signal-muted: rgba(96, 165, 250, 0.1);
     --color-border: #27272A;
-    --color-smoke: #0F0F11;
+    --color-border-subtle: #1F1F23;
+    --color-smoke: #0C0C0E;
+    
+    /* Dark surface layers */
+    --color-surface-0: #09090B;
+    --color-surface-1: #0F0F11;
+    --color-surface-2: #18181B;
+    --color-surface-3: #27272A;
+    
+    /* Dark gradient */
+    --gradient-signal: linear-gradient(135deg, #2563EB 0%, #60A5FA 100%);
+    --gradient-surface: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
     
     /* Dark mode status colors */
     --color-success: #4ADE80;
-    --color-success-muted: rgba(34, 197, 94, 0.15);
+    --color-success-muted: rgba(74, 222, 128, 0.12);
     --color-warning: #FBBF24;
-    --color-warning-muted: rgba(245, 158, 11, 0.15);
+    --color-warning-muted: rgba(251, 191, 36, 0.12);
     --color-danger: #F87171;
-    --color-danger-muted: rgba(239, 68, 68, 0.15);
+    --color-danger-muted: rgba(248, 113, 113, 0.12);
     
-    /* Refined dark shadows */
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-    --shadow-base: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-    --shadow-lg: 0 4px 6px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
-    --shadow-xl: 0 10px 15px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
+    /* Dark shadows - subtle glow effect */
+    --shadow-xs: 0 1px 2px rgba(0,0,0,0.4);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+    --shadow-base: 0 2px 4px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    --shadow-xl: 0 16px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+    --shadow-glow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 4px 20px rgba(96, 165, 250, 0.15);
+    
+    /* Focus Ring - dark mode */
+    --ring-signal: 0 0 0 2px var(--color-canvas), 0 0 0 4px rgba(96, 165, 250, 0.5);
   }
 }
 
@@ -93,25 +157,40 @@
   --color-canvas: #09090B;
   --color-mist: #18181B;
   --color-ink: #FAFAFA;
-  --color-slate: #A1A1AA;
+  --color-ink-secondary: #A1A1AA;
+  --color-slate: #71717A;
   --color-signal: #60A5FA;
   --color-signal-hover: #93C5FD;
-  --color-signal-bg: #1D4ED8;
-  --color-signal-bg-hover: #1E40AF;
+  --color-signal-bg: #2563EB;
+  --color-signal-bg-hover: #1D4ED8;
+  --color-signal-muted: rgba(96, 165, 250, 0.1);
   --color-border: #27272A;
-  --color-smoke: #0F0F11;
+  --color-border-subtle: #1F1F23;
+  --color-smoke: #0C0C0E;
+  
+  --color-surface-0: #09090B;
+  --color-surface-1: #0F0F11;
+  --color-surface-2: #18181B;
+  --color-surface-3: #27272A;
+  
+  --gradient-signal: linear-gradient(135deg, #2563EB 0%, #60A5FA 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
   
   --color-success: #4ADE80;
-  --color-success-muted: rgba(34, 197, 94, 0.15);
+  --color-success-muted: rgba(74, 222, 128, 0.12);
   --color-warning: #FBBF24;
-  --color-warning-muted: rgba(245, 158, 11, 0.15);
+  --color-warning-muted: rgba(251, 191, 36, 0.12);
   --color-danger: #F87171;
-  --color-danger-muted: rgba(239, 68, 68, 0.15);
+  --color-danger-muted: rgba(248, 113, 113, 0.12);
   
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-base: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-lg: 0 4px 6px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
-  --shadow-xl: 0 10px 15px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+  --shadow-base: 0 2px 4px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-xl: 0 16px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  --shadow-glow: 0 0 0 1px rgba(96, 165, 250, 0.2), 0 4px 20px rgba(96, 165, 250, 0.15);
+  --ring-signal: 0 0 0 2px var(--color-canvas), 0 0 0 4px rgba(96, 165, 250, 0.5);
 }
 
 @layer base {
@@ -170,6 +249,61 @@
     box-shadow: var(--shadow-lg);
   }
   
+  /* Premium button press effect */
+  .press-effect {
+    transition: transform var(--duration-instant) var(--ease-out-expo);
+  }
+  
+  .press-effect:active {
+    transform: scale(0.98);
+  }
+  
+  /* Subtle glow on focus/hover */
+  .glow-on-hover {
+    transition: box-shadow var(--duration-base) var(--ease-out-quad);
+  }
+  
+  .glow-on-hover:hover {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Card with breathing room */
+  .card-breathe {
+    transition: transform var(--duration-slow) var(--ease-out-expo),
+                box-shadow var(--duration-slow) var(--ease-out-quad),
+                border-color var(--duration-fast) var(--ease-out-quad);
+  }
+  
+  .card-breathe:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border);
+  }
+  
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn var(--duration-slow) var(--ease-out-expo);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Gradient text (for hero sections) */
+  .text-gradient {
+    background: var(--gradient-signal);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Surface layers */
+  .surface-0 { background-color: var(--color-surface-0); }
+  .surface-1 { background-color: var(--color-surface-1); }
+  .surface-2 { background-color: var(--color-surface-2); }
+  .surface-3 { background-color: var(--color-surface-3); }
+  
   /* Status colors as utilities */
   .text-success { color: var(--color-success); }
   .text-warning { color: var(--color-warning); }
@@ -177,4 +311,8 @@
   .bg-success-muted { background-color: var(--color-success-muted); }
   .bg-warning-muted { background-color: var(--color-warning-muted); }
   .bg-danger-muted { background-color: var(--color-danger-muted); }
+  .bg-signal-muted { background-color: var(--color-signal-muted); }
+  
+  /* Border subtle */
+  .border-subtle { border-color: var(--color-border-subtle); }
 }

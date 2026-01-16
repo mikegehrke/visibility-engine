@@ -8,18 +8,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Core semantic colors
         ink: 'var(--color-ink)',
+        'ink-secondary': 'var(--color-ink-secondary)',
         slate: 'var(--color-slate)',
         mist: 'var(--color-mist)',
         canvas: 'var(--color-canvas)',
+        smoke: 'var(--color-smoke)',
+        
+        // Brand / Signal colors
         signal: 'var(--color-signal)',
         'signal-hover': 'var(--color-signal-hover)',
         'signal-bg': 'var(--color-signal-bg)',
         'signal-bg-hover': 'var(--color-signal-bg-hover)',
+        'signal-muted': 'var(--color-signal-muted)',
+        
+        // Border colors
         border: 'var(--color-border)',
-        smoke: 'var(--color-smoke)',
+        'border-subtle': 'var(--color-border-subtle)',
+        
         // Primary alias for signal (accessibility compliant)
         primary: 'var(--color-signal)',
+        
+        // Surface layers
+        'surface-0': 'var(--color-surface-0)',
+        'surface-1': 'var(--color-surface-1)',
+        'surface-2': 'var(--color-surface-2)',
+        'surface-3': 'var(--color-surface-3)',
+        
         // Status colors
         success: 'var(--color-success)',
         'success-muted': 'var(--color-success-muted)',
@@ -41,32 +57,46 @@ const config: Config = {
         '16': 'var(--space-16)',
         '20': 'var(--space-20)',
         '24': 'var(--space-24)',
+        '32': 'var(--space-32)',
       },
       fontFamily: {
         sans: 'var(--font-sans)',
         mono: 'var(--font-mono)',
       },
       boxShadow: {
+        xs: 'var(--shadow-xs)',
         sm: 'var(--shadow-sm)',
         DEFAULT: 'var(--shadow-base)',
-        md: 'var(--shadow-base)',
+        md: 'var(--shadow-md)',
         lg: 'var(--shadow-lg)',
         xl: 'var(--shadow-xl)',
+        glow: 'var(--shadow-glow)',
+        ring: 'var(--ring-signal)',
       },
       borderRadius: {
+        xs: 'var(--radius-xs)',
         sm: 'var(--radius-sm)',
         DEFAULT: 'var(--radius-base)',
-        md: 'var(--radius-base)',
+        md: 'var(--radius-md)',
         lg: 'var(--radius-lg)',
         xl: 'var(--radius-xl)',
+        '2xl': 'var(--radius-2xl)',
       },
       transitionDuration: {
-        fast: '100ms',
-        DEFAULT: '150ms',
-        slow: '200ms',
+        instant: 'var(--duration-instant)',
+        fast: 'var(--duration-fast)',
+        DEFAULT: 'var(--duration-base)',
+        slow: 'var(--duration-slow)',
+        slower: 'var(--duration-slower)',
       },
       transitionTimingFunction: {
-        DEFAULT: 'ease',
+        'out-expo': 'var(--ease-out-expo)',
+        'out-quad': 'var(--ease-out-quad)',
+        'in-out': 'var(--ease-in-out)',
+      },
+      backgroundImage: {
+        'gradient-signal': 'var(--gradient-signal)',
+        'gradient-surface': 'var(--gradient-surface)',
       },
     },
   },

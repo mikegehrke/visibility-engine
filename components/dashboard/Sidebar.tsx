@@ -14,7 +14,7 @@ interface NavItem {
 interface NavSection {
   title: string;
   items: NavItem[];
-  roadmap?: boolean; // Marks sections as planned/coming
+  roadmap?: boolean;
 }
 
 export default function Sidebar() {
@@ -102,19 +102,22 @@ export default function Sidebar() {
       key={item.href}
       href={item.href}
       className={`
-        flex items-center justify-between px-3 py-2 rounded-md text-sm transition-all duration-150
+        flex items-center justify-between px-3 py-2 rounded-lg text-[13px] font-medium
+        transition-all duration-fast ease-out-expo
         ${isActive 
-          ? 'bg-signal-bg text-white font-medium' 
+          ? 'bg-signal-bg text-white shadow-sm' 
           : item.comingSoon 
-            ? 'text-slate/60 hover:text-slate hover:bg-mist/50'
-            : 'text-ink hover:bg-mist'
+            ? 'text-slate/50 hover:text-slate hover:bg-surface-1'
+            : 'text-ink/80 hover:text-ink hover:bg-surface-1'
         }
       `}
     >
       <span>{item.label}</span>
       {item.badge && (
-        <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${
-          item.badge === 'new' ? 'bg-success/10 text-success' : 'bg-signal/10 text-signal'
+        <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-md ${
+          item.badge === 'new' 
+            ? 'bg-success-muted text-success' 
+            : 'bg-signal-muted text-signal'
         }`}>
           {item.badge.toUpperCase()}
         </span>
@@ -125,11 +128,11 @@ export default function Sidebar() {
   return (
     <aside className="w-64 h-screen border-r border-border bg-canvas flex flex-col">
       {/* Active Features */}
-      <div className="flex-1 overflow-y-auto py-4">
+      <div className="flex-1 overflow-y-auto py-5 scrollbar-thin">
         <div className="px-4 space-y-6">
           {activeFeatures.map((section, idx) => (
             <div key={idx}>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/70 px-3 mb-2 block">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/60 px-3 mb-2 block">
                 {section.title}
               </span>
               <nav className="space-y-0.5">
@@ -140,22 +143,22 @@ export default function Sidebar() {
         </div>
 
         {/* Separator */}
-        <div className="my-6 mx-4 border-t border-border" />
+        <div className="my-6 mx-4 border-t border-border/50" />
 
         {/* Roadmap Section */}
         <div className="px-4">
-          <div className="flex items-center gap-2 px-3 mb-3">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/50">
+          <div className="flex items-center gap-2 px-3 mb-4">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/40">
               Roadmap
             </span>
-            <span className="text-[10px] text-slate/40 font-normal normal-case">
-              Planned features
+            <span className="text-[10px] text-slate/30 font-normal normal-case">
+              Planned
             </span>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {roadmapFeatures.map((section, idx) => (
               <div key={idx}>
-                <span className="text-[10px] font-medium text-slate/40 px-3 mb-1 block">
+                <span className="text-[10px] font-medium text-slate/30 px-3 mb-1.5 block">
                   {section.title}
                 </span>
                 <nav className="space-y-0.5">
