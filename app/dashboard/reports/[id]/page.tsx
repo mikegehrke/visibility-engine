@@ -73,7 +73,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
       </div>
 
       {/* Executive Summary */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">{t.reports.summary}</h2>
         <p className="text-slate leading-relaxed">
           {t.reports.summaries[report.summaryKey as keyof typeof t.reports.summaries]}
@@ -81,7 +81,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
       </div>
 
       {/* Key Highlights */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">Key Highlights</h2>
         <ul className="space-y-2">
           {report.highlightKeys.map((key, idx) => (
@@ -98,7 +98,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
       </div>
 
       {/* Metrics Overview */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">{t.reports.metrics}</h2>
         <div className="grid grid-cols-3 gap-6">
           <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
@@ -118,7 +118,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
 
       {/* Related Rules */}
       {relatedRules.length > 0 && (
-        <div className="bg-white border border-mist rounded-lg p-6">
+        <div className="bg-canvas border border-border rounded-lg p-6">
           <h2 className="text-lg font-medium text-ink mb-4">{t.reports.relatedRules}</h2>
           <div className="space-y-3">
             {relatedRules.map((rule) => (
@@ -146,7 +146,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
 
       {/* Related Actions */}
       {relatedActions.length > 0 && (
-        <div className="bg-white border border-mist rounded-lg p-6">
+        <div className="bg-canvas border border-border rounded-lg p-6">
           <h2 className="text-lg font-medium text-ink mb-4">{t.reports.relatedActions}</h2>
           <div className="space-y-3">
             {relatedActions.map((action) => (
@@ -173,7 +173,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
       )}
 
       {/* Export Preview Section */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">{t.reports.exportPreview}</h2>
         <div className="grid grid-cols-2 gap-4 mb-4">
           {exportPreviews.map((preview) => (

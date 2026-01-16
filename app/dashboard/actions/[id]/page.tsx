@@ -149,13 +149,13 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
 
           {/* Related Rule */}
           {relatedRule && (
-            <div className="border-t border-mist pt-4">
+            <div className="border-t border-border pt-4">
               <span className="text-sm font-medium text-slate block mb-2">
                 {t.actions.triggeredBy}
               </span>
               <Link
                 href={`/dashboard/rules/${relatedRule.id}`}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-mist rounded-lg text-sm hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-canvas border border-border rounded-lg text-sm hover:bg-surface-1 transition-colors"
               >
                 <span className="font-medium text-ink">
                   {t.rules.titles[relatedRule.titleKey as keyof typeof t.rules.titles]}
@@ -185,7 +185,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
       )}
 
       {/* Simulated Outcome */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h3 className="text-lg font-medium text-ink mb-3">{t.actions.simulatedResult}</h3>
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
           <p className="text-sm text-slate font-mono">
@@ -196,7 +196,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
 
       {/* Automation Readiness (if available) */}
       {automationConfig && (
-        <div className="bg-white border border-mist rounded-lg p-6">
+        <div className="bg-canvas border border-border rounded-lg p-6">
           <h3 className="text-lg font-medium text-ink mb-4">{t.automation.automationReady}</h3>
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
@@ -232,7 +232,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
       )}
 
       {/* Manual Execution Section */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h3 className="text-lg font-medium text-ink mb-4">{t.execution.manualExecution}</h3>
         
         {/* Success Message */}
@@ -273,7 +273,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
       {/* Confirm Dialog */}
       {showConfirmDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
+          <div className="bg-canvas rounded-lg shadow-xl max-w-md w-full mx-4">
             <div className="p-6">
               <h3 className="text-lg font-medium text-ink mb-4">{t.execution.confirmTitle}</h3>
               <p className="text-slate mb-4">{t.execution.confirmMessage}</p>

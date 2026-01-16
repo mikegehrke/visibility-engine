@@ -81,7 +81,7 @@ export default function AutoModeSettingsPage() {
       )}
 
       {/* Kill Switch */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-lg font-medium text-ink">{t.autoMode.killSwitch}</h2>
@@ -103,7 +103,7 @@ export default function AutoModeSettingsPage() {
       </div>
 
       {/* Auto Mode Level */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">{t.autoMode.level}</h2>
         <div className="grid grid-cols-3 gap-4">
           {(['assisted', 'guarded', 'full-auto'] as AutoModeLevel[]).map((level) => {
@@ -119,8 +119,8 @@ export default function AutoModeSettingsPage() {
                   isSelected
                     ? 'border-ink bg-gray-50'
                     : isDisabled
-                    ? 'border-mist bg-gray-50 opacity-50 cursor-not-allowed'
-                    : 'border-mist hover:border-slate'
+                    ? 'border-border bg-gray-50 opacity-50 cursor-not-allowed'
+                    : 'border-border hover:border-slate'
                 }`}
               >
                 <div className="flex items-center gap-2 mb-2">
@@ -146,7 +146,7 @@ export default function AutoModeSettingsPage() {
       </div>
 
       {/* Action Caps */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">{t.autoMode.actionCaps}</h2>
         <div className="grid grid-cols-3 gap-6">
           <div>
@@ -177,7 +177,7 @@ export default function AutoModeSettingsPage() {
       </div>
 
       {/* Automation Windows */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">{t.autoMode.automationWindows}</h2>
         {settings.automationWindows.enabled ? (
           <div className="space-y-3">
@@ -197,7 +197,7 @@ export default function AutoModeSettingsPage() {
       </div>
 
       {/* Confidence Threshold */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">{t.autoMode.confidenceThreshold}</h2>
         <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
           <div className="flex items-center justify-between">

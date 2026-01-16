@@ -33,7 +33,7 @@ export default function DistributionPage() {
           return (
             <div
               key={channel.id}
-              className="bg-white border border-mist rounded-lg p-6 space-y-4"
+              className="bg-canvas border border-border rounded-lg p-6 space-y-4"
             >
               {/* Channel Header */}
               <div className="flex items-start justify-between">

@@ -41,7 +41,7 @@ export default function ReportsPage() {
       {/* Reports Grid */}
       <div className="grid grid-cols-1 gap-6">
         {mockReports.map((report) => (
-          <div key={report.id} className="bg-white border border-mist rounded-lg p-6">
+          <div key={report.id} className="bg-canvas border border-border rounded-lg p-6">
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">

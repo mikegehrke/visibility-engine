@@ -160,7 +160,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
 
           {/* Phase 16A: Auto Mode Info */}
           {config.autoModeEnabled && (
-            <div className="border-t border-mist pt-4">
+            <div className="border-t border-border pt-4">
               <span className="text-sm font-medium text-slate block mb-2">
                 {t.autoMode.title}
               </span>
@@ -176,14 +176,14 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
           )}
 
           {/* Related Action & Rule */}
-          <div className="border-t border-mist pt-4 space-y-3">
+          <div className="border-t border-border pt-4 space-y-3">
             <div>
               <span className="text-sm font-medium text-slate block mb-2">
                 {t.automation.relatedAction}
               </span>
               <Link
                 href={`/dashboard/actions/${config.relatedActionId}`}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-mist rounded-lg text-sm hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-canvas border border-border rounded-lg text-sm hover:bg-surface-1 transition-colors"
               >
                 <span className="font-medium text-ink">
                   {relatedAction && t.actions.titles[relatedAction.titleKey as keyof typeof t.actions.titles]}
@@ -198,7 +198,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
                 </span>
                 <Link
                   href={`/dashboard/rules/${relatedRule.id}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-mist rounded-lg text-sm hover:bg-gray-50 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-canvas border border-border rounded-lg text-sm hover:bg-surface-1 transition-colors"
                 >
                   <span className="font-medium text-ink">
                     {t.rules.titles[relatedRule.titleKey as keyof typeof t.rules.titles]}
@@ -233,7 +233,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
       )}
 
       {/* Safety Notice */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h3 className="text-lg font-medium text-ink mb-3">{t.automation.safetyNotice}</h3>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
           <p className="text-sm text-blue-800">
@@ -244,7 +244,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
 
       {/* Blocked Reason (if applicable) */}
       {config.status === 'blocked' && config.blockedReasonKey && (
-        <div className="bg-white border border-mist rounded-lg p-6">
+        <div className="bg-canvas border border-border rounded-lg p-6">
           <h3 className="text-lg font-medium text-ink mb-3">{t.automation.readinessStatus}</h3>
           <div className="bg-red-50 border border-red-200 rounded-lg p-4">
             <p className="text-sm text-red-700">
@@ -255,7 +255,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
       )}
 
       {/* Last Simulation Result */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <h3 className="text-lg font-medium text-ink mb-3">{t.automation.lastSimulation}</h3>
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
           <p className="text-sm text-slate font-mono">
@@ -265,7 +265,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
       </div>
 
       {/* Enable Button (disabled) */}
-      <div className="bg-white border border-mist rounded-lg p-6">
+      <div className="bg-canvas border border-border rounded-lg p-6">
         <button
           disabled
           className="w-full px-6 py-3 bg-gray-300 text-gray-600 rounded-lg text-sm font-medium cursor-not-allowed"

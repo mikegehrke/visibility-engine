@@ -66,7 +66,7 @@ export default function AutomationPage() {
           return (
             <div
               key={config.id}
-              className="bg-white border border-mist rounded-lg p-5 space-y-4"
+              className="bg-canvas border border-border rounded-lg p-5 space-y-4"
             >
               {/* Header */}
               <div className="flex items-start justify-between">
@@ -110,7 +110,7 @@ export default function AutomationPage() {
               </div>
 
               {/* Enabled Toggle (UI only, disabled for auto mode) */}
-              <div className="flex items-center justify-between border-t border-mist pt-4">
+              <div className="flex items-center justify-between border-t border-border pt-4">
                 <span className="text-sm text-slate">{t.automation.enabled}</span>
                 <button
                   disabled
@@ -120,7 +120,7 @@ export default function AutomationPage() {
                   title={config.executionMode === 'auto' ? t.automation.safetyNotices.autoModeNotAvailable : t.automation.notActiveNotice}
                 >
                   <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                    className={`inline-block h-4 w-4 transform rounded-full bg-canvas transition-transform ${
                       config.enabled ? 'translate-x-6' : 'translate-x-1'
                     }`}
                   />

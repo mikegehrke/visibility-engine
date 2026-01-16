@@ -93,10 +93,10 @@ export default function ExecutionsPage() {
       </div>
 
       {/* Execution Log Table */}
-      <div className="bg-white border border-mist rounded-lg overflow-hidden">
+      <div className="bg-canvas border border-border rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b border-mist">
+            <thead className="bg-gray-50 border-b border-border">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-slate uppercase tracking-wider">
                   {t.execution.action}
@@ -130,7 +130,7 @@ export default function ExecutionsPage() {
                 const showConfirmDialog = confirmRollbackId === log.id;
                 
                 return (
-                  <tr key={log.id} className="hover:bg-gray-50 transition-colors">
+                  <tr key={log.id} className="hover:bg-surface-1 transition-colors">
                     <td className="px-6 py-4">
                       <Link
                         href={`/dashboard/actions/${log.actionId}`}
@@ -161,7 +161,7 @@ export default function ExecutionsPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             {/* Tooltip */}
-                            <div className="hidden group-hover:block absolute z-10 w-64 p-3 bg-white border border-mist rounded-lg shadow-lg -top-2 left-6">
+                            <div className="hidden group-hover:block absolute z-10 w-64 p-3 bg-canvas border border-border rounded-lg shadow-lg -top-2 left-6">
                               <div className="text-xs space-y-1">
                                 <p className="font-medium text-ink">{t.autoMode.whyExecuted}</p>
                                 {log.ruleId && (
@@ -209,13 +209,13 @@ export default function ExecutionsPage() {
                           </button>
                           {/* Confirm Dialog */}
                           {showConfirmDialog && (
-                            <div className="absolute z-20 right-0 top-8 w-64 bg-white border border-mist rounded-lg shadow-lg p-4">
+                            <div className="absolute z-20 right-0 top-8 w-64 bg-canvas border border-border rounded-lg shadow-lg p-4">
                               <p className="text-sm font-medium text-ink mb-2">{t.rollback.confirmUndo}</p>
                               <p className="text-xs text-slate mb-3">{t.rollback.confirmMessage}</p>
                               <div className="flex gap-2">
                                 <button
                                   onClick={() => setConfirmRollbackId(null)}
-                                  className="flex-1 px-3 py-1.5 text-xs font-medium text-slate border border-mist rounded hover:bg-gray-50"
+                                  className="flex-1 px-3 py-1.5 text-xs font-medium text-slate border border-border rounded hover:bg-surface-1"
                                 >
                                   {t.rollback.cancel}
                                 </button>

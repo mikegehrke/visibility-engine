@@ -150,7 +150,7 @@ export default function RuleDetailPage({ params }: { params: { id: string } }) {
       </div>
 
       {/* Human-Readable Summary */}
-      <div className="bg-white border border-mist rounded-lg p-5">
+      <div className="bg-canvas border border-border rounded-lg p-5">
         <h3 className="text-sm font-semibold text-ink mb-2">Human-Readable Summary</h3>
         <p className="text-sm text-slate">
           {t.rules.preview.if} <span className="font-medium text-ink">{conditionText}</span>,{' '}
@@ -164,7 +164,7 @@ export default function RuleDetailPage({ params }: { params: { id: string } }) {
         if (relatedActions.length === 0) return null;
 
         return (
-          <div className="bg-white border border-mist rounded-lg p-5">
+          <div className="bg-canvas border border-border rounded-lg p-5">
             <h3 className="text-sm font-semibold text-ink mb-3">
               Related Actions ({t.actions.simulation})
             </h3>
@@ -173,7 +173,7 @@ export default function RuleDetailPage({ params }: { params: { id: string } }) {
                 <Link
                   key={action.id}
                   href={`/dashboard/actions/${action.id}`}
-                  className="flex items-center justify-between p-3 border border-mist rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-between p-3 border border-border rounded-lg hover:bg-surface-1 transition-colors"
                 >
                   <div className="flex-1">
                     <p className="text-sm font-medium text-ink">

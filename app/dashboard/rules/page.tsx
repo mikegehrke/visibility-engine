@@ -45,7 +45,7 @@ export default function RulesPage() {
             {rules.map((rule) => (
               <div
                 key={rule.id}
-                className="bg-white border border-mist rounded-lg p-5 space-y-3"
+                className="bg-canvas border border-border rounded-lg p-5 space-y-3"
               >
                 {/* Rule Header */}
                 <div className="flex items-start justify-between">
@@ -80,7 +80,7 @@ export default function RulesPage() {
                 </div>
 
                 {/* Quick Preview */}
-                <div className="text-xs text-slate border-t border-mist pt-3 space-y-1">
+                <div className="text-xs text-slate border-t border-border pt-3 space-y-1">
                   <div>
                     <span className="font-medium">{t.rules.preview.if}:</span>{' '}
                     {t.rules.metrics[rule.condition.metric]} {t.rules.operators[rule.condition.operator]}{' '}

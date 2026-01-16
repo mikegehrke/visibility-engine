@@ -74,10 +74,10 @@ export default function SignalsPage() {
             value={selectedTimeRange}
             onChange={(e) => setSelectedTimeRange(e.target.value as TimeRangeId)}
             aria-label={t.signals.timeRange.label}
-            className="px-3 py-2 bg-white text-ink border border-mist rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-signal"
+            className="px-3 py-2 bg-canvas text-ink border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-signal/50 focus:border-signal transition-colors duration-fast"
           >
             {timeRanges.slice(0, 3).map((range) => (
-              <option key={range.id} value={range.id}>
+              <option key={range.id} value={range.id} className="bg-canvas text-ink">
                 {t.signals.timeRange[range.id as keyof typeof t.signals.timeRange]}
               </option>
             ))}
@@ -94,7 +94,7 @@ export default function SignalsPage() {
           return (
             <div
               key={metric.id}
-              className="bg-white border border-mist rounded-lg p-6 space-y-3"
+              className="bg-canvas border border-border rounded-lg p-6 space-y-3"
             >
               <div className="flex items-start justify-between">
                 <div className="text-sm text-slate">
@@ -125,7 +125,7 @@ export default function SignalsPage() {
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Visibility Score Line Chart */}
-        <div className="bg-white border border-mist rounded-lg p-6">
+        <div className="bg-canvas border border-border rounded-lg p-6">
           <h3 className="text-lg font-medium text-ink mb-4">
             {t.signals.metrics.visibilityScore.name}
           </h3>
@@ -162,7 +162,7 @@ export default function SignalsPage() {
         </div>
 
         {/* Reach Bar Chart */}
-        <div className="bg-white border border-mist rounded-lg p-6">
+        <div className="bg-canvas border border-border rounded-lg p-6">
           <h3 className="text-lg font-medium text-ink mb-4">
             {t.signals.metrics.reach.name}
           </h3>

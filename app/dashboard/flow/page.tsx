@@ -65,7 +65,7 @@ export default function FlowPage() {
                       
                       {/* Item Count Badge */}
                       {step.itemCount !== undefined && (
-                        <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-gray-300">
+                        <div className="flex items-center gap-2 bg-canvas px-3 py-1 rounded-full border border-gray-300">
                           <span className="text-xs text-slate">{t.flow.itemsLabel}:</span>
                           <span className="text-sm font-semibold text-ink">{step.itemCount}</span>
                         </div>
