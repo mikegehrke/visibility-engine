@@ -102,13 +102,13 @@ export default function Sidebar() {
       key={item.href}
       href={item.href}
       className={`
-        flex items-center justify-between px-3 py-2 rounded-lg text-[13px] font-medium
-        transition-all duration-fast ease-out-expo
+        flex items-center justify-between px-3 py-2.5 min-h-[44px] rounded-lg text-[13px] font-medium
+        transition-all duration-fast ease-out-expo tap-highlight
         ${isActive 
           ? 'bg-signal-bg text-white shadow-sm' 
           : item.comingSoon 
-            ? 'text-slate/50 hover:text-slate hover:bg-surface-1'
-            : 'text-ink/80 hover:text-ink hover:bg-surface-1'
+            ? 'text-slate/50 hover:text-slate hover:bg-surface-1 active:bg-surface-1 focus-visible:bg-surface-1'
+            : 'text-ink/80 hover:text-ink hover:bg-surface-1 active:text-ink active:bg-surface-1 focus-visible:text-ink focus-visible:bg-surface-1'
         }
       `}
     >
@@ -126,9 +126,9 @@ export default function Sidebar() {
   );
 
   return (
-    <aside className="w-64 h-screen border-r border-border bg-canvas flex flex-col">
+    <aside className="w-64 h-screen border-r border-border bg-canvas flex flex-col safe-area-bottom">
       {/* Active Features */}
-      <div className="flex-1 overflow-y-auto py-5 scrollbar-thin">
+      <div className="flex-1 overflow-y-auto py-5 scrollbar-thin scroll-container">
         <div className="px-4 space-y-6">
           {activeFeatures.map((section, idx) => (
             <div key={idx}>

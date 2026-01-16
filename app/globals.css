@@ -14,6 +14,7 @@
   --color-slate: #71717A;
   --color-mist: #F4F4F5;
   --color-canvas: #FFFFFF;
+  --color-canvas-rgb: 255, 255, 255;
   --color-signal: #1D4ED8;
   --color-signal-hover: #1E40AF;
   --color-signal-bg: #1D4ED8;
@@ -108,6 +109,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --color-canvas: #09090B;
+    --color-canvas-rgb: 9, 9, 11;
     --color-mist: #18181B;
     --color-ink: #FAFAFA;
     --color-ink-secondary: #A1A1AA;
@@ -155,6 +157,7 @@
 
 [data-theme="dark"] {
   --color-canvas: #09090B;
+  --color-canvas-rgb: 9, 9, 11;
   --color-mist: #18181B;
   --color-ink: #FAFAFA;
   --color-ink-secondary: #A1A1AA;
@@ -315,4 +318,101 @@
   
   /* Border subtle */
   .border-subtle { border-color: var(--color-border-subtle); }
+  
+  /* ═══════════════════════════════════════════════════════════
+     MOBILE-FIRST UTILITIES (Phase 3)
+     ═══════════════════════════════════════════════════════════ */
+  
+  /* Touch Target - minimum 44×44px for iOS/Android */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Touch Target Inline - for inline buttons (horizontal padding) */
+  .touch-target-inline {
+    min-height: 44px;
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+  
+  /* Hover Fallback - works on touch AND desktop */
+  .hover-touch {
+    transition: all var(--duration-fast) var(--ease-out-expo);
+  }
+  
+  .hover-touch:hover,
+  .hover-touch:active {
+    background-color: var(--color-mist);
+  }
+  
+  .hover-touch:focus-visible {
+    background-color: var(--color-mist);
+    outline: none;
+    box-shadow: var(--ring-signal);
+  }
+  
+  /* Active state feedback for touch */
+  .tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+    transition: transform var(--duration-instant) var(--ease-out-expo),
+                opacity var(--duration-instant) var(--ease-out-expo);
+  }
+  
+  .tap-highlight:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+  
+  /* iOS Safe Area padding */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  .safe-area-x {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+  
+  .safe-area-all {
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  }
+  
+  /* Performant sticky header (GPU accelerated, no backdrop-filter overkill) */
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    /* GPU layer promotion for smooth scroll */
+    transform: translateZ(0);
+    will-change: transform;
+    /* Lightweight blur - Safari optimized */
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    backdrop-filter: blur(12px) saturate(180%);
+    /* Semi-transparent background */
+    background-color: rgba(var(--color-canvas-rgb, 255, 255, 255), 0.8);
+  }
+  
+  /* Scroll snap for smooth gesture scrolling */
+  .scroll-smooth-touch {
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+  }
+  
+  /* Prevent accidental tap blocking on scroll containers */
+  .scroll-container {
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-y: contain;
+  }
+  
+  /* Disable text selection on interactive elements (mobile) */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
 }

@@ -28,10 +28,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           // Focus ring - accessible, elegant
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal/50 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
           
-          // Size variants - refined proportions with better spacing
-          size === 'sm' && 'h-8 px-3 text-[13px] rounded-md gap-1.5',
-          size === 'md' && 'h-10 px-4 text-sm rounded-md gap-2',
-          size === 'lg' && 'h-12 px-6 text-[15px] rounded-lg gap-2.5',
+          // Size variants - refined proportions with touch-friendly sizing (min 44px)
+          size === 'sm' && 'h-9 min-h-[44px] px-3 text-[13px] rounded-md gap-1.5',
+          size === 'md' && 'h-10 min-h-[44px] px-4 text-sm rounded-md gap-2',
+          size === 'lg' && 'h-12 min-h-[44px] px-6 text-[15px] rounded-lg gap-2.5',
           
           // Variant styles - subtle, premium hover states
           variant === 'primary' && [

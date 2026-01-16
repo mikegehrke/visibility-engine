@@ -6,8 +6,8 @@ const t = publicTranslations.en;
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-canvas/80 backdrop-blur-md border-b border-border/50">
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="sticky-header border-b border-border/50 safe-area-top">
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between safe-area-x">
         {/* Logo */}
         <Link 
           href="/" 
@@ -27,7 +27,7 @@ export default function Header() {
             <Link 
               key={link.href}
               href={link.href} 
-              className="px-3 py-2 text-sm text-slate rounded-md transition-all duration-fast hover:text-ink hover:bg-mist"
+              className="px-3 py-2.5 min-h-[44px] flex items-center text-sm text-slate rounded-md transition-all duration-fast hover:text-ink hover:bg-mist active:bg-mist active:text-ink focus-visible:bg-mist focus-visible:text-ink tap-highlight"
             >
               {link.label}
             </Link>
