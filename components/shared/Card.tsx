@@ -46,8 +46,8 @@ export default function Card({
           'border border-transparent',
         ],
         variant === 'glass' && [
-          'bg-canvas/80 backdrop-blur-sm',
-          'border border-border/50',
+          'bg-canvas/90 dark:bg-surface-1/90 backdrop-blur-md',
+          'border border-border/60',
           'shadow-sm',
         ],
         

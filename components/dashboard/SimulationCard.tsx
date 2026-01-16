@@ -101,7 +101,7 @@ export default function SimulationCard({
       </div>
 
       {/* Data Source */}
-      <div className="bg-white/50 border border-mist rounded-lg p-3 mb-4">
+      <div className="bg-surface-1 border border-border rounded-lg p-3 mb-4">
         <p className="text-xs text-slate">
           {t.simulation.basedOnData}: <span className="font-medium text-ink">{simulation.basedOnDataPoints}</span> {t.simulation.dataPoints}
         </p>
@@ -109,15 +109,15 @@ export default function SimulationCard({
 
       {/* Approval Status & Actions */}
       {simulation.approved ? (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+        <div className="bg-emerald-500/10 dark:bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-3">
           <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
             <div className="flex-1">
-              <p className="text-sm font-medium text-green-800">{t.simulation.approved}</p>
+              <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">{t.simulation.approved}</p>
               {simulation.approvedBy && (
-                <p className="text-xs text-green-700 mt-1">
+                <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">
                   {t.simulation.approvedBy}: {simulation.approvedBy}
                 </p>
               )}
@@ -126,8 +126,8 @@ export default function SimulationCard({
         </div>
       ) : simulation.requiresApproval ? (
         <div className="space-y-2">
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-3">
-            <p className="text-xs font-medium text-amber-800">
+          <div className="bg-amber-500/10 dark:bg-amber-500/5 border border-amber-500/20 rounded-lg p-3 mb-3">
+            <p className="text-xs font-medium text-amber-700 dark:text-amber-300">
               {t.simulation.approvalRequired}
             </p>
           </div>
@@ -140,8 +140,8 @@ export default function SimulationCard({
         </div>
       ) : (
         <div className="space-y-2">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-3">
-            <p className="text-xs font-medium text-blue-800">
+          <div className="bg-signal/10 dark:bg-signal/5 border border-signal/20 rounded-lg p-3 mb-3">
+            <p className="text-xs font-medium text-signal dark:text-signal-hover">
               {t.simulation.ownerOptional}
             </p>
           </div>
