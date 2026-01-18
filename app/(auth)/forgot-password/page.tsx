@@ -3,14 +3,12 @@
 import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import Button from '@/components/shared/Button';
-import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/shared/Card';
+import Card, { CardContent, CardFooter } from '@/components/shared/Card';
 import { Label, Small, Overline } from '@/components/shared/Typography';
 import { useLanguage } from '@/lib/context/LanguageContext';
-import { translations } from '@/lib/i18n/translations';
 
 export default function ForgotPasswordPage() {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -39,25 +37,25 @@ export default function ForgotPasswordPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
             </div>
-            <Overline className="mb-3">E-Mail versendet</Overline>
-            <h1 className="text-2xl font-semibold text-ink tracking-tight">Überprüfe dein Postfach</h1>
+            <Overline className="mb-3">{t.auth.forgotPassword.emailSentOverline}</Overline>
+            <h1 className="text-2xl font-semibold text-ink tracking-tight">{t.auth.forgotPassword.emailSentTitle}</h1>
           </div>
 
           <Card variant="glass" className="shadow-lg">
             <CardContent className="py-6 space-y-4">
               <Small className="block">
-                Wir haben dir eine E-Mail an <strong className="text-ink">{email}</strong> gesendet.
+                {t.auth.forgotPassword.emailSentTo} <strong className="text-ink">{email}</strong> gesendet.
               </Small>
               <Small className="block">
-                Klicke auf den Link in der E-Mail, um dein Passwort zurückzusetzen.
+                {t.auth.forgotPassword.emailSentDesc}
               </Small>
               <Small className="block text-slate">
-                Keine E-Mail erhalten? Überprüfe deinen Spam-Ordner oder{' '}
+                {t.auth.forgotPassword.noEmail}{' '}
                 <button
                   onClick={() => setIsSubmitted(false)}
                   className="text-signal hover:text-signal/80 transition-colors duration-fast"
                 >
-                  versuche es erneut
+                  {t.auth.forgotPassword.tryAgain}
                 </button>
                 .
               </Small>
@@ -66,7 +64,7 @@ export default function ForgotPasswordPage() {
             <CardFooter className="pb-6">
               <Link href="/login" className="w-full">
                 <Button variant="primary" className="w-full h-11">
-                  Zurück zum Login
+                  {t.auth.common.backToLogin}
                 </Button>
               </Link>
             </CardFooter>
@@ -77,7 +75,7 @@ export default function ForgotPasswordPage() {
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
               </svg>
-              Zurück zur Startseite
+              {t.auth.common.backToHome}
             </Link>
           </p>
         </div>
@@ -94,10 +92,10 @@ export default function ForgotPasswordPage() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
             </svg>
           </div>
-          <Overline className="mb-3">Passwort vergessen?</Overline>
-          <h1 className="text-2xl font-semibold text-ink tracking-tight mb-2">Kein Problem</h1>
+          <Overline className="mb-3">{t.auth.forgotPassword.overline}</Overline>
+          <h1 className="text-2xl font-semibold text-ink tracking-tight mb-2">{t.auth.forgotPassword.title}</h1>
           <p className="text-sm text-slate">
-            Gib deine E-Mail-Adresse ein und wir senden dir einen Link zum Zurücksetzen.
+            {t.auth.forgotPassword.subtitle}
           </p>
         </div>
 
@@ -105,11 +103,11 @@ export default function ForgotPasswordPage() {
           <CardContent className="pt-6">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
-                <Label htmlFor="email">E-Mail</Label>
+                <Label htmlFor="email">{t.auth.forgotPassword.email}</Label>
                 <input
                   id="email"
                   type="email"
-                  placeholder="name@beispiel.de"
+                  placeholder={t.auth.common.emailPlaceholder}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -130,9 +128,9 @@ export default function ForgotPasswordPage() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>
-                    Wird gesendet...
+                    {t.auth.common.sending}
                   </span>
-                ) : 'Reset-Link senden'}
+                ) : t.auth.forgotPassword.submit}
               </Button>
             </form>
           </CardContent>
@@ -143,14 +141,14 @@ export default function ForgotPasswordPage() {
                 <div className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-surface-0 px-3 text-slate tracking-wide">oder</span>
+                <span className="bg-surface-0 px-3 text-slate tracking-wide">{t.auth.common.or}</span>
               </div>
             </div>
 
             <p className="text-sm text-center text-slate">
-              Doch erinnert?{' '}
+              {t.auth.forgotPassword.remembered}{' '}
               <Link href="/login" className="text-signal font-medium hover:text-signal/80 transition-colors duration-fast">
-                Zurück zum Login
+                {t.auth.forgotPassword.backToLogin}
               </Link>
             </p>
           </CardFooter>
@@ -161,7 +159,7 @@ export default function ForgotPasswordPage() {
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
             </svg>
-            Zurück zur Startseite
+            {t.auth.common.backToHome}
           </Link>
         </p>
       </div>

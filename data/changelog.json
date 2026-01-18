@@ -1,0 +1,404 @@
+{
+  "entries": [
+    {
+      "version": "v2.8.0",
+      "date": {
+        "de": "15. Jan 2026",
+        "en": "Jan 15, 2026"
+      },
+      "title": {
+        "de": "KI-gestützte Content-Vorschläge",
+        "en": "AI-Powered Content Suggestions"
+      },
+      "description": {
+        "de": "Einführung intelligenter Content-Vorschläge basierend auf Performance-Daten und Trending-Themen. Die KI analysiert deine erfolgreichsten Inhalte und schlägt neue Ideen vor, die bei deiner Audience ankommen werden.",
+        "en": "Introducing intelligent content suggestions based on your performance data and trending topics. The AI analyzes your best-performing content and suggests new ideas that are likely to resonate with your audience."
+      },
+      "tags": ["feature", "improvement"]
+    },
+    {
+      "version": "v2.7.5",
+      "date": {
+        "de": "8. Jan 2026",
+        "en": "Jan 8, 2026"
+      },
+      "title": {
+        "de": "Erweitertes Analytics-Dashboard",
+        "en": "Enhanced Analytics Dashboard"
+      },
+      "description": {
+        "de": "Komplett überarbeitetes Analytics-Dashboard mit neuen Visualisierungsoptionen, benutzerdefinierten Zeiträumen und exportierbaren Reports. Enthält jetzt auch prädiktive Performance-Metriken.",
+        "en": "Completely redesigned analytics dashboard with new visualization options, custom date ranges, and exportable reports. Now includes predictive performance metrics."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.7.4",
+      "date": {
+        "de": "2. Jan 2026",
+        "en": "Jan 2, 2026"
+      },
+      "title": {
+        "de": "Bugfix: Scheduling-Zeitzone",
+        "en": "Bugfix: Scheduling Timezone"
+      },
+      "description": {
+        "de": "Behoben: Posts wurden in manchen Fällen zur falschen Zeit veröffentlicht. Zeitzonenberechnung wurde komplett überarbeitet für 100% Genauigkeit.",
+        "en": "Fixed: Posts were sometimes published at the wrong time. Timezone calculation has been completely overhauled for 100% accuracy."
+      },
+      "tags": ["fix"]
+    },
+    {
+      "version": "v2.7.3",
+      "date": {
+        "de": "27. Dez 2025",
+        "en": "Dec 27, 2025"
+      },
+      "title": {
+        "de": "Mobile App Performance",
+        "en": "Mobile App Performance"
+      },
+      "description": {
+        "de": "Signifikante Performance-Verbesserungen in der mobilen App. Startzeit um 60% reduziert, Bildupload 3x schneller, Push-Benachrichtigungen zuverlässiger.",
+        "en": "Significant performance improvements in the mobile app. Startup time reduced by 60%, image upload 3x faster, push notifications more reliable."
+      },
+      "tags": ["improvement"]
+    },
+    {
+      "version": "v2.7.2",
+      "date": {
+        "de": "20. Dez 2025",
+        "en": "Dec 20, 2025"
+      },
+      "title": {
+        "de": "Hashtag Analytics",
+        "en": "Hashtag Analytics"
+      },
+      "description": {
+        "de": "Neue Hashtag-Performance-Analyse. Sieh genau, welche Hashtags die beste Reichweite bringen und erhalte KI-Vorschläge für optimale Hashtag-Kombinationen.",
+        "en": "New hashtag performance analysis. See exactly which hashtags bring the best reach and get AI suggestions for optimal hashtag combinations."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.7.1",
+      "date": {
+        "de": "13. Dez 2025",
+        "en": "Dec 13, 2025"
+      },
+      "title": {
+        "de": "API Rate Limiting Update",
+        "en": "API Rate Limiting Update"
+      },
+      "description": {
+        "de": "Verbesserte API-Rate-Limits für Enterprise-Kunden. Bis zu 10.000 Requests pro Minute möglich. Neue Retry-Logik bei temporären Fehlern.",
+        "en": "Improved API rate limits for enterprise customers. Up to 10,000 requests per minute possible. New retry logic for temporary errors."
+      },
+      "tags": ["improvement"]
+    },
+    {
+      "version": "v2.7.0",
+      "date": {
+        "de": "6. Dez 2025",
+        "en": "Dec 6, 2025"
+      },
+      "title": {
+        "de": "Performance-Optimierung",
+        "en": "Performance Optimization"
+      },
+      "description": {
+        "de": "Große Performance-Verbesserungen auf der gesamten Plattform. Seitenladezeiten um 40% reduziert, Echtzeit-Updates sind jetzt instant, Mobile-Experience besser als je zuvor.",
+        "en": "Major performance improvements across the platform. Page load times reduced by 40%, real-time updates are now instant, and mobile experience is smoother than ever."
+      },
+      "tags": ["improvement", "fix"]
+    },
+    {
+      "version": "v2.6.8",
+      "date": {
+        "de": "29. Nov 2025",
+        "en": "Nov 29, 2025"
+      },
+      "title": {
+        "de": "Bulk Actions für Posts",
+        "en": "Bulk Actions for Posts"
+      },
+      "description": {
+        "de": "Neue Bulk-Aktionen: Mehrere Posts gleichzeitig bearbeiten, löschen, neu planen oder als Vorlage speichern. Spart enorm Zeit bei großen Content-Bibliotheken.",
+        "en": "New bulk actions: Edit, delete, reschedule or save multiple posts as templates simultaneously. Saves enormous time for large content libraries."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.6.7",
+      "date": {
+        "de": "22. Nov 2025",
+        "en": "Nov 22, 2025"
+      },
+      "title": {
+        "de": "Instagram Reels Optimierung",
+        "en": "Instagram Reels Optimization"
+      },
+      "description": {
+        "de": "Verbesserte Unterstützung für Instagram Reels. Auto-Captions, Cover-Bild-Auswahl und optimierte Hashtag-Vorschläge speziell für Kurzvideos.",
+        "en": "Improved support for Instagram Reels. Auto-captions, cover image selection and optimized hashtag suggestions specifically for short videos."
+      },
+      "tags": ["feature", "improvement"]
+    },
+    {
+      "version": "v2.6.6",
+      "date": {
+        "de": "15. Nov 2025",
+        "en": "Nov 15, 2025"
+      },
+      "title": {
+        "de": "Export-Funktion erweitert",
+        "en": "Export Function Extended"
+      },
+      "description": {
+        "de": "Neue Exportformate: Excel, Google Sheets Integration, PDF-Reports mit Branding. Automatisierte wöchentliche/monatliche Reports per E-Mail möglich.",
+        "en": "New export formats: Excel, Google Sheets integration, PDF reports with branding. Automated weekly/monthly reports via email possible."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.6.5",
+      "date": {
+        "de": "8. Nov 2025",
+        "en": "Nov 8, 2025"
+      },
+      "title": {
+        "de": "Neue Plattform-Integrationen",
+        "en": "New Platform Integrations"
+      },
+      "description": {
+        "de": "Unterstützung für drei neue Plattformen: Threads, Bluesky und Mastodon. Verbinde und verwalte all deine Social-Präsenzen von einem Ort aus.",
+        "en": "Added support for three new platforms: Threads, Bluesky, and Mastodon. Connect and manage all your social presence from one place."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.6.4",
+      "date": {
+        "de": "1. Nov 2025",
+        "en": "Nov 1, 2025"
+      },
+      "title": {
+        "de": "Sicherheits-Update",
+        "en": "Security Update"
+      },
+      "description": {
+        "de": "Wichtiges Sicherheitsupdate: Verbesserte Verschlüsselung, neue 2FA-Optionen (Passkeys, Hardware-Keys), Session-Management überarbeitet.",
+        "en": "Important security update: Improved encryption, new 2FA options (Passkeys, hardware keys), session management overhauled."
+      },
+      "tags": ["fix", "improvement"]
+    },
+    {
+      "version": "v2.6.3",
+      "date": {
+        "de": "25. Okt 2025",
+        "en": "Oct 25, 2025"
+      },
+      "title": {
+        "de": "Content-Kalender Redesign",
+        "en": "Content Calendar Redesign"
+      },
+      "description": {
+        "de": "Komplett neuer Content-Kalender mit Drag & Drop, Multi-Account-Ansicht, Team-Workflows und Farbcodierung nach Content-Typ.",
+        "en": "Completely new content calendar with drag & drop, multi-account view, team workflows and color coding by content type."
+      },
+      "tags": ["feature", "improvement"]
+    },
+    {
+      "version": "v2.6.2",
+      "date": {
+        "de": "18. Okt 2025",
+        "en": "Oct 18, 2025"
+      },
+      "title": {
+        "de": "LinkedIn Carousel Creator",
+        "en": "LinkedIn Carousel Creator"
+      },
+      "description": {
+        "de": "Neuer visueller Editor für LinkedIn Carousels. Templates, Branding-Optionen und One-Click-Export als PDF oder native Slides.",
+        "en": "New visual editor for LinkedIn Carousels. Templates, branding options and one-click export as PDF or native slides."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.6.1",
+      "date": {
+        "de": "11. Okt 2025",
+        "en": "Oct 11, 2025"
+      },
+      "title": {
+        "de": "Bugfix: Medien-Upload",
+        "en": "Bugfix: Media Upload"
+      },
+      "description": {
+        "de": "Behoben: Medien-Upload scheiterte gelegentlich bei großen Dateien. Neue chunked-Upload-Logik unterstützt jetzt Dateien bis 500MB zuverlässig.",
+        "en": "Fixed: Media upload occasionally failed for large files. New chunked upload logic now reliably supports files up to 500MB."
+      },
+      "tags": ["fix"]
+    },
+    {
+      "version": "v2.6.0",
+      "date": {
+        "de": "4. Okt 2025",
+        "en": "Oct 4, 2025"
+      },
+      "title": {
+        "de": "Automation Rule Builder 2.0",
+        "en": "Automation Rule Builder 2.0"
+      },
+      "description": {
+        "de": "Komplett neu entwickelter Automation-Builder. Neues visuelles Interface, mehr Trigger-Optionen und bessere Bedingungslogik für komplexe Workflows.",
+        "en": "Rebuilt the automation rule builder from the ground up. New visual interface, more trigger options, and better condition logic for complex workflows."
+      },
+      "tags": ["fix", "improvement"]
+    },
+    {
+      "version": "v2.5.9",
+      "date": {
+        "de": "27. Sep 2025",
+        "en": "Sep 27, 2025"
+      },
+      "title": {
+        "de": "YouTube Shorts Support",
+        "en": "YouTube Shorts Support"
+      },
+      "description": {
+        "de": "Native Unterstützung für YouTube Shorts. Direkt aus dem Dashboard erstellen, planen und analysieren. Inklusive Trend-Analyse.",
+        "en": "Native support for YouTube Shorts. Create, schedule and analyze directly from the dashboard. Including trend analysis."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.5.8",
+      "date": {
+        "de": "20. Sep 2025",
+        "en": "Sep 20, 2025"
+      },
+      "title": {
+        "de": "Team-Rollen erweitert",
+        "en": "Team Roles Extended"
+      },
+      "description": {
+        "de": "Neue granulare Team-Berechtigungen. Custom Roles erstellen, Genehmigungsworkflows definieren und Content-Bereiche einschränken.",
+        "en": "New granular team permissions. Create custom roles, define approval workflows and restrict content areas."
+      },
+      "tags": ["feature", "improvement"]
+    },
+    {
+      "version": "v2.5.7",
+      "date": {
+        "de": "13. Sep 2025",
+        "en": "Sep 13, 2025"
+      },
+      "title": {
+        "de": "Bessere Fehlerbehandlung",
+        "en": "Better Error Handling"
+      },
+      "description": {
+        "de": "Verbesserte Fehlermeldungen mit konkreten Lösungsvorschlägen. Auto-Retry bei temporären Plattform-Problemen. Detailliertere Logs für Support.",
+        "en": "Improved error messages with concrete solution suggestions. Auto-retry for temporary platform issues. More detailed logs for support."
+      },
+      "tags": ["improvement"]
+    },
+    {
+      "version": "v2.5.6",
+      "date": {
+        "de": "6. Sep 2025",
+        "en": "Sep 6, 2025"
+      },
+      "title": {
+        "de": "TikTok Analytics Pro",
+        "en": "TikTok Analytics Pro"
+      },
+      "description": {
+        "de": "Erweiterte TikTok-Analytik: Detaillierte Audience-Insights, Sound-Trend-Tracking und Competitor-Benchmarking.",
+        "en": "Extended TikTok analytics: Detailed audience insights, sound trend tracking and competitor benchmarking."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.5.5",
+      "date": {
+        "de": "30. Aug 2025",
+        "en": "Aug 30, 2025"
+      },
+      "title": {
+        "de": "Team-Kollaboration Features",
+        "en": "Team Collaboration Features"
+      },
+      "description": {
+        "de": "Neue Team-Features inklusive rollenbasierter Berechtigungen, Content-Approval-Workflows und geteilter Content-Bibliotheken. Perfekt für Agenturen und Enterprise-Teams.",
+        "en": "New team features including role-based permissions, content approval workflows, and shared content libraries. Perfect for agencies and enterprise teams."
+      },
+      "tags": ["feature", "improvement"]
+    },
+    {
+      "version": "v2.5.4",
+      "date": {
+        "de": "23. Aug 2025",
+        "en": "Aug 23, 2025"
+      },
+      "title": {
+        "de": "Dark Mode Optimierung",
+        "en": "Dark Mode Optimization"
+      },
+      "description": {
+        "de": "Überarbeiteter Dark Mode mit verbessertem Kontrast, systemweiter Konsistenz und automatischer Erkennung der System-Einstellung.",
+        "en": "Redesigned dark mode with improved contrast, system-wide consistency and automatic detection of system setting."
+      },
+      "tags": ["improvement"]
+    },
+    {
+      "version": "v2.5.3",
+      "date": {
+        "de": "16. Aug 2025",
+        "en": "Aug 16, 2025"
+      },
+      "title": {
+        "de": "Pinterest Integration",
+        "en": "Pinterest Integration"
+      },
+      "description": {
+        "de": "Vollständige Pinterest-Integration: Pins erstellen, planen, analysieren. Board-Management und Rich Pins Unterstützung.",
+        "en": "Full Pinterest integration: Create, schedule, analyze pins. Board management and Rich Pins support."
+      },
+      "tags": ["feature"]
+    },
+    {
+      "version": "v2.5.2",
+      "date": {
+        "de": "9. Aug 2025",
+        "en": "Aug 9, 2025"
+      },
+      "title": {
+        "de": "Keyboard Shortcuts",
+        "en": "Keyboard Shortcuts"
+      },
+      "description": {
+        "de": "Über 40 neue Keyboard-Shortcuts für Power-User. Schneller navigieren, posten und analysieren ohne Maus.",
+        "en": "Over 40 new keyboard shortcuts for power users. Navigate, post and analyze faster without a mouse."
+      },
+      "tags": ["improvement"]
+    },
+    {
+      "version": "v2.5.1",
+      "date": {
+        "de": "2. Aug 2025",
+        "en": "Aug 2, 2025"
+      },
+      "title": {
+        "de": "Bugfix: Benachrichtigungen",
+        "en": "Bugfix: Notifications"
+      },
+      "description": {
+        "de": "Behoben: Push-Benachrichtigungen wurden teilweise nicht zugestellt. Neue robuste Notification-Pipeline implementiert.",
+        "en": "Fixed: Push notifications were partially not delivered. New robust notification pipeline implemented."
+      },
+      "tags": ["fix"]
+    }
+  ]
+}

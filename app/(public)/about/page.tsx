@@ -1,55 +1,145 @@
-import { H1, H2, H3, Body, Lead, Overline } from '@/components/shared/Typography';
-import Card, { CardHeader, CardContent } from '@/components/shared/Card';
-import { publicTranslations } from '@/lib/i18n/public-translations';
+'use client';
 
-const t = publicTranslations.en;
+import Link from 'next/link';
+import { H1, H2, H3, Body, Lead, Overline } from '@/components/shared/Typography';
+import Card, { CardContent } from '@/components/shared/Card';
+import Button from '@/components/shared/Button';
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
+  const values = [
+    {
+      title: t.about.values.clarity.title,
+      description: t.about.values.clarity.description,
+      icon: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z',
+    },
+    {
+      title: t.about.values.dataInformed.title,
+      description: t.about.values.dataInformed.description,
+      icon: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+    },
+    {
+      title: t.about.values.automation.title,
+      description: t.about.values.automation.description,
+      icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+    },
+    {
+      title: t.about.values.trust.title,
+      description: t.about.values.trust.description,
+      icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+    },
+  ];
+
+  const stats = [
+    { value: t.about.stats.users.value, label: t.about.stats.users.label },
+    { value: t.about.stats.posts.value, label: t.about.stats.posts.label },
+    { value: t.about.stats.uptime.value, label: t.about.stats.uptime.label },
+    { value: t.about.stats.support.value, label: t.about.stats.support.label },
+  ];
+
+  const approaches = [
+    {
+      num: t.about.approach.privacy.num,
+      title: t.about.approach.privacy.title,
+      description: t.about.approach.privacy.description,
+    },
+    {
+      num: t.about.approach.performance.num,
+      title: t.about.approach.performance.title,
+      description: t.about.approach.performance.description,
+    },
+    {
+      num: t.about.approach.open.num,
+      title: t.about.approach.open.title,
+      description: t.about.approach.open.description,
+    },
+  ];
+
   return (
     <div className="min-h-screen">
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-signal-muted/50 to-transparent pointer-events-none" />
-        <div className="relative max-w-4xl mx-auto px-6 pt-24 pb-16 text-center">
-          <Overline className="mb-4 block">About</Overline>
-          <H1 className="mb-6">{t.about.hero.title}</H1>
-          <Lead>{t.about.hero.subtitle}</Lead>
+        <div className="absolute inset-0 bg-gradient-to-b from-signal-muted/30 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(29,78,216,0.08),transparent)] pointer-events-none" />
+        
+        <div className="relative max-w-4xl mx-auto px-6 pt-32 pb-20 text-center">
+          <Overline className="mb-6 block text-signal">{t.about.hero.overline}</Overline>
+          <H1 className="mb-8">
+            {t.about.hero.title}<br />
+            <span className="text-signal">{t.about.hero.titleHighlight}</span>
+          </H1>
+          <Lead className="max-w-2xl mx-auto text-slate">
+            {t.about.hero.subtitle}
+          </Lead>
         </div>
       </section>
 
-      {/* Vision */}
-      <section className="max-w-3xl mx-auto px-6 py-20">
-        <Overline className="mb-3 block">Vision</Overline>
-        <H2 className="mb-8">{t.about.vision.title}</H2>
-        <Body className="text-slate leading-relaxed text-lg">
-          {t.about.vision.content}
-        </Body>
+      {/* Stats Bar */}
+      <section className="border-y border-border bg-surface-1">
+        <div className="max-w-5xl mx-auto px-6 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-signal tracking-tight mb-2">{stat.value}</div>
+                <div className="text-sm text-slate">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Philosophy */}
+      {/* Vision Section */}
+      <section className="max-w-4xl mx-auto px-6 py-24">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <Overline className="mb-4 block text-signal">{t.about.vision.overline}</Overline>
+            <H2 className="mb-6">{t.about.vision.title}</H2>
+            <Body className="text-slate text-lg leading-relaxed mb-6">
+              {t.about.vision.paragraph1}
+            </Body>
+            <Body className="text-slate text-lg leading-relaxed">
+              {t.about.vision.paragraph2}
+            </Body>
+          </div>
+          <Card variant="elevated" padding="spacious">
+            <CardContent>
+              <blockquote className="text-lg text-ink leading-relaxed italic">
+                "{t.about.vision.quote}"
+              </blockquote>
+              <div className="mt-6 pt-6 border-t border-border">
+                <div className="text-sm font-medium text-ink">{t.about.vision.quoteAuthor}</div>
+                <div className="text-sm text-slate">{t.about.vision.quoteTeam}</div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Values Section */}
       <section className="border-y border-border bg-surface-1">
         <div className="max-w-5xl mx-auto px-6 py-24">
           <div className="text-center mb-16">
-            <Overline className="mb-3 block">Philosophy</Overline>
-            <H2>{t.about.philosophy.title}</H2>
+            <Overline className="mb-4 block text-signal">{t.about.values.overline}</Overline>
+            <H2>{t.about.values.title}</H2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: t.about.philosophy.principle1.title, desc: t.about.philosophy.principle1.description, icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z' },
-              { title: t.about.philosophy.principle2.title, desc: t.about.philosophy.principle2.description, icon: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z' },
-              { title: t.about.philosophy.principle3.title, desc: t.about.philosophy.principle3.description, icon: 'M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941' },
-            ].map((principle, idx) => (
-              <Card key={idx} variant="elevated" hover className="group h-full">
-                <CardHeader>
-                  <div className="w-10 h-10 rounded-lg bg-signal-muted flex items-center justify-center mb-3 transition-transform duration-slow group-hover:scale-105">
-                    <svg className="w-5 h-5 text-signal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d={principle.icon} />
-                    </svg>
-                  </div>
-                  <H3>{principle.title}</H3>
-                </CardHeader>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {values.map((value, idx) => (
+              <Card key={idx} variant="outlined" padding="spacious" hover className="group">
                 <CardContent>
-                  <Body className="text-slate">{principle.desc}</Body>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-signal-muted flex items-center justify-center flex-shrink-0 transition-transform duration-slow group-hover:scale-105">
+                      <svg className="w-6 h-6 text-signal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d={value.icon} />
+                      </svg>
+                    </div>
+                    <div>
+                      <H3 className="mb-3">{value.title}</H3>
+                      <Body className="text-slate">{value.description}</Body>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -57,28 +147,45 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="max-w-5xl mx-auto px-6 py-24">
+      {/* Approach Section */}
+      <section className="max-w-4xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
-          <Overline className="mb-3 block">Values</Overline>
-          <H2>{t.about.values.title}</H2>
+          <Overline className="mb-4 block text-signal">{t.about.approach.overline}</Overline>
+          <H2>{t.about.approach.title}</H2>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { title: t.about.values.transparency.title, desc: t.about.values.transparency.description },
-            { title: t.about.values.quality.title, desc: t.about.values.quality.description },
-            { title: t.about.values.empowerment.title, desc: t.about.values.empowerment.description },
-          ].map((value, idx) => (
-            <Card key={idx} variant="flat" padding="spacious">
-              <CardHeader>
-                <span className="text-4xl font-semibold text-signal/20 mb-2 block">0{idx + 1}</span>
-                <H3>{value.title}</H3>
-              </CardHeader>
-              <CardContent>
-                <Body className="text-slate">{value.desc}</Body>
-              </CardContent>
-            </Card>
+
+        <div className="space-y-12">
+          {approaches.map((item, idx) => (
+            <div key={idx} className="flex items-start gap-8">
+              <div className="text-5xl font-bold text-signal/10 flex-shrink-0 hidden md:block">{item.num}</div>
+              <div>
+                <H3 className="mb-3">{item.title}</H3>
+                <Body className="text-slate text-lg">{item.description}</Body>
+              </div>
+            </div>
           ))}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="border-t border-border bg-ink">
+        <div className="max-w-4xl mx-auto px-6 py-24 text-center">
+          <H2 className="mb-6 text-canvas">{t.about.cta.title}</H2>
+          <Lead className="mb-10 text-canvas/70 max-w-2xl mx-auto">
+            {t.about.cta.subtitle}
+          </Lead>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/register">
+              <Button variant="primary" size="lg">
+                {t.about.cta.primaryButton}
+              </Button>
+            </Link>
+            <Link href="/features">
+              <button className="px-6 py-3 text-base font-medium rounded-xl border-2 border-canvas/30 text-canvas bg-transparent hover:bg-canvas/10 hover:border-canvas/50 transition-all duration-fast">
+                {t.about.cta.secondaryButton}
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

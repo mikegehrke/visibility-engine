@@ -149,10 +149,10 @@ export default function Sidebar() {
         <div className="px-4">
           <div className="flex items-center gap-2 px-3 mb-4">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/40">
-              Roadmap
+              {t.sections.roadmap}
             </span>
             <span className="text-[10px] text-slate/30 font-normal normal-case">
-              Planned
+              {t.sections.planned}
             </span>
           </div>
           <div className="space-y-5">

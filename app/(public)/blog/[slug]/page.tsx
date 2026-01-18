@@ -19,6 +19,9 @@ export default function BlogPostPage({
       t.blog.posts.post1,
       t.blog.posts.post2,
       t.blog.posts.post3,
+      t.blog.posts.post4,
+      t.blog.posts.post5,
+      t.blog.posts.post6,
     ];
     return posts.find((p) => p.slug === slug);
   }

@@ -1,9 +1,11 @@
-import Link from 'next/link';
-import { publicTranslations } from '@/lib/i18n/public-translations';
+'use client';
 
-const t = publicTranslations.en;
+import Link from 'next/link';
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   const footerLinks = [
     {
       title: t.footer.product,
@@ -22,9 +24,9 @@ export default function Footer() {
     {
       title: t.footer.legal,
       links: [
-        { href: '/privacy', label: t.footer.privacy },
-        { href: '/terms', label: t.footer.terms },
-        { href: '/imprint', label: t.footer.imprint },
+        { href: '/legal/privacy', label: t.footer.privacy },
+        { href: '/legal/terms', label: t.footer.terms },
+        { href: '/legal/imprint', label: t.footer.imprint },
       ],
     },
   ];

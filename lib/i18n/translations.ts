@@ -17,15 +17,10 @@ export const translations = {
       de: 'Deutsch',
     },
     
-    // Navigation
+    // Navigation - extend public nav with dashboard items
     nav: {
-      // Public pages
-      features: 'Features',
-      pricing: 'Pricing',
-      about: 'About',
-      blog: 'Blog',
-      login: 'Login',
-      getStarted: 'Get Started',
+      // Keep public nav items including menu
+      ...publicTranslations.en.nav,
       
       // Dashboard - Core
       overview: 'Overview',
@@ -85,6 +80,8 @@ export const translations = {
       contentMedia: 'Content & Media',
       communication: 'Communication',
       ai: 'AI & Agents',
+      roadmap: 'Roadmap',
+      planned: 'Planned',
     },
     
     // Common
@@ -192,6 +189,79 @@ export const translations = {
       },
     },
     
+    // Settings Page
+    settingsPage: {
+      configuration: 'Configuration',
+      
+      // Account Section
+      account: {
+        title: 'Account',
+        description: 'Manage your personal account settings',
+        email: 'Email',
+        password: 'Password',
+        passwordLastChanged: 'Last changed 30 days ago',
+        twoFactor: 'Two-Factor Authentication',
+        twoFactorDesc: 'Add an extra layer of security',
+        change: 'Change',
+        update: 'Update',
+        enable: 'Enable',
+      },
+      
+      // Notifications Section
+      notifications: {
+        title: 'Notifications',
+        description: 'Configure how you receive updates',
+        emailNotifications: 'Email Notifications',
+        emailNotificationsDesc: 'Receive important updates via email',
+        pushNotifications: 'Push Notifications',
+        pushNotificationsDesc: 'Get notified in your browser',
+        weeklyDigest: 'Weekly Digest',
+        weeklyDigestDesc: 'Receive a summary of your visibility metrics',
+      },
+      
+      // Preferences Section
+      preferences: {
+        title: 'Preferences',
+        description: 'Customize your experience',
+        language: 'Language',
+        languageDesc: 'Select your preferred language',
+        timezone: 'Timezone',
+        timezoneDesc: 'Used for scheduling and analytics',
+        darkMode: 'Dark Mode',
+        darkModeDesc: 'Switch to dark theme (coming soon)',
+      },
+      
+      // Integrations Section
+      integrations: {
+        title: 'Integrations',
+        description: 'Connect your accounts and services',
+        notConnected: 'Not connected',
+        connect: 'Connect',
+      },
+      
+      // Data & Privacy Section
+      dataPrivacy: {
+        title: 'Data & Privacy',
+        description: 'Manage your data and privacy settings',
+        autoSync: 'Auto-sync Data',
+        autoSyncDesc: 'Automatically sync analytics data in background',
+        exportData: 'Export Data',
+        exportDataDesc: 'Download all your data in JSON format',
+        export: 'Export',
+        deleteAccount: 'Delete Account',
+        deleteAccountDesc: 'Permanently delete your account and all data',
+        delete: 'Delete',
+      },
+      
+      // Subscription Section
+      subscription: {
+        currentPlan: 'Current Plan:',
+        starterFree: 'Starter (Free)',
+        upgradeText: 'Upgrade to unlock more features and automations',
+        upgradePlan: 'Upgrade Plan',
+      },
+    },
+    
     // Page Titles
     pages: {
       overview: {
@@ -209,6 +279,45 @@ export const translations = {
       settings: {
         creator: 'Settings',
         company: 'Company Settings',
+      },
+    },
+    
+    // Dashboard Overview
+    dashboardOverview: {
+      dashboard: 'Dashboard',
+      keyMetrics: 'Key Metrics',
+      viewAllAnalytics: 'View all analytics',
+      quickActions: 'Quick Actions',
+      settings: 'Settings',
+      metrics: {
+        totalContent: 'Total Content',
+        activeAutomations: 'Active Automations',
+        totalReach: 'Total Reach',
+        engagementRate: 'Engagement Rate',
+      },
+      actions: {
+        signalsMetrics: {
+          title: 'Signals & Metrics',
+          description: 'Monitor your visibility performance in real-time',
+        },
+        automationRules: {
+          title: 'Automation Rules',
+          description: 'Set up intelligent workflows that work while you sleep',
+        },
+        contentFlow: {
+          title: 'Content Flow',
+          description: 'Visualize your content pipeline from creation to insights',
+        },
+        distribution: {
+          title: 'Distribution',
+          description: 'Manage multi-platform content publishing',
+        },
+      },
+      gettingStarted: {
+        title: 'Welcome to Your Visibility Engine',
+        description: 'Get started by connecting your first account, setting up automation rules, or exploring the signals dashboard.',
+        exploreSignals: 'Explore Signals',
+        setUpAutomation: 'Set Up Automation',
       },
     },
     
@@ -866,15 +975,10 @@ export const translations = {
       de: 'Deutsch',
     },
     
-    // Navigation
+    // Navigation - extend public nav with dashboard items
     nav: {
-      // Public pages
-      features: 'Features',
-      pricing: 'Preise',
-      about: 'Über uns',
-      blog: 'Blog',
-      login: 'Anmelden',
-      getStarted: 'Jetzt starten',
+      // Keep public nav items including menu
+      ...publicTranslations.de.nav,
       
       // Dashboard - Core
       overview: 'Übersicht',
@@ -934,6 +1038,8 @@ export const translations = {
       contentMedia: 'Content & Medien',
       communication: 'Kommunikation',
       ai: 'KI & Agenten',
+      roadmap: 'Roadmap',
+      planned: 'Geplant',
     },
     
     // Common
@@ -1041,6 +1147,79 @@ export const translations = {
       },
     },
     
+    // Settings Page
+    settingsPage: {
+      configuration: 'Konfiguration',
+      
+      // Account Section
+      account: {
+        title: 'Konto',
+        description: 'Verwalte deine persönlichen Kontoeinstellungen',
+        email: 'E-Mail',
+        password: 'Passwort',
+        passwordLastChanged: 'Zuletzt geändert vor 30 Tagen',
+        twoFactor: 'Zwei-Faktor-Authentifizierung',
+        twoFactorDesc: 'Füge eine zusätzliche Sicherheitsebene hinzu',
+        change: 'Ändern',
+        update: 'Aktualisieren',
+        enable: 'Aktivieren',
+      },
+      
+      // Notifications Section
+      notifications: {
+        title: 'Benachrichtigungen',
+        description: 'Konfiguriere wie du Updates erhältst',
+        emailNotifications: 'E-Mail-Benachrichtigungen',
+        emailNotificationsDesc: 'Erhalte wichtige Updates per E-Mail',
+        pushNotifications: 'Push-Benachrichtigungen',
+        pushNotificationsDesc: 'Werde in deinem Browser benachrichtigt',
+        weeklyDigest: 'Wöchentliche Zusammenfassung',
+        weeklyDigestDesc: 'Erhalte eine Zusammenfassung deiner Sichtbarkeitskennzahlen',
+      },
+      
+      // Preferences Section
+      preferences: {
+        title: 'Einstellungen',
+        description: 'Personalisiere deine Erfahrung',
+        language: 'Sprache',
+        languageDesc: 'Wähle deine bevorzugte Sprache',
+        timezone: 'Zeitzone',
+        timezoneDesc: 'Wird für Planung und Analytics verwendet',
+        darkMode: 'Dunkelmodus',
+        darkModeDesc: 'Zum dunklen Thema wechseln (demnächst)',
+      },
+      
+      // Integrations Section
+      integrations: {
+        title: 'Integrationen',
+        description: 'Verbinde deine Konten und Dienste',
+        notConnected: 'Nicht verbunden',
+        connect: 'Verbinden',
+      },
+      
+      // Data & Privacy Section
+      dataPrivacy: {
+        title: 'Daten & Datenschutz',
+        description: 'Verwalte deine Daten und Datenschutzeinstellungen',
+        autoSync: 'Auto-Sync-Daten',
+        autoSyncDesc: 'Synchronisiere Analytics-Daten automatisch im Hintergrund',
+        exportData: 'Daten exportieren',
+        exportDataDesc: 'Lade alle deine Daten im JSON-Format herunter',
+        export: 'Exportieren',
+        deleteAccount: 'Konto löschen',
+        deleteAccountDesc: 'Lösche dein Konto und alle Daten dauerhaft',
+        delete: 'Löschen',
+      },
+      
+      // Subscription Section
+      subscription: {
+        currentPlan: 'Aktueller Plan:',
+        starterFree: 'Starter (Kostenlos)',
+        upgradeText: 'Upgrade um mehr Funktionen und Automatisierungen freizuschalten',
+        upgradePlan: 'Plan upgraden',
+      },
+    },
+    
     // Page Titles
     pages: {
       overview: {
@@ -1058,6 +1237,45 @@ export const translations = {
       settings: {
         creator: 'Einstellungen',
         company: 'Unternehmens-Einstellungen',
+      },
+    },
+    
+    // Dashboard Overview
+    dashboardOverview: {
+      dashboard: 'Dashboard',
+      keyMetrics: 'Wichtige Kennzahlen',
+      viewAllAnalytics: 'Alle Analytics anzeigen',
+      quickActions: 'Schnellaktionen',
+      settings: 'Einstellungen',
+      metrics: {
+        totalContent: 'Gesamt-Content',
+        activeAutomations: 'Aktive Automatisierungen',
+        totalReach: 'Gesamt-Reichweite',
+        engagementRate: 'Engagement-Rate',
+      },
+      actions: {
+        signalsMetrics: {
+          title: 'Signale & Metriken',
+          description: 'Überwache deine Sichtbarkeits-Performance in Echtzeit',
+        },
+        automationRules: {
+          title: 'Automatisierungs-Regeln',
+          description: 'Richte intelligente Workflows ein, die auch im Schlaf arbeiten',
+        },
+        contentFlow: {
+          title: 'Content Flow',
+          description: 'Visualisiere deine Content-Pipeline von der Erstellung bis zu Insights',
+        },
+        distribution: {
+          title: 'Distribution',
+          description: 'Verwalte Multi-Plattform Content-Publishing',
+        },
+      },
+      gettingStarted: {
+        title: 'Willkommen bei deiner Visibility Engine',
+        description: 'Starte, indem du dein erstes Konto verbindest, Automatisierungs-Regeln einrichtest oder das Signals-Dashboard erkundest.',
+        exploreSignals: 'Signale erkunden',
+        setUpAutomation: 'Automatisierung einrichten',
       },
     },
     

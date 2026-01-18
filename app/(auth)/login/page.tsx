@@ -3,14 +3,12 @@
 import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import Button from '@/components/shared/Button';
-import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/shared/Card';
+import Card, { CardContent, CardFooter } from '@/components/shared/Card';
 import { Label, Overline } from '@/components/shared/Typography';
 import { useLanguage } from '@/lib/context/LanguageContext';
-import { translations } from '@/lib/i18n/translations';
 
 export default function LoginPage() {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +31,7 @@ export default function LoginPage() {
     <div className="flex items-center justify-center px-4 py-12 sm:py-16">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Overline className="mb-3">Willkommen zurück</Overline>
+          <Overline className="mb-3">{t.auth.login.overline}</Overline>
           <h1 className="text-2xl font-semibold text-ink tracking-tight">{t.auth.login.title}</h1>
           <p className="mt-2 text-sm text-slate">{t.auth.login.subtitle}</p>
         </div>
@@ -46,7 +44,7 @@ export default function LoginPage() {
                 <input
                   id="email"
                   type="email"
-                  placeholder="name@beispiel.de"
+                  placeholder={t.auth.common.emailPlaceholder}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -88,7 +86,7 @@ export default function LoginPage() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>
-                    Anmelden...
+                    {t.auth.common.signingIn}
                   </span>
                 ) : t.auth.login.submit}
               </Button>
@@ -101,7 +99,7 @@ export default function LoginPage() {
                 <div className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-surface-0 px-3 text-slate tracking-wide">oder</span>
+                <span className="bg-surface-0 px-3 text-slate tracking-wide">{t.auth.common.or}</span>
               </div>
             </div>
 
@@ -119,7 +117,7 @@ export default function LoginPage() {
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
             </svg>
-            Zurück zur Startseite
+            {t.auth.common.backToHome}
           </Link>
         </p>
       </div>
