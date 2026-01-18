@@ -159,8 +159,20 @@ export default function Header() {
     timeoutRef.current = setTimeout(() => setActiveMenu(null), 150);
   };
 
+  // Type assertion for menu access since it's merged from publicTranslations
+  type NavWithMenu = typeof t.nav & {
+    menu?: {
+      product: any;
+      useCases: any;
+      industries: any;
+      resources: any;
+      trust: any;
+    };
+  };
+
   // Safe access to menu with fallback
-  const menu = t.nav.menu || {
+  const navWithMenu = t.nav as NavWithMenu;
+  const menu = navWithMenu.menu || {
     product: { title: 'Product', core: { label: 'Core', items: {} }, advanced: { label: 'Advanced', items: {} } },
     useCases: { title: 'Use Cases', items: {} },
     industries: { title: 'Industries', items: {} },
@@ -169,7 +181,7 @@ export default function Header() {
   };
 
   // If menu is not yet loaded, show simple navigation
-  if (!t.nav.menu) {
+  if (!navWithMenu.menu) {
     return (
       <header className="sticky-header border-b border-border/50 safe-area-top bg-canvas/95 backdrop-blur-md z-50">
         <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between safe-area-x">

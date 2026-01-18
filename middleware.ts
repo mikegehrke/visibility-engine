@@ -1,8 +1,25 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+const SUPPORTED_LOCALES = ['en', 'de'] as const;
+const DEFAULT_LOCALE = 'en';
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const response = NextResponse.next();
+  
+  // Set locale cookie if not present
+  const localeCookie = request.cookies.get('locale');
+  if (!localeCookie) {
+    // Detect from Accept-Language header
+    const acceptLanguage = request.headers.get('accept-language') || '';
+    const preferredLocale = acceptLanguage.includes('de') ? 'de' : DEFAULT_LOCALE;
+    response.cookies.set('locale', preferredLocale, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      sameSite: 'lax',
+    });
+  }
   
   // Dashboard: Auth Check (placeholder - no real auth yet)
   if (pathname.startsWith('/dashboard')) {
@@ -22,9 +39,9 @@ export function middleware(request: NextRequest) {
     // }
   }
   
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login', '/register'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)'],
 };

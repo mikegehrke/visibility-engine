@@ -1,34 +1,43 @@
-'use client';
-
 import Link from 'next/link';
+import { cookies } from 'next/headers';
+import { getTranslations, type Locale } from '@/lib/i18n/server';
+import type { PricingTranslations } from '@/lib/i18n/locales/en/pricing';
 import { H1, H2, H3, Body, Lead, Small, Overline } from '@/components/shared/Typography';
 import Card, { CardHeader, CardContent, CardFooter } from '@/components/shared/Card';
 import Button from '@/components/shared/Button';
-import { useLanguage } from '@/lib/context/LanguageContext';
 
-export default function PricingPage() {
-  const { t } = useLanguage();
+// Force static generation
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
+export default async function PricingPage() {
+  // Get locale from cookies - defaults to 'en' for static generation
+  const cookieStore = cookies();
+  const locale = (cookieStore.get('locale')?.value as Locale) || 'en';
+  
+  // Load translations
+  const pt = await getTranslations<PricingTranslations>(locale, 'pricing');
 
   const plans = [
     {
-      ...t.pricing.plans.starter,
+      ...pt.plans.starter,
       highlighted: false,
       href: '/register',
       badge: undefined as string | undefined,
     },
     {
-      ...t.pricing.plans.creator,
+      ...pt.plans.creator,
       highlighted: false,
       href: '/register',
       badge: undefined as string | undefined,
     },
     {
-      ...t.pricing.plans.professional,
+      ...pt.plans.professional,
       highlighted: true,
       href: '/register',
     },
     {
-      ...t.pricing.plans.team,
+      ...pt.plans.team,
       highlighted: false,
       href: '/register',
       badge: undefined as string | undefined,
@@ -36,14 +45,14 @@ export default function PricingPage() {
   ];
 
   const compareRows = [
-    { key: 'connectedAccounts', feature: t.pricing.compare.rows.connectedAccounts },
-    { key: 'scheduledPosts', feature: t.pricing.compare.rows.scheduledPosts },
-    { key: 'analytics', feature: t.pricing.compare.rows.analytics },
-    { key: 'automationRules', feature: t.pricing.compare.rows.automationRules },
-    { key: 'aiInsights', feature: t.pricing.compare.rows.aiInsights },
-    { key: 'apiAccess', feature: t.pricing.compare.rows.apiAccess },
-    { key: 'teamMembers', feature: t.pricing.compare.rows.teamMembers },
-    { key: 'whiteLabel', feature: t.pricing.compare.rows.whiteLabel },
+    { key: 'connectedAccounts', feature: pt.compare.rows.connectedAccounts },
+    { key: 'scheduledPosts', feature: pt.compare.rows.scheduledPosts },
+    { key: 'analytics', feature: pt.compare.rows.analytics },
+    { key: 'automationRules', feature: pt.compare.rows.automationRules },
+    { key: 'aiInsights', feature: pt.compare.rows.aiInsights },
+    { key: 'apiAccess', feature: pt.compare.rows.apiAccess },
+    { key: 'teamMembers', feature: pt.compare.rows.teamMembers },
+    { key: 'whiteLabel', feature: pt.compare.rows.whiteLabel },
   ];
 
   return (
@@ -55,12 +64,12 @@ export default function PricingPage() {
         
         <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-16">
           <div className="max-w-3xl mx-auto text-center">
-            <Overline className="mb-6 block text-signal">{t.pricing.hero.overline}</Overline>
+            <Overline className="mb-6 block text-signal">{pt.hero.overline}</Overline>
             <H1 className="mb-6">
-              {t.pricing.hero.title}
+              {pt.hero.title}
             </H1>
             <Lead className="max-w-2xl mx-auto text-slate">
-              {t.pricing.hero.subtitle}
+              {pt.hero.subtitle}
             </Lead>
           </div>
         </div>
@@ -120,13 +129,13 @@ export default function PricingPage() {
         <Card variant="outlined" className="mt-12">
           <CardContent className="flex flex-col md:flex-row items-center justify-between gap-6 py-2">
             <div>
-              <H3 className="mb-2">{t.pricing.enterprise.title}</H3>
+              <H3 className="mb-2">{pt.enterprise.title}</H3>
               <Body className="text-slate">
-                {t.pricing.enterprise.description}
+                {pt.enterprise.description}
               </Body>
             </div>
             <Link href="/contact" className="flex-shrink-0">
-              <Button variant="secondary">{t.pricing.enterprise.cta}</Button>
+              <Button variant="secondary">{pt.enterprise.cta}</Button>
             </Link>
           </CardContent>
         </Card>
@@ -136,29 +145,29 @@ export default function PricingPage() {
       <section className="border-y border-border bg-surface-1">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <div className="text-center mb-16">
-            <Overline className="mb-4 block">{t.pricing.compare.overline}</Overline>
-            <H2>{t.pricing.compare.title}</H2>
+            <Overline className="mb-4 block">{pt.compare.overline}</Overline>
+            <H2>{pt.compare.title}</H2>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-4 pr-4 font-medium text-slate">{t.pricing.compare.headers.feature}</th>
-                  <th className="text-center py-4 px-3 font-medium text-slate">{t.pricing.compare.headers.starter}</th>
-                  <th className="text-center py-4 px-3 font-medium text-slate">{t.pricing.compare.headers.creator}</th>
-                  <th className="text-center py-4 px-3 font-medium text-signal">{t.pricing.compare.headers.professional}</th>
-                  <th className="text-center py-4 pl-3 font-medium text-slate">{t.pricing.compare.headers.team}</th>
+                  <th className="text-left py-4 pr-4 font-medium text-slate">{pt.compare.headers.feature}</th>
+                  <th className="text-center py-4 px-3 font-medium text-slate">{pt.compare.headers.starter}</th>
+                  <th className="text-center py-4 px-3 font-medium text-slate">{pt.compare.headers.creator}</th>
+                  <th className="text-center py-4 px-3 font-medium text-signal">{pt.compare.headers.professional}</th>
+                  <th className="text-center py-4 pl-3 font-medium text-slate">{pt.compare.headers.team}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/50">
                 {compareRows.map((row, idx) => (
                   <tr key={idx}>
                     <td className="py-4 pr-4 text-ink">{row.feature}</td>
-                    <td className="py-4 px-3 text-center text-slate">{t.pricing.compare.values.starter[idx]}</td>
-                    <td className="py-4 px-3 text-center text-slate">{t.pricing.compare.values.creator[idx]}</td>
-                    <td className="py-4 px-3 text-center text-ink font-medium">{t.pricing.compare.values.professional[idx]}</td>
-                    <td className="py-4 pl-3 text-center text-slate">{t.pricing.compare.values.team[idx]}</td>
+                    <td className="py-4 px-3 text-center text-slate">{pt.compare.values.starter[idx]}</td>
+                    <td className="py-4 px-3 text-center text-slate">{pt.compare.values.creator[idx]}</td>
+                    <td className="py-4 px-3 text-center text-ink font-medium">{pt.compare.values.professional[idx]}</td>
+                    <td className="py-4 pl-3 text-center text-slate">{pt.compare.values.team[idx]}</td>
                   </tr>
                 ))}
               </tbody>
@@ -170,12 +179,12 @@ export default function PricingPage() {
       {/* FAQ Section */}
       <section className="max-w-4xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
-          <Overline className="mb-4 block">{t.pricing.faq.overline}</Overline>
-          <H2>{t.pricing.faq.title}</H2>
+          <Overline className="mb-4 block">{pt.faq.overline}</Overline>
+          <H2>{pt.faq.title}</H2>
         </div>
         
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
-          {t.pricing.faq.items.map((faq, idx) => (
+          {pt.faq.items.map((faq, idx) => (
             <div key={idx}>
               <H3 className="text-base mb-3">{faq.question}</H3>
               <Body className="text-slate text-sm">{faq.answer}</Body>
@@ -187,13 +196,13 @@ export default function PricingPage() {
       {/* Final CTA */}
       <section className="border-t border-border bg-ink">
         <div className="max-w-4xl mx-auto px-6 py-24 text-center">
-          <H2 className="mb-6 text-canvas">{t.pricing.cta.title}</H2>
+          <H2 className="mb-6 text-canvas">{pt.cta.title}</H2>
           <Lead className="mb-10 text-canvas/70 max-w-2xl mx-auto">
-            {t.pricing.cta.subtitle}
+            {pt.cta.subtitle}
           </Lead>
           <Link href="/register">
             <Button variant="primary" size="lg">
-              {t.pricing.cta.button}
+              {pt.cta.button}
             </Button>
           </Link>
         </div>

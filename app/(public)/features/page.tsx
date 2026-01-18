@@ -1,69 +1,11 @@
-'use client';
-
 import Link from 'next/link';
-import { H1, H2, H3, Body, Lead, Overline } from '@/components/shared/Typography';
-import Card, { CardContent } from '@/components/shared/Card';
-import Button from '@/components/shared/Button';
-import { useLanguage } from '@/lib/context/LanguageContext';
+import { cookies } from 'next/headers';
+import { getTranslations, type Locale } from '@/lib/i18n/server';
+import type { FeaturesTranslations } from '@/lib/i18n/locales/en/features';
 
-// Feature section component for consistency
-function FeatureSection({ 
-  id,
-  overline, 
-  title,
-  description,
-  children,
-  reversed = false,
-}: { 
-  id: string;
-  overline: string; 
-  title: string;
-  description: string;
-  children: React.ReactNode;
-  reversed?: boolean;
-}) {
-  return (
-    <section id={id} className="scroll-mt-24">
-      <div className={`grid lg:grid-cols-2 gap-16 items-center ${reversed ? 'lg:grid-flow-dense' : ''}`}>
-        <div className={reversed ? 'lg:col-start-2' : ''}>
-          <Overline className="mb-4 block text-signal">{overline}</Overline>
-          <H2 className="mb-6">{title}</H2>
-          <Body className="text-slate text-lg leading-relaxed">{description}</Body>
-        </div>
-        <div className={reversed ? 'lg:col-start-1' : ''}>
-          {children}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Feature card with icon
-function FeatureCard({ 
-  title, 
-  description, 
-  icon 
-}: { 
-  title: string; 
-  description: string; 
-  icon: string;
-}) {
-  return (
-    <Card variant="outlined" padding="compact" hover className="group h-full">
-      <CardContent className="flex items-start gap-4">
-        <div className="w-10 h-10 rounded-lg bg-signal-muted flex items-center justify-center flex-shrink-0 transition-transform duration-slow group-hover:scale-105">
-          <svg className="w-5 h-5 text-signal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d={icon} />
-          </svg>
-        </div>
-        <div>
-          <H3 className="text-base mb-1">{title}</H3>
-          <Body className="text-slate text-sm">{description}</Body>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
+// Force static generation
+export const dynamic = 'force-static';
+export const revalidate = 3600;
 
 // Icon paths for feature cards
 const featureIcons = {
@@ -99,11 +41,15 @@ const featureIcons = {
   ],
 };
 
-export default function FeaturesPage() {
-  const { t } = useLanguage();
-  const ft = t.features;
+const sectionKeys = ['signals', 'automation', 'content', 'intelligence', 'collaboration', 'integrations'] as const;
 
-  const sectionKeys = ['signals', 'automation', 'content', 'intelligence', 'collaboration', 'integrations'] as const;
+export default async function FeaturesPage() {
+  // Get locale from cookies - defaults to 'en' for static generation
+  const cookieStore = cookies();
+  const locale = (cookieStore.get('locale')?.value as Locale) || 'en';
+  
+  // Load only the translations needed for this page
+  const ft = await getTranslations<FeaturesTranslations>(locale, 'features');
 
   return (
     <div className="min-h-screen">
@@ -114,14 +60,16 @@ export default function FeaturesPage() {
         
         <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-20">
           <div className="max-w-4xl mx-auto text-center">
-            <Overline className="mb-6 block text-signal">{ft.hero.overline}</Overline>
-            <H1 className="mb-8">
+            <span className="text-xs font-semibold uppercase tracking-[0.1em] mb-6 block text-signal">
+              {ft.hero.overline}
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-[-0.025em] text-ink text-balance mb-8">
               {ft.hero.title}<br />
               <span className="text-signal">{ft.hero.titleHighlight}</span>
-            </H1>
-            <Lead className="mb-12 max-w-2xl mx-auto text-slate">
+            </h1>
+            <p className="text-lg sm:text-xl font-normal leading-[1.6] text-balance mb-12 max-w-2xl mx-auto text-slate">
               {ft.hero.subtitle}
-            </Lead>
+            </p>
           </div>
           
           {/* Quick Nav */}
@@ -144,26 +92,46 @@ export default function FeaturesPage() {
         {sectionKeys.map((key, idx) => {
           const section = ft.sections[key];
           const icons = featureIcons[key];
+          const reversed = idx % 2 === 1;
+          
           return (
-            <FeatureSection
-              key={key}
-              id={key}
-              overline={section.overline}
-              title={section.title}
-              description={section.description}
-              reversed={idx % 2 === 1}
-            >
-              <div className="grid gap-4">
-                {section.features.map((feature, fIdx) => (
-                  <FeatureCard
-                    key={fIdx}
-                    title={feature.title}
-                    description={feature.description}
-                    icon={icons[fIdx]}
-                  />
-                ))}
+            <section key={key} id={key} className="scroll-mt-24">
+              <div className={`grid lg:grid-cols-2 gap-16 items-center ${reversed ? 'lg:grid-flow-dense' : ''}`}>
+                <div className={reversed ? 'lg:col-start-2' : ''}>
+                  <span className="text-xs font-semibold uppercase tracking-[0.1em] mb-4 block text-signal">
+                    {section.overline}
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-semibold leading-[1.15] tracking-[-0.015em] text-ink mb-6">
+                    {section.title}
+                  </h2>
+                  <p className="text-base font-normal leading-[1.6] text-slate text-lg">
+                    {section.description}
+                  </p>
+                </div>
+                <div className={reversed ? 'lg:col-start-1' : ''}>
+                  <div className="grid gap-4">
+                    {section.features.map((feature, fIdx) => (
+                      <div 
+                        key={fIdx}
+                        className="group h-full p-4 rounded-xl border border-border bg-canvas hover:bg-mist/50 hover:border-border-strong transition-all duration-base"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-lg bg-signal-muted flex items-center justify-center flex-shrink-0 transition-transform duration-slow group-hover:scale-105">
+                            <svg className="w-5 h-5 text-signal" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d={icons[fIdx]} />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-base font-semibold text-ink mb-1">{feature.title}</h3>
+                            <p className="text-sm text-slate">{feature.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </FeatureSection>
+            </section>
           );
         })}
       </div>
@@ -171,20 +139,24 @@ export default function FeaturesPage() {
       {/* CTA Section */}
       <section className="border-t border-border bg-ink">
         <div className="max-w-4xl mx-auto px-6 py-24 text-center">
-          <H2 className="mb-6 text-canvas">{ft.cta.title}</H2>
-          <Lead className="mb-10 text-canvas/70 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-semibold leading-[1.15] tracking-[-0.015em] text-canvas mb-6">
+            {ft.cta.title}
+          </h2>
+          <p className="text-lg sm:text-xl font-normal leading-[1.6] text-canvas/70 max-w-2xl mx-auto mb-10">
             {ft.cta.subtitle}
-          </Lead>
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/register">
-              <Button variant="primary" size="lg">
-                {ft.cta.primary}
-              </Button>
+            <Link 
+              href="/register"
+              className="inline-flex items-center justify-center font-medium h-12 min-h-[44px] px-6 text-[15px] rounded-lg bg-signal-bg text-white hover:bg-signal-bg-hover hover:-translate-y-px shadow-sm hover:shadow-md transition-all"
+            >
+              {ft.cta.primary}
             </Link>
-            <Link href="/pricing">
-              <button className="px-6 py-3 text-base font-medium rounded-xl border-2 border-canvas/30 text-canvas bg-transparent hover:bg-canvas/10 hover:border-canvas/50 transition-all duration-fast">
-                {ft.cta.secondary}
-              </button>
+            <Link 
+              href="/pricing"
+              className="px-6 py-3 text-base font-medium rounded-xl border-2 border-canvas/30 text-canvas bg-transparent hover:bg-canvas/10 hover:border-canvas/50 transition-all duration-fast"
+            >
+              {ft.cta.secondary}
             </Link>
           </div>
         </div>
