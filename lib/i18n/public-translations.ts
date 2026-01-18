@@ -205,6 +205,14 @@ export const publicTranslations = {
         uiOnly: 'Email verification UI only - no backend implemented',
       },
     },
+    notFound: {
+      title: 'Page Not Found',
+      description: 'The page you\'re looking for doesn\'t exist or has been moved.',
+      ctaHome: 'Go to Homepage',
+      ctaDashboard: 'Open Dashboard',
+      helpText: 'If you need help, contact our support team.',
+      contactLink: 'Get in touch',
+    },
     landing: {
       hero: {
         overline: 'The Visibility Platform',
@@ -215,7 +223,14 @@ export const publicTranslations = {
         ctaSecondary: 'See Platform',
       },
       trustBar: {
-        title: 'Trusted by leading creators and growth teams',
+        title: 'Built for creators, companies & enterprises',
+        categories: [
+          { icon: '🎬', label: 'Creators' },
+          { icon: '🏢', label: 'Agencies' },
+          { icon: '🚀', label: 'Startups' },
+          { icon: '🏛️', label: 'Enterprise' },
+          { icon: '📈', label: 'Growth Teams' },
+        ],
       },
       problem: {
         overline: 'The Challenge',
@@ -2531,6 +2546,14 @@ export const publicTranslations = {
         uiOnly: 'E-Mail-Verifizierung UI only - kein Backend implementiert',
       },
     },
+    notFound: {
+      title: 'Seite nicht gefunden',
+      description: 'Die gesuchte Seite existiert nicht oder wurde verschoben.',
+      ctaHome: 'Zur Startseite',
+      ctaDashboard: 'Dashboard öffnen',
+      helpText: 'Falls du Hilfe benötigst, kontaktiere unser Support-Team.',
+      contactLink: 'Kontakt aufnehmen',
+    },
     landing: {
       hero: {
         overline: 'Die Visibility Plattform',
@@ -2541,7 +2564,14 @@ export const publicTranslations = {
         ctaSecondary: 'Plattform ansehen',
       },
       trustBar: {
-        title: 'Vertraut von führenden Creators und Growth Teams',
+        title: 'Entwickelt für Creators, Unternehmen & Enterprise',
+        categories: [
+          { icon: '🎬', label: 'Creators' },
+          { icon: '🏢', label: 'Agenturen' },
+          { icon: '🚀', label: 'Startups' },
+          { icon: '🏛️', label: 'Enterprise' },
+          { icon: '📈', label: 'Growth Teams' },
+        ],
       },
       problem: {
         overline: 'Die Herausforderung',
