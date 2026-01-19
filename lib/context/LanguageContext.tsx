@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, ReactNode, useMemo } from 'react';
+import { createContext, useContext, useState, ReactNode, useMemo, useEffect } from 'react';
 import { translations } from '@/lib/i18n/translations';
 
 export type Language = 'en' | 'de';
@@ -31,8 +31,43 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+// Helper to get language from cookie
+function getLanguageFromCookie(): Language {
+  if (typeof document === 'undefined') return 'en';
+  const match = document.cookie.match(/locale=([^;]+)/);
+  if (match && (match[1] === 'en' || match[1] === 'de')) {
+    return match[1] as Language;
+  }
+  // Check browser language as fallback
+  if (typeof navigator !== 'undefined' && navigator.language.startsWith('de')) {
+    return 'de';
+  }
+  return 'en';
+}
+
+// Helper to set language cookie
+function setLanguageCookie(language: Language) {
+  if (typeof document === 'undefined') return;
+  const maxAge = 60 * 60 * 24 * 365; // 1 year
+  document.cookie = `locale=${language}; path=/; max-age=${maxAge}; SameSite=Lax`;
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>('en');
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  // Read language from cookie on mount
+  useEffect(() => {
+    const savedLanguage = getLanguageFromCookie();
+    setLanguageState(savedLanguage);
+    setIsHydrated(true);
+  }, []);
+
+  // Wrapper to also save to cookie
+  const setLanguage = (newLanguage: Language) => {
+    setLanguageState(newLanguage);
+    setLanguageCookie(newLanguage);
+  };
 
   const t = useMemo(() => translations[language], [language]);
 
@@ -42,6 +77,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     t,
   };
 
+  // Prevent hydration mismatch by rendering with default until hydrated
+  // But still render children to avoid layout shift
   return (
     <LanguageContext.Provider value={value}>
       {children}

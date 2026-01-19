@@ -46,12 +46,35 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
-    pathname.includes('.') ||
-    pathname.startsWith('/login') ||
-    pathname.startsWith('/register') ||
-    pathname.startsWith('/dashboard')
+    pathname.includes('.')
   ) {
     return NextResponse.next();
+  }
+  
+  // Check if URL starts with a language prefix
+  const urlLocale = pathname.startsWith('/de') ? 'de' : pathname.startsWith('/en') ? 'en' : null;
+  
+  // For /login, /register, /dashboard - set cookie from URL locale if coming from language route
+  if (
+    pathname.startsWith('/login') ||
+    pathname.startsWith('/register') ||
+    pathname.startsWith('/dashboard') ||
+    pathname.startsWith('/promo')
+  ) {
+    const response = NextResponse.next();
+    // Keep existing cookie, don't override
+    return response;
+  }
+  
+  // If URL has language prefix, set the cookie to match
+  if (urlLocale) {
+    const response = NextResponse.next();
+    response.cookies.set('locale', urlLocale, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      sameSite: 'lax',
+    });
+    return response;
   }
   
   // Determine locale from cookie or Accept-Language header

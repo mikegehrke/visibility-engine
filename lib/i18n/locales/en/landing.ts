@@ -102,6 +102,34 @@ export const landing = {
     ctaPrimary: 'Start Free Trial',
     ctaSecondary: 'View Pricing',
   },
+  howItWorks: {
+    overline: 'How It Works',
+    title: 'See Your Visibility in Action',
+    subtitle: 'Watch how Visibility Engine transforms scattered signals into strategic growth—in real time.',
+    steps: [
+      {
+        title: 'Market Signals Emerge',
+        description: 'Every second, billions of signals flow across Google, YouTube, TikTok, and AI platforms. Trends form, conversations start, opportunities appear.',
+      },
+      {
+        title: 'Platforms React',
+        description: 'Search engines update rankings. Social algorithms shift. AI models learn new patterns. The digital landscape is constantly changing.',
+      },
+      {
+        title: 'We Compare Your Position',
+        description: 'Visibility Engine maps where you stand versus the market. Real-time comparison across all channels shows exactly where you are visible—and where you are not.',
+      },
+      {
+        title: 'Gaps Become Clear',
+        description: 'Missing keywords, untapped audiences, timing mismatches—we identify the specific gaps between your current visibility and your potential.',
+      },
+      {
+        title: 'Action Recommendations',
+        description: 'No guesswork. Concrete, prioritized actions to close each gap. What to publish, when to publish, where to focus—backed by data.',
+      },
+    ],
+    cta: 'Explore Full Process',
+  },
 } as const;
 
 export type LandingTranslations = typeof landing;

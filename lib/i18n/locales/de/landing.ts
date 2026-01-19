@@ -102,6 +102,34 @@ export const landing = {
     ctaPrimary: 'Kostenlos testen',
     ctaSecondary: 'Preise ansehen',
   },
+  howItWorks: {
+    overline: 'So funktioniert es',
+    title: 'Sieh deine Sichtbarkeit in Aktion',
+    subtitle: 'Erlebe wie Visibility Engine verstreute Signale in strategisches Wachstum verwandelt—in Echtzeit.',
+    steps: [
+      {
+        title: 'Marktsignale entstehen',
+        description: 'Jede Sekunde fließen Milliarden Signale über Google, YouTube, TikTok und KI-Plattformen. Trends bilden sich, Gespräche beginnen, Chancen erscheinen.',
+      },
+      {
+        title: 'Plattformen reagieren',
+        description: 'Suchmaschinen aktualisieren Rankings. Social-Algorithmen verschieben sich. KI-Modelle lernen neue Muster. Die digitale Landschaft verändert sich konstant.',
+      },
+      {
+        title: 'Wir vergleichen deine Position',
+        description: 'Visibility Engine zeigt wo du im Vergleich zum Markt stehst. Echtzeit-Vergleich über alle Kanäle zeigt genau wo du sichtbar bist—und wo nicht.',
+      },
+      {
+        title: 'Lücken werden sichtbar',
+        description: 'Fehlende Keywords, unerschlossene Zielgruppen, Timing-Fehler—wir identifizieren die spezifischen Lücken zwischen deiner aktuellen Sichtbarkeit und deinem Potenzial.',
+      },
+      {
+        title: 'Handlungsempfehlungen',
+        description: 'Kein Rätselraten. Konkrete, priorisierte Aktionen um jede Lücke zu schließen. Was publizieren, wann publizieren, wo fokussieren—datengestützt.',
+      },
+    ],
+    cta: 'Vollständigen Prozess erkunden',
+  },
 } as const;
 
 export type LandingTranslations = typeof landing;
