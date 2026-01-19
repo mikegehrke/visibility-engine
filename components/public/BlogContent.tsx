@@ -4,11 +4,14 @@ import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { H2, H3, Body, Small } from '@/components/shared/Typography';
 import Card, { CardContent } from '@/components/shared/Card';
-import type { BlogTranslations } from '@/lib/i18n/locales/en/blog';
+import { blog as blogEn } from '@/lib/i18n/locales/en/blog';
+import { blog as blogDe } from '@/lib/i18n/locales/de/blog';
 
 type CategoryKey = 'all' | 'strategy' | 'aiTechnology' | 'systems' | 'analytics';
 
 const categoryKeys: CategoryKey[] = ['all', 'strategy', 'aiTechnology', 'systems', 'analytics'];
+
+type BlogTranslations = typeof blogEn | typeof blogDe;
 
 interface BlogContentProps {
   t: BlogTranslations;
