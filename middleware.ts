@@ -4,39 +4,87 @@ import type { NextRequest } from 'next/server';
 const SUPPORTED_LOCALES = ['en', 'de'] as const;
 const DEFAULT_LOCALE = 'en';
 
+// Public routes that need language redirect
+const PUBLIC_ROUTES = [
+  '/',
+  '/features',
+  '/pricing',
+  '/about',
+  '/blog',
+  '/contact',
+];
+
+// Check if path starts with any public route (but not already with /en or /de)
+function isPublicRoute(pathname: string): boolean {
+  // Already has language prefix
+  if (pathname.startsWith('/en') || pathname.startsWith('/de')) {
+    return false;
+  }
+  
+  // Check exact matches and prefixes
+  for (const route of PUBLIC_ROUTES) {
+    if (pathname === route || pathname.startsWith(route + '/')) {
+      return true;
+    }
+  }
+  
+  // Also handle other public paths
+  const publicPrefixes = ['/product/', '/use-cases/', '/industries/', '/trust/', '/legal/', '/resources/'];
+  for (const prefix of publicPrefixes) {
+    if (pathname.startsWith(prefix)) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const response = NextResponse.next();
   
-  // Set locale cookie if not present
-  const localeCookie = request.cookies.get('locale');
-  if (!localeCookie) {
-    // Detect from Accept-Language header
+  // Skip static assets and API routes
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    pathname.includes('.') ||
+    pathname.startsWith('/login') ||
+    pathname.startsWith('/register') ||
+    pathname.startsWith('/dashboard')
+  ) {
+    return NextResponse.next();
+  }
+  
+  // Determine locale from cookie or Accept-Language header
+  const localeCookie = request.cookies.get('locale')?.value;
+  let locale = localeCookie;
+  
+  if (!locale || !SUPPORTED_LOCALES.includes(locale as 'en' | 'de')) {
     const acceptLanguage = request.headers.get('accept-language') || '';
-    const preferredLocale = acceptLanguage.includes('de') ? 'de' : DEFAULT_LOCALE;
-    response.cookies.set('locale', preferredLocale, {
+    locale = acceptLanguage.includes('de') ? 'de' : DEFAULT_LOCALE;
+  }
+  
+  // Redirect public routes to language-prefixed version
+  if (isPublicRoute(pathname)) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}${pathname}`;
+    
+    const response = NextResponse.redirect(url, 307);
+    response.cookies.set('locale', locale, {
       path: '/',
       maxAge: 60 * 60 * 24 * 365, // 1 year
       sameSite: 'lax',
     });
+    return response;
   }
   
-  // Dashboard: Auth Check (placeholder - no real auth yet)
-  if (pathname.startsWith('/dashboard')) {
-    const token = request.cookies.get('auth-token');
-    // TODO: Implement real auth check
-    // if (!token) {
-    //   return NextResponse.redirect(new URL('/login', request.url));
-    // }
-  }
-  
-  // Auth Pages: Redirect wenn eingeloggt (placeholder)
-  if (pathname.startsWith('/login') || pathname.startsWith('/register')) {
-    const token = request.cookies.get('auth-token');
-    // TODO: Implement real auth check
-    // if (token) {
-    //   return NextResponse.redirect(new URL('/dashboard', request.url));
-    // }
+  // Set locale cookie if not present
+  const response = NextResponse.next();
+  if (!localeCookie) {
+    response.cookies.set('locale', locale, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      sameSite: 'lax',
+    });
   }
   
   return response;
