@@ -27,6 +27,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (language: Language) => void;
   t: Translations;
+  isHydrated: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -53,10 +54,11 @@ function setLanguageCookie(language: Language) {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
+  // HYDRATION FIX: Always start with 'en' on both server and client
   const [language, setLanguageState] = useState<Language>('en');
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Read language from cookie on mount
+  // Read language from cookie AFTER hydration is complete
   useEffect(() => {
     const savedLanguage = getLanguageFromCookie();
     setLanguageState(savedLanguage);
@@ -69,16 +71,17 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLanguageCookie(newLanguage);
   };
 
-  const t = useMemo(() => translations[language], [language]);
+  // HYDRATION FIX: Use 'en' translations until hydrated to prevent mismatch
+  const effectiveLanguage = isHydrated ? language : 'en';
+  const t = useMemo(() => translations[effectiveLanguage], [effectiveLanguage]);
 
   const value: LanguageContextType = {
-    language,
+    language: effectiveLanguage,
     setLanguage,
     t,
+    isHydrated,
   };
 
-  // Prevent hydration mismatch by rendering with default until hydrated
-  // But still render children to avoid layout shift
   return (
     <LanguageContext.Provider value={value}>
       {children}

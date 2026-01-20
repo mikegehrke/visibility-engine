@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/lib/context/LanguageContext';
+// PHASE 17F: No LanguageContext - English only
 import { translations } from '@/lib/i18n/translations';
 import { currentAccount } from '@/lib/models/account';
 import { mockExecutionLogs } from '@/lib/models/executions';
@@ -10,8 +10,7 @@ interface AutomationCounterProps {
 }
 
 export default function AutomationCounter({ compact = false }: AutomationCounterProps) {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const t = translations.en;
   
   const isOwner = currentAccount.isOwner;
   const addOnEnabled = currentAccount.automationAddOn.enabled;

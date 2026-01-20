@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/lib/context/LanguageContext';
+// PHASE 17F: No LanguageContext - English only
 import { translations } from '@/lib/i18n/translations';
 import { SimulationResult, getRiskLevelStyles } from '@/lib/models/simulation';
 import { currentAccount } from '@/lib/models/account';
@@ -18,8 +18,7 @@ export default function SimulationCard({
   onSkip,
   compact = false 
 }: SimulationCardProps) {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const t = translations.en;
   
   const riskStyles = getRiskLevelStyles(simulation.riskLevel);
   const isOwner = currentAccount.isOwner;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/lib/context/LanguageContext';
+// PHASE 17F: No LanguageContext - English only
 import { translations } from '@/lib/i18n/translations';
 import { ExecutionLog } from '@/lib/models/executions';
 import Link from 'next/link';
@@ -11,8 +11,7 @@ interface ExplainabilitySectionProps {
 }
 
 export default function ExplainabilitySection({ execution, compact = false }: ExplainabilitySectionProps) {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const t = translations.en;
   
   // Only show for auto executions with explainability data
   if (execution.executionType !== 'auto' || !execution.triggerMetrics) {
