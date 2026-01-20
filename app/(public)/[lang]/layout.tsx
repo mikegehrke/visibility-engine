@@ -1,3 +1,4 @@
+import { use } from 'react';
 import { notFound } from 'next/navigation';
 import StaticHeader from '@/components/public/StaticHeader';
 import StaticFooter from '@/components/public/StaticFooter';
@@ -9,8 +10,9 @@ export function generateStaticParams() {
 }
 
 // Metadata for SEO
-export async function generateMetadata({ params }: { params: { lang: string } }) {
-  const lang = isValidLang(params.lang) ? params.lang : 'en';
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: langParam } = await params;
+  const lang = isValidLang(langParam) ? langParam : 'en';
   const baseUrl = 'https://visibility-engine.com';
   
   return {
@@ -29,18 +31,20 @@ export default function PublicLangLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = use(params);
+  
   // Validate language - redirect to 404 if invalid
-  if (!isValidLang(params.lang)) {
+  if (!isValidLang(lang)) {
     notFound();
   }
 
   return (
     <>
-      <StaticHeader lang={params.lang} />
+      <StaticHeader lang={lang} />
       <main>{children}</main>
-      <StaticFooter lang={params.lang} />
+      <StaticFooter lang={lang} />
     </>
   );
 }

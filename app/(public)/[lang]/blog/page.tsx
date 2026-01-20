@@ -10,8 +10,9 @@ export function generateStaticParams() {
   return supportedLanguages.map((lang) => ({ lang }));
 }
 
-export default async function BlogPage({ params }: { params: { lang: string } }) {
-  const lang = (params.lang as Lang) || 'en';
+export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: langParam } = await params;
+  const lang = (langParam as Lang) || 'en';
   const t = translations[lang];
 
   return (

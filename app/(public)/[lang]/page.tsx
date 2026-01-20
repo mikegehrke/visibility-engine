@@ -20,8 +20,9 @@ export const dynamic = 'force-static';
 export const revalidate = 3600;
 
 // SEO Metadata
-export async function generateMetadata({ params }: { params: { lang: string } }) {
-  const lang = (params.lang as Lang) || 'en';
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: langParam } = await params;
+  const lang = (langParam as Lang) || 'en';
   const t = translations[lang];
   
   return {
@@ -37,9 +38,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-export default function HomePage({ params }: { params: { lang: string } }) {
+export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   // Get locale from URL params - NO cookies!
-  const lang = (params.lang as Lang) || 'en';
+  const { lang: langParam } = await params;
+  const lang = (langParam as Lang) || 'en';
   const t = translations[lang];
   
   // Helper to prefix links with lang

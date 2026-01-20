@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Compiler Optimizations
-  swcMinify: true,
-  
   // Image Optimization
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -37,26 +34,6 @@ const nextConfig = {
         ],
       },
     ];
-  },
-  
-  // Bundle Optimization
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          default: false,
-          vendors: false,
-          // Separate Dashboard Bundle
-          dashboard: {
-            test: /[\\/]app[\\/]dashboard[\\/]/,
-            name: 'dashboard',
-            priority: 10,
-          },
-        },
-      };
-    }
-    return config;
   },
 };
 

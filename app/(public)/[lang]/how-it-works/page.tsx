@@ -308,8 +308,9 @@ export const dynamic = 'force-static';
 export const revalidate = 3600;
 
 // SEO Metadata
-export async function generateMetadata({ params }: { params: { lang: string } }) {
-  const lang = (params.lang as Lang) || 'en';
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: langParam } = await params;
+  const lang = (langParam as Lang) || 'en';
   const t = translations[lang];
   
   return {
@@ -325,8 +326,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-export default function HowItWorksPage({ params }: { params: { lang: string } }) {
-  const lang = (params.lang as Lang) || 'en';
+export default async function HowItWorksPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: langParam } = await params;
+  const lang = (langParam as Lang) || 'en';
   const t = translations[lang];
   const l = (path: string) => `/${lang}${path}`;
 

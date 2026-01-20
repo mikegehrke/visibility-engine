@@ -54,9 +54,10 @@ const featureIcons = {
 
 const sectionKeys = ['signals', 'automation', 'content', 'intelligence', 'collaboration', 'integrations'] as const;
 
-export default async function FeaturesPage({ params }: { params: { lang: string } }) {
+export default async function FeaturesPage({ params }: { params: Promise<{ lang: string }> }) {
   // Get locale from URL params - NO cookies!
-  const lang = (params.lang as Lang) || 'en';
+  const { lang: langParam } = await params;
+  const lang = (langParam as Lang) || 'en';
   const ft = translations[lang];
   
   // Helper to prefix links with lang

@@ -12,8 +12,9 @@ export function generateStaticParams() {
   return supportedLanguages.map((lang) => ({ lang }));
 }
 
-export default async function AboutPage({ params }: { params: { lang: string } }) {
-  const lang = (params.lang as Lang) || 'en';
+export default async function AboutPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: langParam } = await params;
+  const lang = (langParam as Lang) || 'en';
   const l = (path: string) => `/${lang}${path}`;
   const t = translations[lang];
 
