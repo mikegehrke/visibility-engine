@@ -1,12 +1,13 @@
 'use client';
 
-// PHASE 17F: No LanguageContext - English only
+import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { flowSteps } from '@/lib/config/visibility';
 import { flowBottlenecks } from '@/lib/config/insights';
 
 export default function FlowPage() {
-  const t = translations.en;
+  const { language } = useLanguage();
+  const t = translations[language];
 
   // Color scheme for each step
   const stepColors = [

@@ -1,12 +1,13 @@
 'use client';
 
-// PHASE 17F: No LanguageContext - English only
+import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockReports } from '@/lib/models/reports';
 import Link from 'next/link';
 
 export default function ReportsPage() {
-  const t = translations.en;
+  const { language } = useLanguage();
+  const t = translations[language];
 
   const getTypeStyles = (type: 'weekly' | 'monthly' | 'custom') => {
     switch (type) {

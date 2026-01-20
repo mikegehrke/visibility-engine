@@ -467,7 +467,7 @@ export default function PlaybookDetailPage() {
                     ? 'Aktiviere dieses Playbook in deinem Dashboard und starte die Automatisierung.'
                     : 'Activate this playbook in your dashboard and start automating.'}
                 </Body>
-                <Link href={l('/dashboard')}>
+                <Link href="/dashboard">
                   <Button variant="secondary" className="w-full bg-white text-signal hover:bg-white/90">
                     {language === 'de' ? 'Playbook aktivieren' : 'Activate Playbook'}
                   </Button>

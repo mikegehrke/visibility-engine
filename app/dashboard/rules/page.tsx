@@ -1,12 +1,13 @@
 'use client';
 
-// PHASE 17F: No LanguageContext - English only
+import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockRules } from '@/lib/models/rules';
 import Link from 'next/link';
 
 export default function RulesPage() {
-  const t = translations.en;
+  const { language } = useLanguage();
+  const t = translations[language];
 
   // Group rules by scope
   const rulesByScope = {

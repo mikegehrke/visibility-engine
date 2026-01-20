@@ -1,6 +1,6 @@
 'use client';
 
-// PHASE 17F: No LanguageContext - English only
+import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockRules } from '@/lib/models/rules';
 import { mockActions } from '@/lib/models/actions';
@@ -8,7 +8,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export default function RuleDetailPage({ params }: { params: { id: string } }) {
-  const t = translations.en;
+  const { language } = useLanguage();
+  const t = translations[language];
 
   // Find the rule
   const rule = mockRules.find((r) => r.id === params.id);

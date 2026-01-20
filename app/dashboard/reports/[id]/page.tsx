@@ -1,6 +1,6 @@
 'use client';
 
-// PHASE 17F: No LanguageContext - English only
+import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockReports, mockExportPreviews } from '@/lib/models/reports';
 import { mockRules } from '@/lib/models/rules';
@@ -9,7 +9,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export default function ReportDetailPage({ params }: { params: { id: string } }) {
-  const t = translations.en;
+  const { language } = useLanguage();
+  const t = translations[language];
 
   // Find the report
   const report = mockReports.find((r) => r.id === params.id);
