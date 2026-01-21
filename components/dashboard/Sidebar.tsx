@@ -17,7 +17,11 @@ interface NavSection {
   roadmap?: boolean;
 }
 
-export default function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname();
   const { t } = useDashboard();
 
@@ -101,6 +105,7 @@ export default function Sidebar() {
     <Link
       key={item.href}
       href={item.href}
+      onClick={onClose}
       className={`
         flex items-center justify-between px-3 py-2.5 min-h-[44px] rounded-lg text-[13px] font-medium
         transition-all duration-fast ease-out-expo tap-highlight
@@ -127,6 +132,21 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 h-screen border-r border-border bg-canvas flex flex-col safe-area-bottom">
+      {/* Mobile Close Button */}
+      <div className="flex items-center justify-between h-14 px-4 border-b border-border lg:hidden">
+        <span className="text-base font-semibold text-ink">Menu</span>
+        <button
+          onClick={onClose}
+          className="p-2 rounded-lg text-slate hover:text-ink hover:bg-surface-1 transition-colors"
+          title="Menu schließen"
+          aria-label="Menu schließen"
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
       {/* Active Features */}
       <div className="flex-1 overflow-y-auto py-5 scrollbar-thin scroll-container">
         <div className="px-4 space-y-6">
