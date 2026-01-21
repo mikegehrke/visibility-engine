@@ -16,8 +16,9 @@ interface ExplainerAnimationProps {
 
 export default function ExplainerAnimation({ steps, autoPlay = true, lang }: ExplainerAnimationProps) {
   const [currentStep, setCurrentStep] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [isPlaying, setIsPlaying] = useState(false); // Start false to avoid hydration mismatch
   const [progress, setProgress] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   const labels = {
     en: { play: 'Play', pause: 'Pause', replay: 'Replay' },
@@ -29,9 +30,21 @@ export default function ExplainerAnimation({ steps, autoPlay = true, lang }: Exp
     setProgress(0);
   }, [steps.length]);
 
+  // Handle mounting and autoPlay
+  useEffect(() => {
+    setMounted(true);
+    // Only start autoPlay after mount to avoid hydration issues
+    if (autoPlay) {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (!mediaQuery.matches) {
+        setIsPlaying(true);
+      }
+    }
+  }, [autoPlay]);
+
   // Auto-advance timer
   useEffect(() => {
-    if (!isPlaying) return;
+    if (!isPlaying || !mounted) return;
 
     const step = steps[currentStep];
     const interval = 50; // Update every 50ms for smooth progress
@@ -48,15 +61,7 @@ export default function ExplainerAnimation({ steps, autoPlay = true, lang }: Exp
     }, interval);
 
     return () => clearInterval(timer);
-  }, [isPlaying, currentStep, steps, nextStep]);
-
-  // Respect prefers-reduced-motion
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mediaQuery.matches) {
-      setIsPlaying(false);
-    }
-  }, []);
+  }, [isPlaying, currentStep, steps, nextStep, mounted]);
 
   const togglePlay = () => setIsPlaying(!isPlaying);
 
