@@ -95,14 +95,16 @@ const timeRanges = [
 ];
 
 // Chart colors - use actual hex values because Recharts SVG elements can't resolve CSS variables
+// Made brighter for better visibility in dark mode
 const chartColors = {
-  signal: '#60A5FA', // blue-400 (dark mode signal color)
-  signalLight: 'rgba(96, 165, 250, 0.3)',
-  signalFaded: 'rgba(96, 165, 250, 0.15)',
-  slate: '#A1A1AA', // zinc-400
+  signal: '#93C5FD', // blue-300 - bright for dark mode
+  signalStroke: '#60A5FA', // blue-400 - for line strokes
+  signalLight: 'rgba(147, 197, 253, 0.5)', // brighter fill
+  signalFaded: 'rgba(147, 197, 253, 0.25)',
+  slate: '#D4D4D8', // zinc-300 - brighter for readability
   ink: '#FAFAFA', // zinc-50
-  surface: '#0F0F11',
-  border: '#27272A',
+  surface: '#18181B', // zinc-900
+  border: '#3F3F46', // zinc-700
 };
 
 // Stat Card
@@ -194,12 +196,12 @@ export default function AnalyticsPage() {
               <AreaChart data={trafficData}>
                 <defs>
                   <linearGradient id="colorViews" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={chartColors.signal} stopOpacity={0.3} />
-                    <stop offset="95%" stopColor={chartColors.signal} stopOpacity={0} />
+                    <stop offset="5%" stopColor={chartColors.signal} stopOpacity={0.5} />
+                    <stop offset="95%" stopColor={chartColors.signal} stopOpacity={0.05} />
                   </linearGradient>
                   <linearGradient id="colorVisitors" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={chartColors.signal} stopOpacity={0.15} />
-                    <stop offset="95%" stopColor={chartColors.signal} stopOpacity={0} />
+                    <stop offset="5%" stopColor={chartColors.signal} stopOpacity={0.3} />
+                    <stop offset="95%" stopColor={chartColors.signal} stopOpacity={0.02} />
                   </linearGradient>
                 </defs>
                 <XAxis 
@@ -226,16 +228,16 @@ export default function AnalyticsPage() {
                   type="monotone"
                   dataKey="views"
                   stroke={chartColors.signal}
-                  strokeWidth={2}
+                  strokeWidth={3}
                   fillOpacity={1}
                   fill="url(#colorViews)"
                 />
                 <Area
                   type="monotone"
                   dataKey="visitors"
-                  stroke={chartColors.signal}
+                  stroke={chartColors.signalStroke}
                   strokeWidth={2}
-                  strokeOpacity={0.5}
+                  strokeOpacity={0.7}
                   fillOpacity={1}
                   fill="url(#colorVisitors)"
                 />
