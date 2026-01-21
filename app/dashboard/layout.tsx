@@ -1,9 +1,18 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { DashboardProvider } from '@/lib/context/DashboardContext';
-import Sidebar from '@/components/dashboard/Sidebar';
-import DashboardTopBar from '@/components/dashboard/DashboardTopBar';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+
+// Dynamic imports with ssr: false - completely prevents hydration errors
+const Sidebar = dynamic(() => import('@/components/dashboard/Sidebar'), { 
+  ssr: false,
+  loading: () => <div className="w-64 h-screen bg-canvas border-r border-border" />
+});
+const DashboardTopBar = dynamic(() => import('@/components/dashboard/DashboardTopBar'), { 
+  ssr: false,
+  loading: () => <div className="h-14 bg-canvas border-b border-border" />
+});
 
 export default function DashboardLayout({
   children,
@@ -11,17 +20,12 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <DashboardProvider>
       <div className="flex h-screen overflow-hidden bg-smoke">
         {/* Mobile Overlay */}
-        {mounted && sidebarOpen && (
+        {sidebarOpen && (
           <div 
             className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setSidebarOpen(false)}

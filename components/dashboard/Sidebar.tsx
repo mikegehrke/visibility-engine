@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useDashboard } from '@/lib/context/DashboardContext';
@@ -25,11 +24,6 @@ interface SidebarProps {
 export default function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname();
   const { t } = useDashboard();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Active feature sections - fully functional
   const activeFeatures: NavSection[] = [
@@ -115,7 +109,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
       className={`
         flex items-center justify-between px-3 py-2.5 min-h-[44px] rounded-lg text-[13px] font-medium
         transition-all duration-fast ease-out-expo tap-highlight
-        ${mounted && isActive 
+        ${isActive 
           ? 'bg-signal-bg text-white shadow-sm' 
           : item.comingSoon 
             ? 'text-slate/50 hover:text-slate hover:bg-surface-1 active:bg-surface-1 focus-visible:bg-surface-1'
