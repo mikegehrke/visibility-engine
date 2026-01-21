@@ -132,9 +132,9 @@ export default function ExplainerAnimation({ steps, autoPlay = true, lang }: Exp
         <button
           onClick={togglePlay}
           className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-surface-1 border border-border hover:bg-surface-2 transition-colors"
-          aria-label={isPlaying ? labels[lang].pause : labels[lang].play}
+          aria-label={mounted && isPlaying ? labels[lang].pause : labels[lang].play}
         >
-          {isPlaying ? (
+          {mounted && isPlaying ? (
             <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-ink" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
@@ -144,7 +144,7 @@ export default function ExplainerAnimation({ steps, autoPlay = true, lang }: Exp
             </svg>
           )}
           <span className="hidden sm:inline text-sm font-medium text-ink">
-            {isPlaying ? labels[lang].pause : labels[lang].play}
+            {mounted && isPlaying ? labels[lang].pause : labels[lang].play}
           </span>
         </button>
 

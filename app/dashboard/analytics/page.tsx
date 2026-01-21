@@ -40,24 +40,66 @@ const ResponsiveContainer = dynamic(
   { ssr: false }
 );
 
-// Sample data for charts
-const trafficData = [
-  { name: 'Mon', views: 2400, visitors: 1800 },
-  { name: 'Tue', views: 1398, visitors: 980 },
-  { name: 'Wed', views: 9800, visitors: 6800 },
-  { name: 'Thu', views: 3908, visitors: 2800 },
-  { name: 'Fri', views: 4800, visitors: 3200 },
-  { name: 'Sat', views: 3800, visitors: 2400 },
-  { name: 'Sun', views: 4300, visitors: 2900 },
-];
+// Sample data for different time ranges
+const trafficDataByRange: Record<string, Array<{ name: string; views: number; visitors: number }>> = {
+  '7d': [
+    { name: 'Mon', views: 2400, visitors: 1800 },
+    { name: 'Tue', views: 1398, visitors: 980 },
+    { name: 'Wed', views: 9800, visitors: 6800 },
+    { name: 'Thu', views: 3908, visitors: 2800 },
+    { name: 'Fri', views: 4800, visitors: 3200 },
+    { name: 'Sat', views: 3800, visitors: 2400 },
+    { name: 'Sun', views: 4300, visitors: 2900 },
+  ],
+  '30d': [
+    { name: 'Week 1', views: 18200, visitors: 12400 },
+    { name: 'Week 2', views: 22100, visitors: 15800 },
+    { name: 'Week 3', views: 19500, visitors: 13200 },
+    { name: 'Week 4', views: 24800, visitors: 17600 },
+  ],
+  '90d': [
+    { name: 'Jan', views: 45200, visitors: 32400 },
+    { name: 'Feb', views: 52100, visitors: 38800 },
+    { name: 'Mar', views: 68500, visitors: 49200 },
+  ],
+  '1y': [
+    { name: 'Q1', views: 145200, visitors: 98400 },
+    { name: 'Q2', views: 182100, visitors: 128800 },
+    { name: 'Q3', views: 198500, visitors: 142200 },
+    { name: 'Q4', views: 224800, visitors: 167600 },
+  ],
+};
 
-const channelData = [
-  { name: 'LinkedIn', value: 4500 },
-  { name: 'Twitter/X', value: 3200 },
-  { name: 'Organic', value: 2800 },
-  { name: 'Direct', value: 1800 },
-  { name: 'Email', value: 1200 },
-];
+const channelDataByRange: Record<string, Array<{ name: string; value: number }>> = {
+  '7d': [
+    { name: 'LinkedIn', value: 4500 },
+    { name: 'Twitter/X', value: 3200 },
+    { name: 'Organic', value: 2800 },
+    { name: 'Direct', value: 1800 },
+    { name: 'Email', value: 1200 },
+  ],
+  '30d': [
+    { name: 'LinkedIn', value: 18200 },
+    { name: 'Twitter/X', value: 12800 },
+    { name: 'Organic', value: 11200 },
+    { name: 'Direct', value: 7200 },
+    { name: 'Email', value: 4800 },
+  ],
+  '90d': [
+    { name: 'LinkedIn', value: 52600 },
+    { name: 'Twitter/X', value: 38400 },
+    { name: 'Organic', value: 33600 },
+    { name: 'Direct', value: 21600 },
+    { name: 'Email', value: 14400 },
+  ],
+  '1y': [
+    { name: 'LinkedIn', value: 210400 },
+    { name: 'Twitter/X', value: 153600 },
+    { name: 'Organic', value: 134400 },
+    { name: 'Direct', value: 86400 },
+    { name: 'Email', value: 57600 },
+  ],
+};
 
 const contentPerformance = [
   { 
@@ -193,7 +235,7 @@ export default function AnalyticsPage() {
         <CardContent>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={trafficData}>
+              <AreaChart data={trafficDataByRange[timeRange] || trafficDataByRange['7d']}>
                 <defs>
                   <linearGradient id="colorViews" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor={chartColors.signal} stopOpacity={0.5} />
@@ -257,7 +299,7 @@ export default function AnalyticsPage() {
           <CardContent>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={channelData} layout="vertical">
+                <BarChart data={channelDataByRange[timeRange] || channelDataByRange['7d']} layout="vertical">
                   <XAxis 
                     type="number"
                     axisLine={false}

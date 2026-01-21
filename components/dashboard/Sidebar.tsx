@@ -131,54 +131,40 @@ export default function Sidebar({ onClose }: SidebarProps) {
   );
 
   return (
-    <aside className="w-64 h-screen border-r border-border bg-canvas flex flex-col safe-area-bottom">
-      {/* Mobile Close Button */}
-      <div className="flex items-center justify-between h-14 px-4 border-b border-border lg:hidden">
-        <span className="text-base font-semibold text-ink">Menu</span>
-        <button
-          onClick={onClose}
-          className="p-2 rounded-lg text-slate hover:text-ink hover:bg-surface-1 transition-colors"
-          title="Menu schließen"
-          aria-label="Menu schließen"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      
-      {/* Active Features */}
-      <div className="flex-1 overflow-y-auto py-5 scrollbar-thin scroll-container">
-        <div className="px-4 space-y-6">
-          {activeFeatures.map((section, idx) => (
-            <div key={idx}>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/60 px-3 mb-2 block">
-                {section.title}
-              </span>
-              <nav className="space-y-0.5">
-                {section.items.map((item) => renderNavItem(item, pathname === item.href))}
-              </nav>
+    <>
+      {/* Mobile Header mit Close Button - nur wenn onClose vorhanden */}
+      {onClose && (
+        <div className="flex items-center justify-between h-14 px-4 border-b border-border shrink-0 bg-canvas">
+          <a href="/dashboard" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-signal flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+              </svg>
             </div>
-          ))}
+            <span className="text-base font-semibold text-ink">
+              {t.sidebar?.appName || 'Visibility Engine'}
+            </span>
+          </a>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg text-slate hover:text-ink hover:bg-surface-1 active:bg-surface-2 transition-colors touch-target"
+            title={t.sidebar?.closeMenu || 'Close menu'}
+            aria-label={t.sidebar?.closeMenu || 'Close menu'}
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-
-        {/* Separator */}
-        <div className="my-6 mx-4 border-t border-border/50" />
-
-        {/* Roadmap Section */}
-        <div className="px-4">
-          <div className="flex items-center gap-2 px-3 mb-4">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/40">
-              {t.sections.roadmap}
-            </span>
-            <span className="text-[10px] text-slate/30 font-normal normal-case">
-              {t.sections.planned}
-            </span>
-          </div>
-          <div className="space-y-5">
-            {roadmapFeatures.map((section, idx) => (
+      )}
+      
+      {/* Navigation Content */}
+      <div className={onClose ? "flex-1 overflow-y-auto" : ""}>
+        <div className="py-5">
+          <div className="px-4 space-y-6">
+            {activeFeatures.map((section, idx) => (
               <div key={idx}>
-                <span className="text-[10px] font-medium text-slate/30 px-3 mb-1.5 block">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/60 px-3 mb-2 block">
                   {section.title}
                 </span>
                 <nav className="space-y-0.5">
@@ -187,8 +173,35 @@ export default function Sidebar({ onClose }: SidebarProps) {
               </div>
             ))}
           </div>
+
+          {/* Separator */}
+          <div className="my-6 mx-4 border-t border-border/50" />
+
+          {/* Roadmap Section */}
+          <div className="px-4">
+            <div className="flex items-center gap-2 px-3 mb-4">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-slate/40">
+                {t.sections.roadmap}
+              </span>
+              <span className="text-[10px] text-slate/30 font-normal normal-case">
+                {t.sections.planned}
+              </span>
+            </div>
+            <div className="space-y-5">
+              {roadmapFeatures.map((section, idx) => (
+                <div key={idx}>
+                  <span className="text-[10px] font-medium text-slate/30 px-3 mb-1.5 block">
+                    {section.title}
+                  </span>
+                  <nav className="space-y-0.5">
+                    {section.items.map((item) => renderNavItem(item, pathname === item.href))}
+                  </nav>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </aside>
+    </>
   );
 }

@@ -15,12 +15,21 @@ print()
 print('TOP VERBESSERUNGEN:')
 
 issues = []
-for key in ['render-blocking-resources', 'unused-css-rules', 'unused-javascript', 
-            'uses-text-compression', 'server-response-time', 'total-byte-weight', 'dom-size']:
-    if key in audits and audits[key].get('score') is not None and audits[key]['score'] < 1:
-        title = audits[key]['title']
-        savings = audits[key].get('displayValue', 'N/A')
-        score = audits[key]['score']
+audit_keys = [
+    'render-blocking-resources',
+    'unused-css-rules',
+    'unused-javascript',
+    'uses-text-compression',
+    'server-response-time',
+    'total-byte-weight',
+    'dom-size'
+]
+for key in audit_keys:
+    audit = audits.get(key)
+    if audit and audit.get('score') is not None and audit['score'] < 1:
+        title = audit['title']
+        savings = audit.get('displayValue', 'N/A')
+        score = audit['score']
         issues.append((score, title, savings))
 
 issues.sort()

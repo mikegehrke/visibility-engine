@@ -57,6 +57,9 @@
   --space-24: 6rem;     /* 96px */
   --space-32: 8rem;     /* 128px */
   
+  /* Sidebar width */
+  --sidebar-width: 256px;
+  
   /* Typography - System fonts only */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
@@ -303,6 +306,16 @@
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(4px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Slide in from left animation (for mobile menu) */
+  .animate-slide-in-left {
+    animation: slideInLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0.8; }
+    to { transform: translateX(0); opacity: 1; }
   }
   
   /* Gradient text (for hero sections) */

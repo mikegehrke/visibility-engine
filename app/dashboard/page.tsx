@@ -158,7 +158,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-6 lg:space-y-8">
+    <div className="space-y-8">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
         <div>

@@ -95,6 +95,18 @@ export const translations = {
       cancel: 'Cancel',
     },
     
+    // Sidebar & Layout
+    sidebar: {
+      appName: 'Visibility Engine',
+      menu: 'Menu',
+      closeMenu: 'Close menu',
+      openMenu: 'Open menu',
+      collapse: 'Collapse',
+      expand: 'Expand',
+      openSidebar: 'Open sidebar',
+      closeSidebar: 'Close sidebar',
+    },
+    
     // Billing
     billing: {
       title: 'Billing & Subscription',
@@ -1048,10 +1060,22 @@ export const translations = {
       comingSoon: 'Demnächst',
       placeholder: 'Dieses Modul befindet sich aktuell in Entwicklung',
       unlimited: 'Unbegrenzt',
-      upgrade: 'Upgraden',
-      downgrade: 'Downgraden',
+      upgrade: 'Upgrade',
+      downgrade: 'Downgrade',
       currentPlan: 'Aktueller Plan',
       cancel: 'Abbrechen',
+    },
+    
+    // Sidebar & Layout
+    sidebar: {
+      appName: 'Visibility Engine',
+      menu: 'Menü',
+      closeMenu: 'Menü schließen',
+      openMenu: 'Menü öffnen',
+      collapse: 'Einklappen',
+      expand: 'Ausklappen',
+      openSidebar: 'Sidebar öffnen',
+      closeSidebar: 'Sidebar schließen',
     },
     
     // Billing
