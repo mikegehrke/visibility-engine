@@ -101,7 +101,7 @@ export default function ExplainabilitySection({ execution, compact = false }: Ex
             <div>
               <p className="text-xs text-slate mb-1">{t.explainability.evaluatedAt}</p>
               <p className="text-sm font-medium text-ink">
-                {new Date(execution.evaluatedAt).toLocaleString(language === 'de' ? 'de-DE' : 'en-US', {
+                {new Date(execution.evaluatedAt).toLocaleString('de-DE', {
                   month: 'short',
                   day: 'numeric',
                   hour: '2-digit',
