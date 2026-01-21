@@ -12,16 +12,15 @@ export default function DashboardTopBar() {
     <header className="h-14 min-h-[56px] border-b border-border sticky-header px-6 flex items-center justify-between safe-area-top safe-area-x">
       {/* Left: Logo/Brand with Icon + Back to Website */}
       <div className="flex items-center gap-4">
-        {/* Back to Website Link - use / which redirects to correct language */}
+        {/* Back to Website Link - icon only */}
         <Link 
           href="/" 
-          className="flex items-center gap-1.5 text-slate hover:text-ink transition-colors group"
-          title="Website"
+          className="flex items-center justify-center w-8 h-8 rounded-lg text-slate hover:text-ink hover:bg-surface-1 transition-colors"
+          title="Zurück zur Website"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
-          <span className="text-sm hidden sm:inline">Website</span>
         </Link>
 
         {/* Divider */}
