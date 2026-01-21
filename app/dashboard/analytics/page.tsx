@@ -94,6 +94,17 @@ const timeRanges = [
   { label: 'Year', value: '1y' },
 ];
 
+// Chart colors - use actual hex values because Recharts SVG elements can't resolve CSS variables
+const chartColors = {
+  signal: '#60A5FA', // blue-400 (dark mode signal color)
+  signalLight: 'rgba(96, 165, 250, 0.3)',
+  signalFaded: 'rgba(96, 165, 250, 0.15)',
+  slate: '#A1A1AA', // zinc-400
+  ink: '#FAFAFA', // zinc-50
+  surface: '#0F0F11',
+  border: '#27272A',
+};
+
 // Stat Card
 function MetricCard({
   label,
@@ -183,37 +194,38 @@ export default function AnalyticsPage() {
               <AreaChart data={trafficData}>
                 <defs>
                   <linearGradient id="colorViews" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--signal)" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="var(--signal)" stopOpacity={0} />
+                    <stop offset="5%" stopColor={chartColors.signal} stopOpacity={0.3} />
+                    <stop offset="95%" stopColor={chartColors.signal} stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="colorVisitors" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--signal)" stopOpacity={0.15} />
-                    <stop offset="95%" stopColor="var(--signal)" stopOpacity={0} />
+                    <stop offset="5%" stopColor={chartColors.signal} stopOpacity={0.15} />
+                    <stop offset="95%" stopColor={chartColors.signal} stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <XAxis 
                   dataKey="name" 
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: 'var(--slate)', fontSize: 12 }}
+                  tick={{ fill: chartColors.slate, fontSize: 12 }}
                 />
                 <YAxis 
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: 'var(--slate)', fontSize: 12 }}
+                  tick={{ fill: chartColors.slate, fontSize: 12 }}
                 />
                 <Tooltip 
                   contentStyle={{
-                    backgroundColor: 'var(--surface-1)',
-                    border: '1px solid var(--border)',
+                    backgroundColor: chartColors.surface,
+                    border: `1px solid ${chartColors.border}`,
                     borderRadius: '8px',
-                    boxShadow: 'var(--shadow-elevated)',
+                    color: chartColors.ink,
                   }}
+                  labelStyle={{ color: chartColors.ink }}
                 />
                 <Area
                   type="monotone"
                   dataKey="views"
-                  stroke="var(--signal)"
+                  stroke={chartColors.signal}
                   strokeWidth={2}
                   fillOpacity={1}
                   fill="url(#colorViews)"
@@ -221,7 +233,7 @@ export default function AnalyticsPage() {
                 <Area
                   type="monotone"
                   dataKey="visitors"
-                  stroke="var(--signal)"
+                  stroke={chartColors.signal}
                   strokeWidth={2}
                   strokeOpacity={0.5}
                   fillOpacity={1}
@@ -248,26 +260,28 @@ export default function AnalyticsPage() {
                     type="number"
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fill: 'var(--slate)', fontSize: 12 }}
+                    tick={{ fill: chartColors.slate, fontSize: 12 }}
                   />
                   <YAxis 
                     type="category"
                     dataKey="name"
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fill: 'var(--ink)', fontSize: 12 }}
+                    tick={{ fill: chartColors.ink, fontSize: 12 }}
                     width={80}
                   />
                   <Tooltip 
                     contentStyle={{
-                      backgroundColor: 'var(--surface-1)',
-                      border: '1px solid var(--border)',
+                      backgroundColor: chartColors.surface,
+                      border: `1px solid ${chartColors.border}`,
                       borderRadius: '8px',
+                      color: chartColors.ink,
                     }}
+                    labelStyle={{ color: chartColors.ink }}
                   />
                   <Bar 
                     dataKey="value" 
-                    fill="var(--signal)"
+                    fill={chartColors.signal}
                     radius={[0, 4, 4, 0]}
                   />
                 </BarChart>

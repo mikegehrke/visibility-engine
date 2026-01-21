@@ -3,7 +3,7 @@
 import { DashboardProvider } from '@/lib/context/DashboardContext';
 import Sidebar from '@/components/dashboard/Sidebar';
 import DashboardTopBar from '@/components/dashboard/DashboardTopBar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function DashboardLayout({
   children,
@@ -11,12 +11,17 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <DashboardProvider>
       <div className="flex h-screen overflow-hidden bg-smoke">
         {/* Mobile Overlay */}
-        {sidebarOpen && (
+        {mounted && sidebarOpen && (
           <div 
             className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setSidebarOpen(false)}
