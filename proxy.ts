@@ -39,7 +39,7 @@ function isPublicRoute(pathname: string): boolean {
   return false;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
   // Skip static assets and API routes
