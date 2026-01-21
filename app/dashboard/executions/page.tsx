@@ -43,7 +43,7 @@ export default function ExecutionsPage() {
       case 'pending':
         return 'bg-yellow-100 text-yellow-700';
       case 'cancelled':
-        return 'bg-gray-100 text-gray-700';
+        return 'bg-surface-2 text-ink-secondary';
       case 'rolled_back':
         return 'bg-red-100 text-red-700';
     }
@@ -96,7 +96,7 @@ export default function ExecutionsPage() {
       <div className="bg-canvas border border-border rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b border-border">
+            <thead className="bg-surface-1 border-b border-border">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-slate uppercase tracking-wider">
                   {t.execution.action}
@@ -151,7 +151,7 @@ export default function ExecutionsPage() {
                         <span className={`px-2 py-1 rounded text-xs font-medium ${
                           log.executionType === 'auto' 
                             ? 'bg-purple-100 text-purple-700 border border-purple-200' 
-                            : 'bg-gray-100 text-gray-700 border border-gray-200'
+                            : 'bg-surface-2 text-ink-secondary border border-border'
                         }`}>
                           {t.autoMode.executionTypes[log.executionType]}
                         </span>
@@ -196,7 +196,7 @@ export default function ExecutionsPage() {
                     {/* Phase 16B: Rollback Button */}
                     <td className="px-6 py-4">
                       {isRolledBack ? (
-                        <span className="px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
+                        <span className="px-2 py-1 rounded text-xs font-medium bg-surface-2 text-slate border border-border">
                           {t.rollback.success}
                         </span>
                       ) : isRollbackable ? (

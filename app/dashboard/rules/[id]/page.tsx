@@ -1,5 +1,6 @@
 'use client';
 
+import { use } from 'react';
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockRules } from '@/lib/models/rules';
@@ -7,12 +8,13 @@ import { mockActions } from '@/lib/models/actions';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export default function RuleDetailPage({ params }: { params: { id: string } }) {
+export default function RuleDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const { language } = useLanguage();
   const t = translations[language];
 
   // Find the rule
-  const rule = mockRules.find((r) => r.id === params.id);
+  const rule = mockRules.find((r) => r.id === id);
 
   if (!rule) {
     notFound();
@@ -80,7 +82,7 @@ export default function RuleDetailPage({ params }: { params: { id: string } }) {
             className={`px-3 py-1 rounded text-sm font-medium ${
               rule.enabled
                 ? 'bg-green-100 text-green-700'
-                : 'bg-gray-100 text-gray-600'
+                : 'bg-surface-2 text-slate'
             }`}
           >
             {rule.enabled ? t.rules.enabled : t.rules.disabled}

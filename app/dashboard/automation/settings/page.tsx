@@ -117,9 +117,9 @@ export default function AutoModeSettingsPage() {
                 disabled={isDisabled}
                 className={`p-4 border-2 rounded-lg text-left transition-all ${
                   isSelected
-                    ? 'border-ink bg-gray-50'
+                    ? 'border-ink bg-surface-1'
                     : isDisabled
-                    ? 'border-border bg-gray-50 opacity-50 cursor-not-allowed'
+                    ? 'border-border bg-surface-1 opacity-50 cursor-not-allowed'
                     : 'border-border hover:border-slate'
                 }`}
               >
@@ -151,7 +151,7 @@ export default function AutoModeSettingsPage() {
         <div className="grid grid-cols-3 gap-6">
           <div>
             <span className="text-sm font-medium text-slate block mb-2">{t.autoMode.dailyLimit}</span>
-            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+            <div className="p-3 bg-surface-1 border border-border rounded-lg">
               <span className="text-lg font-semibold text-ink">
                 {settings.actionCaps.dailyLimit === -1 ? t.autoMode.unlimited : `${settings.actionCaps.dailyLimit} ${t.autoMode.actionsPerDay}`}
               </span>
@@ -159,7 +159,7 @@ export default function AutoModeSettingsPage() {
           </div>
           <div>
             <span className="text-sm font-medium text-slate block mb-2">{t.autoMode.ruleCooldown}</span>
-            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+            <div className="p-3 bg-surface-1 border border-border rounded-lg">
               <span className="text-lg font-semibold text-ink">
                 {settings.actionCaps.perRuleCooldownHours === 0 ? t.autoMode.unlimited : `${settings.actionCaps.perRuleCooldownHours} ${t.autoMode.hours}`}
               </span>
@@ -167,7 +167,7 @@ export default function AutoModeSettingsPage() {
           </div>
           <div>
             <span className="text-sm font-medium text-slate block mb-2">{t.autoMode.channelLimit}</span>
-            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+            <div className="p-3 bg-surface-1 border border-border rounded-lg">
               <span className="text-lg font-semibold text-ink">
                 {settings.actionCaps.perChannelDailyLimit === -1 ? t.autoMode.unlimited : `${settings.actionCaps.perChannelDailyLimit} ${t.autoMode.actionsPerDay}`}
               </span>
@@ -182,7 +182,7 @@ export default function AutoModeSettingsPage() {
         {settings.automationWindows.enabled ? (
           <div className="space-y-3">
             {settings.automationWindows.allowedHours.map((window, idx) => (
-              <div key={idx} className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
+              <div key={idx} className="p-3 bg-surface-1 border border-border rounded-lg">
                 <span className="text-sm text-slate">
                   {t.autoMode.allowedHours}: {window.start}:00 - {window.end}:00
                 </span>
@@ -199,7 +199,7 @@ export default function AutoModeSettingsPage() {
       {/* Confidence Threshold */}
       <div className="bg-canvas border border-border rounded-lg p-6">
         <h2 className="text-lg font-medium text-ink mb-4">{t.autoMode.confidenceThreshold}</h2>
-        <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+        <div className="p-4 bg-surface-1 border border-border rounded-lg">
           <div className="flex items-center justify-between">
             <span className="text-slate">Minimum score for auto execution</span>
             <span className="text-2xl font-semibold text-ink">{settings.confidenceThreshold}%</span>

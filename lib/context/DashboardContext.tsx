@@ -2,26 +2,26 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { translations } from '@/lib/i18n/translations';
-
-// PHASE 17F: Dashboard runs ENGLISH ONLY - no LanguageContext dependency
+import { useLanguage } from './LanguageContext';
 
 type UserContext = 'creator' | 'company';
 
 interface DashboardContextType {
   currentContext: UserContext;
   setContext: (context: UserContext) => void;
-  t: typeof translations.en;
+  t: any; // Simplified type to avoid union complexity
 }
 
 const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
 
 export function DashboardProvider({ children }: { children: ReactNode }) {
   const [currentContext, setCurrentContext] = useState<UserContext>('creator');
+  const { language } = useLanguage(); // Get language from global context
 
   const value: DashboardContextType = {
     currentContext,
     setContext: setCurrentContext,
-    t: translations.en, // PHASE 17F: English only
+    t: translations[language], // Use global language
   };
 
   return (

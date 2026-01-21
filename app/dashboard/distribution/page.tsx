@@ -49,7 +49,7 @@ export default function DistributionPage() {
                   className={`px-3 py-1 rounded-full text-xs font-medium ${
                     channel.status === 'active'
                       ? 'bg-green-100 text-green-700'
-                      : 'bg-gray-100 text-gray-600'
+                      : 'bg-surface-2 text-slate'
                   }`}
                 >
                   {channel.status === 'active' ? t.distribution.status.active : t.distribution.status.inactive}
@@ -62,7 +62,7 @@ export default function DistributionPage() {
                   <span className="text-slate">{t.distribution.coverage}</span>
                   <span className="font-medium text-ink">{coverage}%</span>
                 </div>
-                <div className="w-full bg-gray-100 rounded-full h-2">
+                <div className="w-full bg-surface-2 rounded-full h-2">
                   <div
                     className={`h-2 rounded-full transition-all ${
                       coverage > 60 ? 'bg-green-500' : coverage > 30 ? 'bg-amber-500' : 'bg-gray-400'

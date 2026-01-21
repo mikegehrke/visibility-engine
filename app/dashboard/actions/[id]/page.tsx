@@ -1,5 +1,6 @@
 'use client';
 
+import { use, useState } from 'react';
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockActions } from '@/lib/models/actions';
@@ -10,16 +11,16 @@ import { mockSimulationResults } from '@/lib/models/simulation';
 import SimulationCard from '@/components/dashboard/SimulationCard';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { useState } from 'react';
 
-export default function ActionDetailPage({ params }: { params: { id: string } }) {
+export default function ActionDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const { language } = useLanguage();
   const t = translations[language];
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [executionSuccess, setExecutionSuccess] = useState(false);
 
   // Find the action
-  const action = mockActions.find((a) => a.id === params.id);
+  const action = mockActions.find((a) => a.id === id);
 
   if (!action) {
     notFound();
@@ -115,7 +116,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
             className={`px-3 py-1 rounded text-sm font-medium ${
               action.enabled
                 ? 'bg-green-100 text-green-700'
-                : 'bg-gray-100 text-gray-600'
+                : 'bg-surface-2 text-slate'
             }`}
           >
             {action.enabled ? t.actions.enabled : t.actions.disabled}
@@ -187,7 +188,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
       {/* Simulated Outcome */}
       <div className="bg-canvas border border-border rounded-lg p-6">
         <h3 className="text-lg font-medium text-ink mb-3">{t.actions.simulatedResult}</h3>
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <div className="bg-surface-1 border border-border rounded-lg p-4">
           <p className="text-sm text-slate font-mono">
             {t.actions.simulations[action.simulatedResultKey as keyof typeof t.actions.simulations]}
           </p>
@@ -212,7 +213,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
                 <span className={`px-2 py-1 rounded text-xs font-medium ${
                   automationConfig.status === 'ready' ? 'bg-green-100 text-green-700' :
                   automationConfig.status === 'blocked' ? 'bg-red-100 text-red-700' :
-                  'bg-gray-100 text-gray-700'
+                  'bg-surface-2 text-ink-secondary'
                 }`}>
                   {t.automation.statuses[automationConfig.status]}
                 </span>
@@ -258,7 +259,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
           {executionLogs.length > 0 && (
             <Link
               href="/dashboard/executions"
-              className="px-6 py-3 bg-gray-100 text-ink rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors"
+              className="px-6 py-3 bg-surface-2 text-ink rounded-lg text-sm font-medium hover:bg-surface-3 transition-colors"
             >
               {t.execution.viewExecutionLog}
             </Link>
@@ -291,7 +292,7 @@ export default function ActionDetailPage({ params }: { params: { id: string } })
                 </button>
                 <button
                   onClick={handleCancel}
-                  className="flex-1 px-4 py-3 bg-gray-100 text-ink rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors"
+                  className="flex-1 px-4 py-3 bg-surface-2 text-ink rounded-lg text-sm font-medium hover:bg-surface-3 transition-colors"
                 >
                   {t.execution.cancelButton}
                 </button>

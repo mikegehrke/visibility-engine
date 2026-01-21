@@ -1,5 +1,6 @@
 'use client';
 
+import { use } from 'react';
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockReports, mockExportPreviews } from '@/lib/models/reports';
@@ -8,12 +9,13 @@ import { mockActions } from '@/lib/models/actions';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export default function ReportDetailPage({ params }: { params: { id: string } }) {
+export default function ReportDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const { language } = useLanguage();
   const t = translations[language];
 
   // Find the report
-  const report = mockReports.find((r) => r.id === params.id);
+  const report = mockReports.find((r) => r.id === id);
 
   if (!report) {
     notFound();
@@ -33,7 +35,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
       case 'monthly':
         return 'bg-purple-100 text-purple-700 border-purple-200';
       case 'custom':
-        return 'bg-gray-100 text-gray-700 border-gray-200';
+        return 'bg-surface-2 text-ink-secondary border-border';
     }
   };
 
@@ -125,7 +127,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
               <Link
                 key={rule.id}
                 href={`/dashboard/rules/${rule.id}`}
-                className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+                className="flex items-center justify-between p-4 bg-surface-1 border border-border rounded-lg hover:bg-surface-2 transition-colors"
               >
                 <div>
                   <span className="font-medium text-ink block">
@@ -153,7 +155,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
               <Link
                 key={action.id}
                 href={`/dashboard/actions/${action.id}`}
-                className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+                className="flex items-center justify-between p-4 bg-surface-1 border border-border rounded-lg hover:bg-surface-2 transition-colors"
               >
                 <div>
                   <span className="font-medium text-ink block">
@@ -177,7 +179,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
         <h2 className="text-lg font-medium text-ink mb-4">{t.reports.exportPreview}</h2>
         <div className="grid grid-cols-2 gap-4 mb-4">
           {exportPreviews.map((preview) => (
-            <div key={preview.format} className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <div key={preview.format} className="p-4 bg-surface-1 border border-border rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <svg className="w-5 h-5 text-slate" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -189,7 +191,7 @@ export default function ReportDetailPage({ params }: { params: { id: string } })
               </p>
               <button
                 disabled
-                className="w-full px-4 py-2 bg-gray-300 text-gray-600 rounded-lg text-sm cursor-not-allowed"
+                className="w-full px-4 py-2 bg-mist text-slate rounded-lg text-sm cursor-not-allowed"
                 title={t.reports.previewOnly}
               >
                 {preview.format === 'pdf' ? t.reports.exportPDF : t.reports.exportCSV}

@@ -72,7 +72,7 @@ export default function RulesPage() {
                     className={`px-2 py-1 rounded text-xs font-medium ${
                       rule.enabled
                         ? 'bg-green-100 text-green-700'
-                        : 'bg-gray-100 text-gray-600'
+                        : 'bg-surface-2 text-slate'
                     }`}
                   >
                     {rule.enabled ? t.rules.enabled : t.rules.disabled}

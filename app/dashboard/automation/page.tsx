@@ -30,7 +30,7 @@ export default function AutomationPage() {
       case 'blocked':
         return 'bg-red-100 text-red-700';
       case 'disabled':
-        return 'bg-gray-100 text-gray-700';
+        return 'bg-surface-2 text-ink-secondary';
     }
   };
 
@@ -117,7 +117,7 @@ export default function AutomationPage() {
                 <button
                   disabled
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    config.enabled ? 'bg-signal' : 'bg-gray-300'
+                    config.enabled ? 'bg-signal' : 'bg-mist'
                   } opacity-50 cursor-not-allowed`}
                   title={config.executionMode === 'auto' ? t.automation.safetyNotices.autoModeNotAvailable : t.automation.notActiveNotice}
                 >

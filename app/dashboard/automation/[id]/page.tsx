@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { useLanguage } from '@/lib/context/LanguageContext';
 import { translations } from '@/lib/i18n/translations';
 import { mockAutomationConfigs } from '@/lib/models/automation';
@@ -15,12 +15,13 @@ import AutomationAlert from '@/components/dashboard/AutomationAlert';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export default function AutomationDetailPage({ params }: { params: { id: string } }) {
+export default function AutomationDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const { language } = useLanguage();
   const t = translations[language];
 
   // Find the automation config
-  const config = mockAutomationConfigs.find((c) => c.id === params.id);
+  const config = mockAutomationConfigs.find((c) => c.id === id);
 
   if (!config) {
     notFound();
@@ -72,7 +73,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
       case 'blocked':
         return 'bg-red-100 text-red-700';
       case 'disabled':
-        return 'bg-gray-100 text-gray-700';
+        return 'bg-surface-2 text-ink-secondary';
     }
   };
 
@@ -257,7 +258,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
       {/* Last Simulation Result */}
       <div className="bg-canvas border border-border rounded-lg p-6">
         <h3 className="text-lg font-medium text-ink mb-3">{t.automation.lastSimulation}</h3>
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <div className="bg-surface-1 border border-border rounded-lg p-4">
           <p className="text-sm text-slate font-mono">
             {t.automation.simulationResults[config.lastSimulationResultKey as keyof typeof t.automation.simulationResults]}
           </p>
@@ -268,7 +269,7 @@ export default function AutomationDetailPage({ params }: { params: { id: string 
       <div className="bg-canvas border border-border rounded-lg p-6">
         <button
           disabled
-          className="w-full px-6 py-3 bg-gray-300 text-gray-600 rounded-lg text-sm font-medium cursor-not-allowed"
+          className="w-full px-6 py-3 bg-mist text-slate rounded-lg text-sm font-medium cursor-not-allowed"
           title={config.executionMode === 'auto' ? t.automation.safetyNotices.autoModeNotAvailable : t.automation.notActiveNotice}
         >
           {t.automation.enableAutomation}

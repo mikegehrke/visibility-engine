@@ -35,7 +35,7 @@ export default function ActionsPage() {
       case 'user':
         return 'bg-amber-100 text-amber-700';
       case 'system':
-        return 'bg-gray-100 text-gray-700';
+        return 'bg-surface-2 text-ink-secondary';
     }
   };
 
@@ -104,7 +104,7 @@ export default function ActionsPage() {
                       className={`px-2 py-1 rounded text-xs font-medium ${
                         action.enabled
                           ? 'bg-green-100 text-green-700'
-                          : 'bg-gray-100 text-gray-600'
+                          : 'bg-surface-2 text-slate'
                       }`}
                     >
                       {action.enabled ? t.actions.enabled : t.actions.disabled}

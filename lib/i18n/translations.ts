@@ -789,6 +789,7 @@ export const translations = {
         low: 'Low',
       },
       confidenceThreshold: 'Minimum Confidence',
+      minimumScoreLabel: 'Minimum score for auto execution',
       
       // Caps & Limits
       actionCaps: 'Action Caps',
@@ -1747,6 +1748,7 @@ export const translations = {
         low: 'Niedrig',
       },
       confidenceThreshold: 'Minimale Konfidenz',
+      minimumScoreLabel: 'Mindestwert für automatische Ausführung',
       
       // Caps & Limits
       actionCaps: 'Aktions-Caps',
